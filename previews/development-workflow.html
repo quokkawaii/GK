@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GK 산업 | 개발 흐름 요약</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f1f1ef; color: #242424; font: 16px/1.6 Arial, "Noto Sans KR", sans-serif; }
+    main { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+    h1 { margin: 0; font-size: 34px; letter-spacing: -2px; }
+    .lead { margin: 8px 0 34px; color: #606060; }
+    .section { margin-top: 22px; padding: 28px; background: #fff; border: 1px solid #ddd; }
+    h2 { margin: 0 0 18px; font-size: 21px; letter-spacing: -1px; }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .step { min-height: 154px; padding: 16px; border: 1px solid #ddd; background: #fafaf8; }
+    .number { display: inline-grid; width: 28px; height: 28px; place-items: center; background: #e36f3f; color: #fff; font-size: 12px; font-weight: 800; }
+    .step b { display: block; margin-top: 12px; font-size: 15px; }
+    .step p { margin: 5px 0 0; color: #666; font-size: 12px; word-break: keep-all; }
+    pre { margin: 0; padding: 18px; overflow: auto; background: #242424; color: #fff; font: 13px/1.8 Consolas, monospace; }
+    .notice { margin: 16px 0 0; padding: 14px 16px; border-left: 4px solid #e36f3f; background: #fff4ef; color: #5c3829; font-size: 14px; }
+    .deploy { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .deploy div { padding: 15px; background: #f6f6f3; border-top: 3px solid #242424; }
+    .deploy b { display: block; font-size: 14px; }
+    .deploy span { display: block; margin-top: 4px; color: #666; font-size: 12px; }
+    @media (max-width: 720px) { main { padding: 28px 15px 48px; } h1 { font-size: 28px; } .section { padding: 20px; } .flow, .deploy { grid-template-columns: 1fr; } .step { min-height: auto; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>개발 흐름 요약</h1>
+    <p class="lead">개발 시작 뒤 GK 산업 사이트를 만들고, 확인하고, 배포하는 순서입니다.</p>
+    <section class="section">
+      <h2>내 컴퓨터에서 작업하는 순서</h2>
+      <div class="flow">
+        <article class="step"><span class="number">1</span><b>패키지 설치</b><p>프로젝트에 필요한 도구를 한 번 설치합니다.</p></article>
+        <article class="step"><span class="number">2</span><b>화면 실행</b><p>내 컴퓨터에서 사이트를 열어 확인합니다.</p></article>
+        <article class="step"><span class="number">3</span><b>코드 검사</b><p>ESLint로 흔한 작성 실수를 확인합니다.</p></article>
+        <article class="step"><span class="number">4</span><b>규칙 검사</b><p>필터·페이지 계산 같은 핵심 규칙을 확인합니다.</p></article>
+        <article class="step"><span class="number">5</span><b>배포용 생성</b><p>JSON과 페이지를 검사하고 정적 파일을 만듭니다.</p></article>
+      </div>
+    </section>
+    <section class="section">
+      <h2>사용할 명령</h2>
+      <pre>npm install       # 필요한 패키지 설치
+npm run dev       # 내 컴퓨터에서 사이트 실행
+npm run lint      # 코드 작성 실수 검사
+npm test          # 핵심 데이터 규칙 검사
+npm run build     # 정적 배포용 파일 생성과 JSON 검사</pre>
+      <p class="notice">검사 실패가 발견되면 자동으로 고치지 않습니다. 문제 내용과 수정 계획을 먼저 보고하고, 승인 후에만 수정합니다.</p>
+    </section>
+    <section class="section">
+      <h2>콘텐츠 변경부터 실제 배포까지</h2>
+      <div class="deploy">
+        <div><b>작업 브랜치</b><span>변경 전 별도 작업 공간을 만듭니다.</span></div>
+        <div><b>JSON·사진 수정</b><span>사례·제품 내용과 사진을 추가하거나 바꿉니다.</span></div>
+        <div><b>PR 미리보기</b><span>Cloudflare Pages 주소에서 먼저 확인합니다.</span></div>
+        <div><b>main 머지</b><span>고객이 보는 사이트가 자동으로 갱신됩니다.</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
