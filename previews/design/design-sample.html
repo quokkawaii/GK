@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GK 산업 — 홈페이지 시안</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #e8e8e4;
+        color: #171917;
+        font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      }
+      .notice {
+        background: #171917;
+        color: #fff;
+        padding: 12px 24px;
+        text-align: center;
+        font-size: 13px;
+      }
+      .switch {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        padding: 22px;
+      }
+      button {
+        border: 1px solid #c7c9c3;
+        background: #f7f7f3;
+        border-radius: 20px;
+        padding: 8px 15px;
+        cursor: pointer;
+        color: #3d403d;
+      }
+      button.active {
+        background: #d7dd36;
+        color: #171917;
+        border-color: #d7dd36;
+        font-weight: 700;
+      }
+      .sample {
+        display: none;
+        max-width: 1180px;
+        margin: 0 auto 48px;
+        background: #fff;
+        min-height: 700px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px #1112;
+      }
+      .sample.active {
+        display: block;
+      }
+      .nav {
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+        border-bottom: 1px solid #e4e5e1;
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 23px;
+        letter-spacing: -1px;
+      }
+      .logo span {
+        color: #9ea900;
+      }
+      .links {
+        display: flex;
+        gap: 27px;
+        font-size: 14px;
+      }
+      .call {
+        background: #d7dd36;
+        border: 0;
+        border-radius: 0;
+        font-weight: 800;
+      }
+      .eyebrow {
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        color: #73776e;
+      }
+      h1 {
+        font-size: clamp(38px, 5vw, 70px);
+        line-height: 1.12;
+        letter-spacing: -4px;
+        margin: 14px 0 24px;
+      }
+      p {
+        color: #5d625d;
+        line-height: 1.7;
+      }
+      .a-hero {
+        padding: 92px 7% 62px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 36px;
+        background: #f7f7f3;
+      }
+      .photo {
+        min-height: 360px;
+        background: linear-gradient(145deg, #343b36, #819089 55%, #202623);
+        position: relative;
+        overflow: hidden;
+      }
+      .photo:before {
+        content: "";
+        position: absolute;
+        width: 130%;
+        height: 64%;
+        bottom: -35%;
+        left: -20%;
+        transform: rotate(-8deg);
+        background: repeating-linear-gradient(
+          90deg,
+          #303632 0 42px,
+          #59635c 42px 45px
+        );
+      }
+      .photo b {
+        position: absolute;
+        left: 24px;
+        bottom: 20px;
+        color: #fff;
+        font-size: 13px;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid #d7d8d2;
+        background: #f7f7f3;
+        padding: 28px 7%;
+      }
+      .stats div {
+        border-right: 1px solid #d7d8d2;
+        padding: 0 22px;
+      }
+      .stats div:first-child {
+        padding-left: 0;
+      }
+      .stats div:last-child {
+        border: 0;
+      }
+      .stats strong {
+        display: block;
+        font-size: 30px;
+      }
+      .stats small {
+        color: #72766f;
+      }
+      .b-hero {
+        color: white;
+        min-height: 330px;
+        padding: 56px 7%;
+        position: relative;
+        background:
+          radial-gradient(circle at 75% 35%, #a6b5a7 0 5%, transparent 26%),
+          linear-gradient(125deg, #101513 0%, #26312b 54%, #151a17 100%);
+      }
+      .b-hero p,
+      .b-hero .eyebrow {
+        color: #dce4d9;
+      }
+      .b-hero h1 {
+        max-width: 680px;
+        position: relative;
+        z-index: 1;
+        font-size: clamp(36px, 4.4vw, 58px);
+      }
+      .b-hero p {
+        max-width: 480px;
+        position: relative;
+        z-index: 1;
+      }
+      .bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background: #d7dd36;
+        padding: 22px 7%;
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .cards {
+        padding: 36px 7% 58px;
+      }
+      .cards h2 {
+        font-size: 28px;
+        letter-spacing: -1px;
+        margin: 0;
+      }
+      .section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+      .more {
+        border: 1px solid #cbd0c5;
+        border-radius: 0;
+        background: #fff;
+        padding: 10px 13px;
+        font-weight: 700;
+      }
+      .card-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .card {
+        border: 1px solid #e0e2dc;
+        min-height: 180px;
+        overflow: hidden;
+      }
+      .card-image {
+        height: 92px;
+        background: linear-gradient(140deg, #738078, #343d37);
+        position: relative;
+      }
+      .card-image:after {
+        content: "";
+        position: absolute;
+        height: 55%;
+        width: 120%;
+        left: -10%;
+        bottom: -20%;
+        transform: rotate(-8deg);
+        background: repeating-linear-gradient(
+          90deg,
+          #2e352f 0 28px,
+          #66716a 28px 30px
+        );
+      }
+      .card:nth-child(2) .card-image {
+        background: linear-gradient(140deg, #73736c, #333731);
+      }
+      .card:nth-child(3) .card-image {
+        background: linear-gradient(140deg, #90947c, #394136);
+      }
+      .card-info {
+        padding: 14px 17px;
+      }
+      .card small {
+        color: #777;
+      }
+      .card b {
+        display: block;
+        margin-top: 7px;
+        font-size: 16px;
+      }
+      .c-hero {
+        padding: 74px 7% 54px;
+        background: #fff;
+        border-bottom: 1px solid #dfe1db;
+      }
+      .c-hero h1 {
+        max-width: 850px;
+      }
+      .product-preview {
+        background: #f2f3ef;
+        padding: 48px 7% 62px;
+      }
+      .product-preview h2 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: -1px;
+      }
+      .product-preview > p {
+        margin: 0 0 22px;
+        font-size: 14px;
+      }
+      .product-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .product {
+        background: #fff;
+        padding: 18px;
+      }
+      .product b {
+        display: block;
+        font-size: 17px;
+        margin-bottom: 7px;
+      }
+      .product span {
+        font-size: 13px;
+        color: #5d625d;
+        display: block;
+        line-height: 1.6;
+      }
+      .table {
+        margin: 0 7% 58px;
+        border-top: 2px solid #181a18;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1.8fr 1fr 1fr;
+        border-bottom: 1px solid #dfe1db;
+        padding: 18px 10px;
+        font-size: 14px;
+      }
+      .row.head {
+        background: #f4f5f1;
+        font-weight: 800;
+      }
+      .tag {
+        display: inline-block;
+        background: #edf0e9;
+        border-radius: 12px;
+        padding: 3px 8px;
+        font-size: 11px;
+      }
+      @media (max-width: 650px) {
+        .links {
+          display: none;
+        }
+        .a-hero {
+          grid-template-columns: 1fr;
+          padding-top: 55px;
+        }
+        .card-row {
+          grid-template-columns: 1fr;
+        }
+        .row {
+          grid-template-columns: 0.9fr 1.8fr;
+          gap: 10px;
+        }
+        .row > :nth-child(3),
+        .row > :nth-child(4) {
+          color: #72766f;
+        }
+        h1 {
+          letter-spacing: -2.5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="notice">
+      GK 산업 홈페이지 디자인 방향 비교 시안 — 실제 사진과 정보는 추후
+      교체됩니다.
+    </div>
+    <div class="switch">
+      <button class="active" onclick="pick('a', this)">A. 신뢰 중심</button>
+      <button onclick="pick('b', this)">B. 현장 중심</button>
+      <button onclick="pick('c', this)">C. 기술 자료 중심</button>
+    </div>
+
+    <section id="a" class="sample active">
+      <nav class="nav">
+        <div class="logo">GK <span>산업</span></div>
+        <div class="links">
+          <span>시공 사례</span><span>사용 제품</span><span>회사 소개</span>
+        </div>
+        <button class="call">전화 문의 1588-0000</button>
+      </nav>
+      <main class="a-hero">
+        <div>
+          <div class="eyebrow">FLOOR CONSTRUCTION SPECIALIST</div>
+          <h1>바닥의 완성도가<br />공간의 신뢰가 됩니다.</h1>
+          <p>
+            전국의 공장, 주차장, 상업 공간을 위한 바닥 시공 전문 GK 산업입니다.
+            현장 조건에 맞는 공법과 자재를 제안합니다.
+          </p>
+        </div>
+        <div class="photo"><b>시공 사례 · 물류센터 바닥 보수</b></div>
+      </main>
+      <div class="stats">
+        <div><strong>전국</strong><small>시공 가능</small></div>
+        <div><strong>현장별</strong><small>맞춤 공법 제안</small></div>
+        <div><strong>전화</strong><small>간편 문의</small></div>
+      </div>
+    </section>
+
+    <section id="b" class="sample">
+      <nav class="nav">
+        <div class="logo">GK <span>산업</span></div>
+        <div class="links">
+          <span>시공 사례</span><span>사용 제품</span><span>회사 소개</span>
+        </div>
+        <button class="call">전화 문의 1588-0000</button>
+      </nav>
+      <main class="b-hero">
+        <div class="eyebrow">SITE FIRST. QUALITY ALWAYS.</div>
+        <h1>현장을 아는 기술로<br />바닥을 완성합니다.</h1>
+        <p>
+          작은 보수부터 넓은 산업 현장까지. 조건을 읽고, 오래 견디는 바닥을
+          시공합니다.
+        </p>
+      </main>
+      <div class="bar">
+        <span>공장 바닥</span><span>주차장 바닥</span
+        ><span>상업·주거 공간</span>
+      </div>
+      <div class="cards">
+        <div class="section-heading">
+          <h2>최근 시공 사례</h2>
+          <button class="more">시공 사례 보기 →</button>
+        </div>
+        <div class="card-row">
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-info">
+              <small>공장 · 에폭시</small><b>제조시설 바닥 보수</b>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-info">
+              <small>주차장 · 우레탄</small><b>지하 주차장 재도장</b>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-info">
+              <small>주방 · 방수</small><b>상업 주방 바닥 시공</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-preview">
+        <div class="section-heading">
+          <h2>시공 시 사용 제품</h2>
+          <button class="more">제품 보러가기 →</button>
+        </div>
+        <p>
+          판매 목적이 아닌, 현장에 적용되는 제품의 역할과 기준을 소개합니다.
+        </p>
+        <div class="product-row">
+          <div class="product">
+            <b>에폭시 바닥재</b
+            ><span>내구성·내오염성이 필요한 공장 및 창고 바닥에 적용</span
+            ><span>1세트 약 30㎡ 시공</span>
+          </div>
+          <div class="product">
+            <b>우레탄 방수재</b
+            ><span>탄성과 방수 성능이 필요한 주차장·옥상에 적용</span
+            ><span>1세트 약 25㎡ 시공</span>
+          </div>
+          <div class="product">
+            <b>미끄럼 방지재</b
+            ><span>안전한 보행이 필요한 주방·계단·습윤 공간에 적용</span
+            ><span>현장 조건별 시공 면적 상이</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="c" class="sample">
+      <nav class="nav">
+        <div class="logo">GK <span>산업</span></div>
+        <div class="links">
+          <span>시공 사례</span><span>사용 제품</span><span>회사 소개</span>
+        </div>
+        <button class="call">전화 문의 1588-0000</button>
+      </nav>
+      <main class="c-hero">
+        <div class="eyebrow">CONSTRUCTION DATA &amp; CASE STUDIES</div>
+        <h1>현장에 맞는 공법과<br />사용 자재를 투명하게 소개합니다.</h1>
+        <p>
+          시공 사례와 함께 적용 공법, 사용 목적, 제품 구성과 시공 가능 면적을
+          확인할 수 있습니다.
+        </p>
+      </main>
+      <div class="table">
+        <div class="row head">
+          <span>구분</span><span>시공·제품 정보</span><span>적용 공간</span
+          ><span>시공 가능 면적</span>
+        </div>
+        <div class="row">
+          <span class="tag">에폭시</span
+          ><span>내구성과 내오염성이 필요한 바닥 마감</span
+          ><span>공장 · 창고</span><span>1세트 약 30㎡</span>
+        </div>
+        <div class="row">
+          <span class="tag">우레탄</span
+          ><span>탄성과 방수 성능을 고려한 바닥 도장</span
+          ><span>주차장 · 옥상</span><span>1세트 약 25㎡</span>
+        </div>
+        <div class="row">
+          <span class="tag">미끄럼 방지</span
+          ><span>보행 안전을 높이는 표면 마감 공법</span><span>주방 · 계단</span
+          ><span>현장 조건별 상이</span>
+        </div>
+      </div>
+    </section>
+    <script>
+      function pick(id, button) {
+        document
+          .querySelectorAll(".sample")
+          .forEach((x) => x.classList.remove("active"));
+        document
+          .querySelectorAll(".switch button")
+          .forEach((x) => x.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+        button.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
