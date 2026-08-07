@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GK 산업 | 디자인 시스템 글자 기준</title>
+  <style>
+    :root { --bg:#f1f1ef; --surface:#fff; --ink:#242424; --muted:#606060; --line:#ddddda; --accent:#e36f3f; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:Arial,"Noto Sans KR",sans-serif; }
+    main { max-width:960px; margin:0 auto; padding:48px 24px 72px; }
+    .page-title { margin:0; font-size:34px; line-height:1.25; letter-spacing:-2px; }
+    .lead { margin:8px 0 30px; color:var(--muted); font-size:16px; line-height:1.6; }
+    .panel { padding:30px; background:var(--surface); border:1px solid var(--line); }
+    .eyebrow { margin:0 0 7px; color:var(--accent); font-size:11px; font-weight:800; letter-spacing:.12em; }
+    .hero-title { margin:0; font-size:42px; line-height:1.2; letter-spacing:-2.8px; font-weight:900; word-break:keep-all; }
+    .section-title { margin:36px 0 0; padding-top:24px; border-top:1px solid var(--line); font-size:28px; line-height:1.3; letter-spacing:-1.8px; font-weight:900; }
+    .card { margin-top:18px; padding:18px; border:1px solid var(--line); }
+    .tag { color:var(--accent); font-size:11px; font-weight:800; }
+    .card-title { margin:5px 0 8px; font-size:19px; line-height:1.35; letter-spacing:-1px; font-weight:900; }
+    .body { margin:0; color:#454545; font-size:16px; line-height:1.7; word-break:keep-all; }
+    .caption { margin:9px 0 0; color:var(--muted); font-size:13px; line-height:1.55; }
+    .button-row { display:flex; flex-wrap:wrap; gap:9px; margin-top:24px; }
+    button { border:1px solid var(--line); padding:11px 14px; background:#fff; color:var(--ink); font:800 14px/1 Arial,"Noto Sans KR",sans-serif; }
+    .primary { border-color:var(--accent); background:var(--accent); color:#fff; }
+    .specs { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:26px; }
+    .spec { padding:14px; background:#fafaf8; border:1px solid var(--line); }
+    .spec b { display:block; font-size:13px; }
+    .spec span { display:block; margin-top:4px; color:var(--muted); font:12px Consolas,monospace; }
+    @media (max-width:680px) { main { padding:28px 15px 48px; } .panel { padding:21px; } .page-title { font-size:28px; } .hero-title { font-size:34px; } .section-title { font-size:24px; } .specs { grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="page-title">GK 산업 글자 기준</h1>
+    <p class="lead">한 화면에서 제목·본문·태그·버튼의 크기와 굵기를 확인할 수 있는 시안입니다.</p>
+    <section class="panel">
+      <p class="eyebrow">FLOOR CONSTRUCTION</p>
+      <h2 class="hero-title">현장에 맞는 바닥 시공</h2>
+      <h3 class="section-title">최근 시공 사례</h3>
+      <article class="card">
+        <span class="tag">공장 · 에폭시</span>
+        <h4 class="card-title">화성시 공장</h4>
+        <p class="body">현장 상태와 사용 환경을 확인한 뒤, 바닥에 맞는 공법으로 시공한 사례입니다.</p>
+        <p class="caption">시공 사진과 자세한 내용은 상세 페이지에서 확인합니다.</p>
+      </article>
+      <div class="button-row"><button class="primary" type="button">전화 문의</button><button type="button">시공 사례 보기</button></div>
+      <div class="specs">
+        <div class="spec"><b>대표 제목</b><span>42px · 900</span></div>
+        <div class="spec"><b>구역 제목</b><span>28px · 900</span></div>
+        <div class="spec"><b>카드 제목</b><span>19px · 900</span></div>
+        <div class="spec"><b>본문</b><span>16px · 400</span></div>
+        <div class="spec"><b>보조 문구</b><span>13px · 400</span></div>
+        <div class="spec"><b>태그·버튼</b><span>11px / 14px · 800</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

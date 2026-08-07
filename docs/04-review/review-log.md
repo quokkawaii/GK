@@ -224,6 +224,54 @@
 
 ---
 
+## 리뷰 006 · 디자인 시스템 재검토
+
+- 대상: `docs/02-design/design-system.md`, `previews/design/pc/`, `previews/design/mobile/`
+- 판정: **CHANGES REQUIRED**
+- 요약: 새 디자인 시스템은 완성됐지만, 실제 적용 후보 시안과 카드 구조·사진 비율·필터 선택 상태·글자·상세 갤러리 표시 방식이 일치하지 않는다.
+- 지적: REV-016(높음), REV-017(높음), REV-018(중간), REV-019(중간)
+- 다음 행동: 디자이너가 시안을 보완한 뒤 재리뷰한다.
+
+---
+
+## 리뷰 007 · 디자인 시스템 보완 재검토
+
+- 대상: `docs/02-design/design-system.md`, `previews/design/pc/`, `previews/design/mobile/`
+- 판정: **CHANGES REQUIRED**
+- 해소: REV-016(목록 2열·4:3), REV-017(선택 필터), REV-019(상세 갤러리 표시 규칙)
+- 잔여 지적: REV-020(중간) — 홈·회사 소개·제품 상세 여섯 화면의 글꼴 및 44px 조작 영역 기준 미적용
+- 다음 행동: 디자이너가 REV-020을 보완한 뒤 재리뷰한다.
+
+---
+
+## 리뷰 008 · 디자인 시스템 최종 재검토
+
+- 대상: `docs/02-design/design-system.md`, `previews/design/pc/`, `previews/design/mobile/`
+- 판정: **PASS**
+- 결과: REV-016~REV-020이 모두 해소됐다. 목록 카드·선택 필터·글꼴·44px 조작 영역·상세 갤러리 기준이 실제 적용 후보 시안과 일치한다.
+- 다음 행동: 사용자의 디자인 최종 승인 뒤 구현 계획 또는 개발 단계 진행 여부를 결정한다.
+
+---
+
+## 리뷰 009 · 개발 설계 리뷰
+
+- 대상: 승인된 기획·디자인 문서와 `docs/03-development/` 전체
+- 판정: **CHANGES REQUIRED**
+- 통과: 정적 JSON 범위, 폴더 구조, 디자인 인계, Zustand 상태 범위, 실패 대응, Cloudflare 배포·SEO·통계 계획
+- 지적: REV-021(높음) 정적 내보내기용 Next.js 이미지 설정 누락, REV-022(중간) 최신 사례 정렬용 시공일 검사 누락
+- 다음 행동: 개발자가 설계 문서만 보완한 뒤 재리뷰한다.
+
+---
+
+## 리뷰 010 · 개발 설계 재검토
+
+- 대상: `docs/03-development/project-structure.md`, `content-validation.md`, `testing-policy.md`, `deployment-plan.md`
+- 판정: **PASS**
+- 결과: REV-021(정적 내보내기·이미지 설정), REV-022(시공일 검사·최신순 정렬)가 모두 해소됐다.
+- 다음 행동: 사용자의 개발 단계 시작 승인을 기다린다.
+
+---
+
 ## 리뷰 004 · REV-009·REV-010 재검토
 
 - 대상: `docs/01-planning/brief.md`, `PRD.md`, `content-model.md`, `site-map.md`, `company-intro-example.md`

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GK 산업 | 디자인 시스템 색상</title>
+  <style>
+    :root {
+      --background: #f1f1ef;
+      --surface: #ffffff;
+      --ink: #242424;
+      --muted: #606060;
+      --line: #ddddda;
+      --accent: #e36f3f;
+      --accent-soft: #fff4ef;
+      --dark: #252525;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--background); color: var(--ink); font: 16px/1.6 Arial, "Noto Sans KR", sans-serif; }
+    main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+    h1 { margin: 0; font-size: 34px; letter-spacing: -2px; }
+    .lead { margin: 8px 0 30px; color: var(--muted); }
+    .panel { padding: 28px; background: var(--surface); border: 1px solid var(--line); }
+    h2 { margin: 0 0 16px; font-size: 20px; letter-spacing: -1px; }
+    .colors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .color { overflow: hidden; border: 1px solid var(--line); }
+    .swatch { height: 92px; }
+    .color b, .color span { display: block; padding: 0 12px; }
+    .color b { padding-top: 10px; font-size: 13px; }
+    .color span { padding-bottom: 11px; color: var(--muted); font: 12px Consolas, monospace; }
+    .examples { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; margin-top: 24px; }
+    .case { overflow: hidden; border: 1px solid var(--line); }
+    .photo { height: 190px; position: relative; background: linear-gradient(145deg, #888580, #383735); }
+    .photo::after { content: ""; position: absolute; width: 125%; height: 34%; bottom: -7%; left: -12%; transform: rotate(-8deg); background: repeating-linear-gradient(90deg, #292929 0 29px, #67635e 29px 33px); }
+    .copy { padding: 16px; }
+    .tag { color: var(--accent); font-size: 11px; font-weight: 800; }
+    .name { margin-top: 4px; font-size: 20px; font-weight: 900; letter-spacing: -1px; }
+    .buttons { display: grid; gap: 10px; align-content: start; }
+    button { border: 1px solid var(--line); padding: 13px 15px; background: var(--surface); color: var(--ink); text-align: left; font: 700 14px Arial, "Noto Sans KR", sans-serif; }
+    .primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .selected { border-color: var(--accent); background: var(--accent-soft); color: #a94624; }
+    .dark { border-color: var(--dark); background: var(--dark); color: #fff; }
+    .note { margin: 24px 0 0; padding: 16px; border-left: 4px solid var(--accent); background: var(--accent-soft); color: #613b2d; font-size: 14px; }
+    @media (max-width: 680px) { main { padding: 28px 15px 48px; } h1 { font-size: 28px; } .panel { padding: 20px; } .colors { grid-template-columns: repeat(2, 1fr); } .examples { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>GK 산업 색상 기준</h1>
+    <p class="lead">지금까지 승인한 시안에서 사용한 따뜻한 주황색·진한 회색·밝은 회색 조합입니다.</p>
+    <section class="panel">
+      <h2>화면에서 사용하는 색</h2>
+      <div class="colors">
+        <div class="color"><div class="swatch" style="background:#f1f1ef"></div><b>전체 배경</b><span>#F1F1EF</span></div>
+        <div class="color"><div class="swatch" style="background:#ffffff"></div><b>카드·내용 배경</b><span>#FFFFFF</span></div>
+        <div class="color"><div class="swatch" style="background:#242424"></div><b>주요 글자</b><span>#242424</span></div>
+        <div class="color"><div class="swatch" style="background:#e36f3f"></div><b>강조·전화 문의</b><span>#E36F3F</span></div>
+      </div>
+      <div class="examples">
+        <article class="case">
+          <div class="photo"></div>
+          <div class="copy"><span class="tag">공장 · 에폭시</span><div class="name">화성시 공장</div></div>
+        </article>
+        <div class="buttons">
+          <button class="primary" type="button">전화 문의</button>
+          <button class="selected" type="button">선택된 필터: 에폭시</button>
+          <button type="button">일반 버튼·필터</button>
+          <button class="dark" type="button">진한 안내 영역</button>
+        </div>
+      </div>
+      <p class="note">주황색은 전화 문의, 선택된 필터, 태그처럼 사용자의 시선을 안내해야 하는 곳에만 사용합니다. 사진보다 강하게 보이지 않도록 넓은 배경에는 쓰지 않습니다.</p>
+    </section>
+  </main>
+</body>
+</html>
