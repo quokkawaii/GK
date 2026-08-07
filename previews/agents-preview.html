@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GK 산업 · 프로젝트 운영 규칙</title>
+  <style>
+    :root{--ink:#172019;--muted:#687168;--line:#dfe4dc;--lime:#d5dc35;--paper:#f6f7f3}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 Arial,"Noto Sans KR",sans-serif}.wrap{max-width:1050px;margin:auto;padding:52px 28px 90px}.top{border-bottom:2px solid var(--ink);padding-bottom:27px;margin-bottom:28px}.tag{font-size:12px;font-weight:800;letter-spacing:.12em;color:#768009;margin:0 0 10px}.top h1{font-size:38px;letter-spacing:-2px;margin:0}.top p{color:var(--muted);margin:9px 0 0}.grid{display:grid;grid-template-columns:220px 1fr;gap:34px}.nav{position:sticky;top:24px;height:max-content}.nav a{display:block;text-decoration:none;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.nav a:first-child{color:var(--ink);font-weight:800}.content section{background:#fff;border:1px solid var(--line);padding:28px 30px;margin-bottom:16px}.num{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;background:var(--lime);border-radius:50%;font-size:13px;font-weight:900;margin-right:9px}.content h2{font-size:23px;letter-spacing:-1px;margin:0 0 17px}.content ul{padding-left:20px;margin:0}.content li{margin:8px 0}.roles{width:100%;border-collapse:collapse;font-size:14px}.roles th,.roles td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}.roles th{background:#f0f2ec}.note{background:#f4f6ef;border-left:4px solid var(--lime);padding:14px 16px;margin-top:17px;color:#4f594e}.code{font-family:Consolas,monospace;background:#f2f4ef;border-radius:4px;padding:2px 5px;font-size:.9em}@media(max-width:720px){.wrap{padding:32px 16px 60px}.top h1{font-size:31px}.grid{grid-template-columns:1fr}.nav{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:0}.content section{padding:22px 19px}.roles{display:block;overflow-x:auto;white-space:nowrap}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top"><p class="tag">GK INDUSTRY / PROJECT GOVERNANCE</p><h1>GK 산업 프로젝트 운영 규칙</h1><p>모든 역할과 단계에 공통으로 적용되는 작업 기준입니다.</p></header>
+    <div class="grid">
+      <nav class="nav"><a href="#purpose">01. 목적과 범위</a><a href="#stages">02. 작업 단계와 승인</a><a href="#roles">03. 역할과 책임</a><a href="#records">04. 결정·변경 관리</a><a href="#data">05. 데이터·기술 경계</a><a href="#quality">06. 품질과 검토</a><a href="#conflict">07. 실패·충돌 처리</a></nav>
+      <article class="content">
+        <section id="purpose"><h2><span class="num">1</span>목적과 범위</h2><ul><li>GK 산업의 바닥 시공 소개·홍보 웹사이트 프로젝트다.</li><li>시공 사례와 사용 제품 정보를 통해 <b>전화 문의</b>로 연결한다.</li><li>사용자가 제공하고 승인한 사실만 사용하며, 모르는 내용은 사실처럼 채우지 않는다.</li></ul></section>
+        <section id="stages"><h2><span class="num">2</span>작업 단계와 사용자 승인</h2><ol><li>인터뷰</li><li>기획</li><li>디자인</li><li>구현 계획</li><li>개발</li><li>리뷰</li><li>배포</li></ol><div class="note">사용자의 명시적 승인 없이는 다음 단계로 넘어가지 않습니다. 인터뷰·기획·디자인 중에는 앱 코드, 의존성, 데이터베이스, 배포 환경을 변경하지 않습니다.</div></section>
+        <section id="roles"><h2><span class="num">3</span>역할과 책임</h2><table class="roles"><thead><tr><th>역할</th><th>책임</th><th>산출물</th></tr></thead><tbody><tr><td>기획자</td><td>인터뷰, 요구사항, 콘텐츠 모델, 사용자 흐름</td><td>기획 문서</td></tr><tr><td>디자이너</td><td>정보 구조, 화면 구성, HTML 시안</td><td>디자인 문서·시안</td></tr><tr><td>개발자</td><td>승인 범위 구현, 데이터 구조, 품질 유지</td><td>소스 코드·개발 문서</td></tr><tr><td>리뷰어</td><td>요구사항 일치와 품질을 독립 검토</td><td>리뷰 기록</td></tr></tbody></table><div class="note">역할별 세부 지침은 필요해질 때만 <span class="code">roles/</span>에 추가합니다. 역할 간 의견이 다르면 사용자가 결정합니다.</div></section>
+        <section id="records"><h2><span class="num">4</span>결정·미확정 사항·변경 관리</h2><ul><li>중요한 사용자 승인은 결정 기록에 남긴다.</li><li>미확정 정보는 <span class="code">[TBD-번호]</span>와 해결 질문을 함께 기록한다.</li><li>요구사항·결정·리뷰 지적에는 <span class="code">REQ</span>, <span class="code">DEC</span>, <span class="code">REV</span> 식별자를 사용한다.</li><li>기존 산출물 변경 시 변경 항목과 이유를 간단히 보고한다.</li></ul></section>
+        <section id="data"><h2><span class="num">5</span>데이터와 기술 경계</h2><ul><li>초기 콘텐츠는 정적 JSON으로 관리한다. DB·MongoDB·REST API는 별도 승인 전 도입하지 않는다.</li><li>시공 사례는 여러 장의 사진과 사례명, 태그, 장소, 내용, 공법, 사용 제품을 지원한다.</li><li>사용 제품은 판매가 아닌 사용 목적·장점·구성·시공 기준·시공 가능 면적을 소개한다.</li><li>검색어와 예시 콘텐츠는 코드와 분리한다.</li><li>승인 없이 별도 하위 프로젝트 폴더를 만들지 않는다.</li></ul></section>
+        <section id="quality"><h2><span class="num">6</span>품질과 검토 기준</h2><ul><li>시공 사례 사진을 주요 콘텐츠로 노출한다.</li><li>전화 문의 동선을 첫 화면과 주요 페이지에서 쉽게 찾게 한다.</li><li>반응형, 키보드 접근성, 대체 텍스트, 성능을 점검한다.</li><li>SEO 기본 항목: 제목·설명, 의미 있는 URL, 사이트맵, robots, 구조화된 업체 정보.</li></ul></section>
+        <section id="conflict"><h2><span class="num">7</span>실패·충돌 처리</h2><ul><li>같은 오류로 같은 도구나 검증을 반복하지 않는다. 두 번의 실질적 수정 시도 후에는 사용자에게 보고한다.</li><li>기존 검증 도구가 있을 때만 실행하고, 없는 도구를 임의로 만들지 않는다.</li><li>충돌 시 쟁점, 관련 ID, 선택지별 이득·비용, 추천안을 제시하고 사용자 결정을 기다린다.</li></ul></section>
+      </article>
+    </div>
+  </div>
+</body>
+</html>
