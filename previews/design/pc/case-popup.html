@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GK 산업 | 시공 사례 상세 팝업</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #e9e9e6; color: #242424; font: 15px/1.55 Arial, "Noto Sans KR", sans-serif; } body.modal-open { overflow: hidden; }
+      .site { max-width: 1180px; min-height: 100vh; margin: 0 auto; background: #f5f5f3; }
+      .header { height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; background: #fff; border-bottom: 1px solid #ddd; }
+      .logo { font-size: 22px; font-weight: 800; }.logo em { color: #e36f3f; font-style: normal; }
+      .call { min-height: 40px; padding: 10px 13px; background: #e36f3f; color: #fff; font-size: 12px; font-weight: 700; }
+      .menu { display: flex; justify-content: center; gap: 38px; padding: 14px; background: #fff; border-bottom: 1px solid #ddd; font-size: 13px; font-weight: 700; }
+      .menu span:nth-child(2) { color: #e36f3f; }
+      .list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 38px 24px; }.card { width: 100%; overflow: hidden; border: 1px solid #ddd; background: #fff; color: inherit; cursor: pointer; text-align: left; }.card:focus-visible { outline: 3px solid #e36f3f; outline-offset: 3px; }.card-photo { height: 250px; background: linear-gradient(145deg, #88857f, #383735); }.card p { margin: 0; padding: 13px; font-weight: 700; }
+      .overlay { position: fixed; inset: 0; z-index: 5; display: none; align-items: center; justify-content: center; padding: 72px max(24px, calc((100vw - 1180px) / 2)); background: #111b; }.overlay.open { display: flex; }
+      .popup { width: 100%; max-height: calc(100vh - 144px); overflow: auto; background: #fff; box-shadow: 0 22px 48px #0008; }
+      .close { width: 44px; height: 44px; flex: 0 0 44px; border: 0; background: transparent; color: #333; font-size: 28px; cursor: pointer; }
+      .content { padding: 0 26px 26px; }.title { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 -26px 18px; padding: 18px 26px; background: #fff; border-bottom: 1px solid #ddd; }.title h1 { margin: 0; font-size: 29px; letter-spacing: -1.8px; }
+      .gallery { border: 1px solid #ddd; }.stage { position: relative; background: #252525; }.photo { position: relative; height: 390px; overflow: hidden; background: linear-gradient(145deg, #8c8c88, #30302e); }.photo::after { content: ""; position: absolute; left: -8%; bottom: -5%; width: 116%; height: 42%; transform: rotate(-7deg); background: repeating-linear-gradient(90deg, #262624 0 31px, #696965 31px 35px); }
+      .arrow { position: absolute; top: 50%; z-index: 1; width: 48px; height: 58px; transform: translateY(-50%); border: 0; background: transparent; color: #fff; font-size: 34px; text-shadow: 0 1px 5px #000; }.prev { left: 12px; }.next { right: 12px; }.gallery .photo { cursor: zoom-in; }
+      .gallery-bottom { padding: 13px; background: #f8f8f6; }.counter { margin-bottom: 10px; text-align: center; color: #555; font-size: 12px; }.thumbs { display: flex; justify-content: center; gap: 7px; overflow-x: auto; }.thumb { flex: 0 0 62px; height: 48px; border: 2px solid transparent; background: linear-gradient(145deg, #8c8c88, #30302e); }.thumb.active { border-color: #e36f3f; }
+      .details { margin-top: 34px; padding-top: 22px; border-top: 1px solid #ddd; }.details h2 { margin: 0 0 9px; font-size: 16px; }.details p { margin: 0; color: #515151; }.info { display: grid; grid-template-columns: 120px 1fr; margin-top: 20px; border-top: 1px solid #e1e1de; }.info div { padding: 11px; border-bottom: 1px solid #e1e1de; font-size: 13px; }.info div:nth-child(odd) { background: #f7f7f5; font-weight: 700; }
+      .viewer { position: fixed; z-index: 10; inset: 0; display: none; flex-direction: column; background: #111; color: #fff; }.viewer.open { display: flex; }.viewer-head { height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 13px; font-weight: 700; }.viewer .close { color: #fff; }.viewer-stage { position: relative; display: flex; flex: 1; align-items: center; justify-content: center; min-height: 0; padding: 16px 78px; }.viewer-photo { width: min(940px, 100%); height: 100%; min-height: 300px; max-height: 620px; }.viewer .gallery-bottom { background: #111; }.viewer .counter { color: #eee; }.viewer .prev { left: 18px; }.viewer .next { right: 18px; }
+      @media (max-width: 600px) { .overlay { align-items: flex-end; padding: 0; }.popup { width: 100%; max-height: 92vh; }.content { padding: 20px 15px; }.photo { height: 270px; }.info { grid-template-columns: 95px 1fr; }.menu { gap: 18px; font-size: 11px; } }
+    </style>
+  </head>
+  <body>
+    <main class="site"><header class="header"><div class="logo">GK <em>산업</em></div><span class="call">전화 문의</span></header><nav class="menu"><span>홈</span><span>시공 사례</span><span>사용 제품</span><span>회사 소개</span></nav><section class="list"><button class="card" type="button" data-case-card data-case-title="밀양 공장 크리트"><div class="card-photo"></div><p>밀양 공장 크리트</p></button><button class="card" type="button" data-case-card data-case-title="대명항 MMA"><div class="card-photo"></div><p>대명항 MMA</p></button></section></main>
+    <section class="overlay" id="overlay" aria-label="시공 사례 상세 팝업"><article class="popup"><div class="content"><header class="title"><h1>밀양 공장 크리트</h1><button class="close" type="button" aria-label="상세 팝업 닫기">×</button></header><section class="gallery"><div class="stage"><div class="photo" data-open-viewer></div><button class="arrow prev" type="button" aria-label="이전 사진">‹</button><button class="arrow next" type="button" aria-label="다음 사진">›</button></div><div class="gallery-bottom"><div class="counter"><b>1</b> / 6</div><div class="thumbs"><button class="thumb active" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button></div></div></section><section class="details"><h2>시공 내용</h2><p>예시 설명입니다. 실제 서비스에서는 사례 JSON의 시공 내용을 표시합니다.</p><div class="info"><div>시공 장소</div><div>밀양 공장</div><div>시공 자재</div><div>크리트</div></div></section></div></article></section><section class="viewer" id="viewer" aria-label="사진 확대 보기"><header class="viewer-head"><span>시공 사진</span><button class="close" type="button" data-close-viewer aria-label="사진 확대 닫기">×</button></header><div class="viewer-stage"><div class="photo viewer-photo"></div><button class="arrow prev" type="button" aria-label="이전 사진">‹</button><button class="arrow next" type="button" aria-label="다음 사진">›</button></div><div class="gallery-bottom"><div class="counter"><b>1</b> / 6</div><div class="thumbs"><button class="thumb active" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button><button class="thumb" type="button"></button></div></div></section>
+    <script>
+      const overlay = document.querySelector("#overlay");
+      const closeButton = document.querySelector(".popup .close");
+      const viewer = document.querySelector("#viewer");
+      const counters = document.querySelectorAll(".counter b");
+      const thumbnailGroups = document.querySelectorAll(".thumbs");
+      const photoCount = 6;
+      let currentPhoto = 0;
+      let openingCard = null;
+      function openPopup(card) {
+        openingCard = card;
+        document.querySelector(".title h1").textContent = card.dataset.caseTitle;
+        showPhoto(0);
+        overlay.classList.add("open");
+        document.body.classList.add("modal-open");
+        closeButton.focus();
+      }
+      function closePopup() {
+        overlay.classList.remove("open");
+        document.body.classList.remove("modal-open");
+        openingCard?.focus();
+      }
+      function showPhoto(index) {
+        currentPhoto = (index + photoCount) % photoCount;
+        counters.forEach((counter) => { counter.textContent = currentPhoto + 1; });
+        thumbnailGroups.forEach((group) => {
+          [...group.children].forEach((thumbnail, thumbnailIndex) => {
+            thumbnail.classList.toggle("active", thumbnailIndex === currentPhoto);
+          });
+        });
+      }
+      closeButton.addEventListener("click", closePopup);
+      overlay.addEventListener("click", (event) => { if (event.target === overlay) closePopup(); });
+      document.querySelectorAll("[data-case-card]").forEach((card) => card.addEventListener("click", () => openPopup(card)));
+      document.querySelector("[data-open-viewer]").addEventListener("click", () => viewer.classList.add("open"));
+      document.querySelector("[data-close-viewer]").addEventListener("click", () => viewer.classList.remove("open"));
+      document.querySelectorAll(".prev").forEach((button) => button.addEventListener("click", () => showPhoto(currentPhoto - 1)));
+      document.querySelectorAll(".next").forEach((button) => button.addEventListener("click", () => showPhoto(currentPhoto + 1)));
+      thumbnailGroups.forEach((group) => {
+        [...group.children].forEach((thumbnail, index) => thumbnail.addEventListener("click", () => showPhoto(index)));
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Tab" && overlay.classList.contains("open") && !viewer.classList.contains("open")) {
+          const focusableElements = [...overlay.querySelectorAll("button:not([disabled])")];
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements.at(-1);
+          if (event.shiftKey && document.activeElement === firstElement) { event.preventDefault(); lastElement.focus(); }
+          else if (!event.shiftKey && document.activeElement === lastElement) { event.preventDefault(); firstElement.focus(); }
+        } else if (event.key === "ArrowLeft" && viewer.classList.contains("open")) showPhoto(currentPhoto - 1);
+        else if (event.key === "ArrowRight" && viewer.classList.contains("open")) showPhoto(currentPhoto + 1);
+        else if (event.key === "Escape" && viewer.classList.contains("open")) viewer.classList.remove("open");
+        else if (event.key === "Escape") closePopup();
+      });
+    </script>
+  </body>
+</html>

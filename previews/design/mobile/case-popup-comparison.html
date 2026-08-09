@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GK 산업 | 모바일 사례 팝업 비교</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #efefed; color: #242424; font-family: Arial, "Noto Sans KR", sans-serif; }
+      main { max-width: 930px; margin: 0 auto; padding: 38px 20px 66px; }
+      h1 { margin: 0; font-size: 28px; letter-spacing: -1.7px; }.intro { margin: 9px 0 26px; color: #626662; line-height: 1.6; }
+      .choices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }.choice { padding: 18px; background: #fff; border: 1px solid #d8d8d4; }.choice h2 { margin: 0; font-size: 19px; }.choice p { margin: 6px 0 17px; color: #666; font-size: 13px; line-height: 1.55; }
+      .phone { position: relative; width: min(100%, 340px); height: 610px; margin: 0 auto; overflow: hidden; border: 9px solid #242424; border-radius: 29px; background: #f5f5f3; box-shadow: 0 10px 24px #0002; }.phone-head { height: 54px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid #ddd; font-size: 13px; font-weight: 800; }.phone-list { display: grid; gap: 9px; padding: 13px; }.card { height: 116px; overflow: hidden; border: 1px solid #ddd; background: #fff; }.card-photo { height: 78px; background: linear-gradient(145deg, #88857f, #383735); }.card-name { padding: 8px; font-size: 11px; font-weight: 700; }.shade { position: absolute; inset: 0; background: #111a; }
+      .popup { position: absolute; overflow: hidden; background: #fff; box-shadow: 0 -10px 24px #0004; }.popup-head { height: 51px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #ddd; font-size: 11px; font-weight: 700; }.close { font-size: 24px; color: #555; }.title { padding: 17px 15px 13px; }.tag { color: #d8663a; font-size: 9px; font-weight: 700; }.title h3 { margin: 5px 0 0; font-size: 22px; letter-spacing: -1.5px; }.photo { position: relative; height: 210px; overflow: hidden; background: linear-gradient(145deg, #8a8781, #302f2c); }.photo::after { content: ""; position: absolute; left: -8%; bottom: -5%; width: 116%; height: 42%; transform: rotate(-7deg); background: repeating-linear-gradient(90deg, #262624 0 24px, #696965 24px 27px); }.thumbs { display: flex; justify-content: center; gap: 5px; padding: 9px; background: #f8f8f6; }.thumb { width: 37px; height: 29px; border: 2px solid transparent; background: linear-gradient(145deg, #88857f, #383735); }.thumb:first-child { border-color: #e36f3f; }.detail { padding: 14px 15px; border-top: 1px solid #ddd; }.detail b { font-size: 12px; }.line { height: 8px; margin-top: 8px; background: #e8e8e5; }.line.short { width: 67%; }
+      .bottom .popup { right: 0; bottom: 0; left: 0; height: 500px; border-radius: 18px 18px 0 0; }.bottom .handle { width: 32px; height: 4px; margin: 9px auto -2px; border-radius: 99px; background: #c8c8c4; }.center .popup { top: 36px; right: 12px; bottom: 36px; left: 12px; border-radius: 14px; }.center .photo { height: 190px; }
+      .note { margin: 15px 1px 0; padding-top: 13px; border-top: 1px solid #e1e1de; font-size: 13px; line-height: 1.6; }.note b { color: #c95c34; }
+      @media (max-width: 650px) { .choices { grid-template-columns: 1fr; }.choice { max-width: 400px; margin: 0 auto; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>모바일 사례 상세 팝업 비교</h1>
+      <p class="intro">두 시안 모두 닫기 버튼과 바깥 영역 클릭으로 닫히고, PC와 같은 사진 이동·확대·썸네일·상세 정보를 제공합니다.</p>
+      <section class="choices">
+        <article class="choice bottom"><h2>A. 아래에서 열리는 시트</h2><p>목록 위로 자연스럽게 올라오며, 모바일에서 익숙한 방식입니다.</p><div class="phone"><div class="phone-head"><span>GK 산업</span><span>전화 문의</span></div><div class="phone-list"><div class="card"><div class="card-photo"></div><div class="card-name">밀양 공장 크리트</div></div><div class="card"><div class="card-photo"></div><div class="card-name">대명항 MMA</div></div></div><div class="shade"></div><section class="popup"><div class="handle"></div><header class="popup-head"><span>시공 사례</span><span class="close">×</span></header><div class="title"><span class="tag">공장 · 크리트</span><h3>밀양 공장 크리트</h3></div><div class="photo"></div><div class="thumbs"><span class="thumb"></span><span class="thumb"></span><span class="thumb"></span><span class="thumb"></span></div><div class="detail"><b>시공 내용</b><div class="line"></div><div class="line short"></div></div></section></div><p class="note"><b>특징:</b> 손가락으로 아래로 내려 닫는 동작도 추후 자연스럽게 추가할 수 있습니다.</p></article>
+        <article class="choice center"><h2>B. 가운데 카드</h2><p>PC 팝업과 모양이 더 비슷하고, 위·아래 배경이 고르게 보입니다.</p><div class="phone"><div class="phone-head"><span>GK 산업</span><span>전화 문의</span></div><div class="phone-list"><div class="card"><div class="card-photo"></div><div class="card-name">밀양 공장 크리트</div></div><div class="card"><div class="card-photo"></div><div class="card-name">대명항 MMA</div></div></div><div class="shade"></div><section class="popup"><header class="popup-head"><span>시공 사례</span><span class="close">×</span></header><div class="title"><span class="tag">공장 · 크리트</span><h3>밀양 공장 크리트</h3></div><div class="photo"></div><div class="thumbs"><span class="thumb"></span><span class="thumb"></span><span class="thumb"></span><span class="thumb"></span></div><div class="detail"><b>시공 내용</b><div class="line"></div><div class="line short"></div></div></section></div><p class="note"><b>특징:</b> 팝업 밖 영역이 명확하지만, 작은 화면에서는 본문 높이가 조금 더 제한됩니다.</p></article>
+      </section>
+    </main>
+  </body>
+</html>
