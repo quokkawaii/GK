@@ -301,9 +301,28 @@
         color: #e36f3f;
       }
       .product-card {
-        display: grid;
-        grid-template-columns: 115px 1fr;
         border: 1px solid #ddd;
+      }
+      .product-card .product-photo {
+        height: auto;
+        aspect-ratio: 4 / 3;
+      }
+      .product-card-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        margin-top: 12px;
+        background: #252525;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .product-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
       }
       .footer {
         padding: 24px 16px;
@@ -435,26 +454,26 @@
             <div class="section-title">
               <b>시공 시 사용 제품</b><span>제품 보러가기</span>
             </div>
-            <div class="cards">
+            <div class="product-cards">
               <article class="product-card">
-                <div class="product-photo"></div>
+                <div class="product-photo" aria-label="에폭시 이미지 예시"></div>
                 <div class="copy">
-                  <span class="tag">에폭시</span>
                   <div class="name">에폭시</div>
+                  <a class="product-card-link" href="#">에폭시 사례 보기</a>
                 </div>
               </article>
               <article class="product-card">
-                <div class="product-photo"></div>
+                <div class="product-photo" aria-label="우레탄 이미지 예시"></div>
                 <div class="copy">
-                  <span class="tag">우레탄</span>
                   <div class="name">우레탄</div>
+                  <a class="product-card-link" href="#">우레탄 사례 보기</a>
                 </div>
               </article>
               <article class="product-card">
-                <div class="product-photo"></div>
+                <div class="product-photo" aria-label="MMA 이미지 예시"></div>
                 <div class="copy">
-                  <span class="tag">MMA</span>
                   <div class="name">MMA</div>
+                  <a class="product-card-link" href="#">MMA 사례 보기</a>
                 </div>
               </article>
             </div>

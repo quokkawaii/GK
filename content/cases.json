@@ -1,0 +1,231 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "title": "밀양 공장 크리트",
+      "tags": ["공장", "크리트"],
+      "location": "밀양 공장",
+      "description": null,
+      "productIds": ["크리트"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-001-miryang-factory-crete/01.jpg",
+          "alt": "밀양 공장 크리트 시공 사진 1"
+        },
+        {
+          "src": "/images/cases/case-001-miryang-factory-crete/02.jpg",
+          "alt": "밀양 공장 크리트 시공 사진 2"
+        },
+        {
+          "src": "/images/cases/case-001-miryang-factory-crete/03.jpg",
+          "alt": "밀양 공장 크리트 시공 사진 3"
+        },
+        {
+          "src": "/images/cases/case-001-miryang-factory-crete/04.jpg",
+          "alt": "밀양 공장 크리트 시공 사진 4"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "대명항 MMA",
+      "tags": ["대명항", "MMA"],
+      "location": "대명항",
+      "description": null,
+      "productIds": ["MMA"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-002-daemyeong-port-mma/01.jpg",
+          "alt": "대명항 MMA 시공 사진"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "평택 공장 비노출 방수",
+      "tags": ["공장", "비노출 방수"],
+      "location": "평택 공장",
+      "description": null,
+      "productIds": ["비노출 방수"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-003-pyeongtaek-factory-exposed-waterproofing/01.jpg",
+          "alt": "평택 공장 비노출 방수 시공 사진 1"
+        },
+        {
+          "src": "/images/cases/case-003-pyeongtaek-factory-exposed-waterproofing/02.jpg",
+          "alt": "평택 공장 비노출 방수 시공 사진 2"
+        },
+        {
+          "src": "/images/cases/case-003-pyeongtaek-factory-exposed-waterproofing/03.jpg",
+          "alt": "평택 공장 비노출 방수 시공 사진 3"
+        },
+        {
+          "src": "/images/cases/case-003-pyeongtaek-factory-exposed-waterproofing/04.jpg",
+          "alt": "평택 공장 비노출 방수 시공 사진 4"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "천안 공장 크리트",
+      "tags": ["공장", "크리트"],
+      "location": "천안 공장",
+      "description": null,
+      "productIds": ["크리트"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-004-cheonan-factory-crete/01.jpg",
+          "alt": "천안 공장 크리트 시공 사진 1"
+        },
+        {
+          "src": "/images/cases/case-004-cheonan-factory-crete/02.jpg",
+          "alt": "천안 공장 크리트 시공 사진 2"
+        },
+        {
+          "src": "/images/cases/case-004-cheonan-factory-crete/03.jpg",
+          "alt": "천안 공장 크리트 시공 사진 3"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "음성 공장 크리트",
+      "tags": ["공장", "크리트"],
+      "location": "음성 공장",
+      "description": null,
+      "productIds": ["크리트"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-005-eumseong-factory-crete/01.jpg",
+          "alt": "음성 공장 크리트 시공 사진 1"
+        },
+        {
+          "src": "/images/cases/case-005-eumseong-factory-crete/02.jpg",
+          "alt": "음성 공장 크리트 시공 사진 2"
+        },
+        {
+          "src": "/images/cases/case-005-eumseong-factory-crete/03.jpg",
+          "alt": "음성 공장 크리트 시공 사진 3"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "공장 크리트",
+      "tags": ["공장", "크리트"],
+      "location": "공장",
+      "description": null,
+      "productIds": ["크리트"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-006-factory-crete/01.jpg",
+          "alt": "공장 크리트 시공 사진 1"
+        },
+        {
+          "src": "/images/cases/case-006-factory-crete/02.jpg",
+          "alt": "공장 크리트 시공 사진 2"
+        },
+        {
+          "src": "/images/cases/case-006-factory-crete/03.jpg",
+          "alt": "공장 크리트 시공 사진 3"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "대전 주차장 크리트",
+      "tags": ["주차장", "크리트"],
+      "location": "대전 주차장",
+      "description": null,
+      "productIds": ["크리트"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-007-daejeon-parking-crete/01.jpg",
+          "alt": "대전 주차장 크리트 시공 사진 1"
+        },
+        {
+          "src": "/images/cases/case-007-daejeon-parking-crete/02.jpg",
+          "alt": "대전 주차장 크리트 시공 사진 2"
+        },
+        {
+          "src": "/images/cases/case-007-daejeon-parking-crete/03.jpg",
+          "alt": "대전 주차장 크리트 시공 사진 3"
+        },
+        {
+          "src": "/images/cases/case-007-daejeon-parking-crete/04.jpg",
+          "alt": "대전 주차장 크리트 시공 사진 4"
+        },
+        {
+          "src": "/images/cases/case-007-daejeon-parking-crete/05.jpg",
+          "alt": "대전 주차장 크리트 시공 사진 5"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "주방 MMA",
+      "tags": ["주방", "MMA"],
+      "location": "주방",
+      "description": null,
+      "productIds": ["MMA"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-008-kitchen-mma/01.jpg",
+          "alt": "주방 MMA 시공 사진"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "분당 군부대 MMA",
+      "tags": ["군부대", "MMA"],
+      "location": "분당 군부대",
+      "description": null,
+      "productIds": ["MMA"],
+      "thumbnailIndex": 0,
+      "images": [
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/01.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 1"
+        },
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/02.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 2"
+        },
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/03.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 3"
+        },
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/04.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 4"
+        },
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/05.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 5"
+        },
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/06.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 6"
+        },
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/07.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 7"
+        },
+        {
+          "src": "/images/cases/case-009-bundang-military-mma/08.jpg",
+          "alt": "분당 군부대 MMA 시공 사진 8"
+        }
+      ]
+    }
+  ]
+}

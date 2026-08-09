@@ -27,7 +27,7 @@ Cloudflare Pages 미리보기 주소에는 기본으로 `X-Robots-Tag: noindex` 
 
 1. 작업 브랜치를 만든다.
 2. `content/` JSON과 `public/images/` 사진을 수정한다.
-3. PR을 열어 Cloudflare Pages 미리보기에서 사진·문구·상세 주소를 확인한다.
+3. PR을 열어 Cloudflare Pages 미리보기에서 사진·문구·상세 팝업을 확인한다.
 4. `main`에 머지하면 실제 사이트가 자동 갱신된다.
 
 ## 배포 단계에서 할 일

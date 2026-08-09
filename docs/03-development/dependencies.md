@@ -31,3 +31,16 @@ Next.js 프로젝트 생성과 목록 상태 관리 구현을 승인받은 뒤, 
 | 기능 | 사용 목적 | 별도 설치 |
 | --- | --- | --- |
 | `Image` | 시공·제품 사진의 크기 지정, 지연 불러오기, 대체 문구 적용 | 필요 없음 |
+
+## 예정 실행 명령
+
+실제 의존성 설치와 `package.json` 생성 후 아래 명령을 같은 이름으로 등록한다.
+
+| 명령 | 역할 |
+| --- | --- |
+| `npm run dev` | 개발 서버 실행 |
+| `npm run build` | 배포용 정적 파일 생성 |
+| `npm run lint` | ESLint 검사 |
+| `npm run test` | Vitest 실행 |
+| `npm run format` | Prettier 서식 적용 |
+| `npm run format:check` | 파일 변경 없이 Prettier 서식 검사 |
