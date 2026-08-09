@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GK 산업 | 의존성·폴더 구조 설정 결과</title>
+    <style>
+      :root {
+        color: #252525;
+        background: #f3f3f0;
+        font-family: Arial, "Noto Sans KR", sans-serif;
+      }
+      body {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 32px;
+        letter-spacing: -1.8px;
+      }
+      h2 {
+        margin: 0 0 16px;
+        font-size: 19px;
+      }
+      .lead {
+        margin: 12px 0 32px;
+        color: #5d625c;
+        line-height: 1.65;
+      }
+      .status {
+        display: inline-flex;
+        margin-bottom: 20px;
+        padding: 7px 11px;
+        border-radius: 99px;
+        background: #e36f3f;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      section {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #deded9;
+        background: #fff;
+        box-shadow: 0 5px 18px #00000008;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .item {
+        padding: 15px;
+        border: 1px solid #e5e5e0;
+        background: #fbfbf9;
+      }
+      .item b {
+        display: block;
+        margin-bottom: 6px;
+      }
+      .item span {
+        color: #626862;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      code {
+        padding: 2px 5px;
+        background: #efefeb;
+        color: #bd5427;
+        font-size: 13px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        line-height: 1.85;
+      }
+      .notice {
+        border-left: 4px solid #e36f3f;
+        background: #fff7f3;
+      }
+      .notice p {
+        margin: 0;
+        line-height: 1.7;
+      }
+      .tree {
+        overflow: auto;
+        padding: 18px;
+        background: #252525;
+        color: #f4f4f0;
+        font:
+          13px/1.7 Consolas,
+          monospace;
+        white-space: pre;
+      }
+      @media (max-width: 640px) {
+        body {
+          padding: 28px 16px 48px;
+        }
+        h1 {
+          font-size: 26px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        section {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <span class="status">설정 완료</span>
+    <h1>의존성·폴더 구조 설정 결과</h1>
+    <p class="lead">
+      Next.js 프로젝트의 기반 도구와 기능별 빈 폴더를 만들었습니다. 아직 고객 화면이나 실제 기능
+      코드는 작성하지 않았습니다.
+    </p>
+    <section>
+      <h2>설치된 핵심 도구</h2>
+      <div class="grid">
+        <div class="item"><b>Next.js · React</b><span>정적 웹사이트와 화면 컴포넌트</span></div>
+        <div class="item"><b>Zustand</b><span>콘텐츠·필터·페이지 상태 관리</span></div>
+        <div class="item"><b>TypeScript · ESLint</b><span>데이터 형태와 코드 실수 검사</span></div>
+        <div class="item">
+          <b>Tailwind CSS · Prettier</b><span>스타일 작성과 코드 모양 통일</span>
+        </div>
+        <div class="item"><b>Vitest</b><span>필터·페이지 계산 같은 데이터 규칙 테스트</span></div>
+        <div class="item"><b>Husky · lint-staged</b><span>커밋 직전 바뀐 파일만 검사</span></div>
+      </div>
+    </section>
+    <section>
+      <h2>실제 설치 버전</h2>
+      <div class="grid">
+        <div class="item"><b>Next.js</b><span>16.3.0</span></div>
+        <div class="item"><b>React · React DOM</b><span>19.2.8</span></div>
+        <div class="item"><b>Zustand</b><span>5.0.14</span></div>
+        <div class="item"><b>TypeScript</b><span>6.0.3</span></div>
+        <div class="item"><b>Tailwind CSS</b><span>4.3.3</span></div>
+        <div class="item"><b>ESLint · Next 규칙</b><span>9.39.5 · 16.3.0</span></div>
+        <div class="item"><b>Prettier · Tailwind 플러그인</b><span>3.9.6 · 0.8.1</span></div>
+        <div class="item">
+          <b>Husky · lint-staged · Vitest</b><span>9.1.7 · 17.3.0 · 4.1.10</span>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>만든 구조</h2>
+      <div class="tree">
+        app/ 페이지 주소와 공통 화면 틀 cases/ 시공 사례 목록·상세 팝업 products/ 사용 제품 목록
+        company/ 회사 소개 components/ 화면 조각 layout/ 헤더·푸터·모바일 메뉴 cases/ 사례 전용 조각
+        products/ 제품 전용 조각 ui/ 공통 버튼 등 lib/ 데이터 처리 함수·상수 store/ Zustand 상태
+        types/ 재사용 TypeScript 타입 tests/ Vitest 테스트 .github/workflows/ PR 자동 검사 설정 위치
+      </div>
+    </section>
+    <section>
+      <h2>준비된 설정</h2>
+      <ul>
+        <li><code>next.config.ts</code>: Cloudflare Pages용 정적 내보내기와 이미지 서버 미사용</li>
+        <li><code>tsconfig.json</code>: strict 모드, JSON 읽기, <code>@/</code> 경로 별칭</li>
+        <li><code>prettier.config.mjs</code>: LF·공백 2칸·100자·큰따옴표·세미콜론</li>
+        <li>
+          <code>eslint.config.mjs</code>, <code>vitest.config.ts</code>,
+          <code>.husky/pre-commit</code>
+        </li>
+      </ul>
+    </section>
+    <section class="notice">
+      <h2>확인할 사항</h2>
+      <p>
+        의존성 설치는 완료됐고 취약점은 발견되지 않았습니다. Node.js LTS 재설치 후 전역
+        <code>npm</code>도 복구됐으며, <code>npm run lint</code> 실행을 확인했습니다. 다만 ESLint
+        내부 보조 패키지 하나의 설치 후 스크립트가 차단됐으므로, 실제 검사 실행 결과를 본 뒤 허용
+        여부를 결정합니다.
+      </p>
+    </section>
+  </body>
+</html>
