@@ -28,6 +28,7 @@ GK/
 │  └─ src/types/                         # 공통 TypeScript 타입
 ├─ public/                           # 그대로 배포되는 이미지·아이콘
 ├─ tests/                            # 제품 코드 자동 테스트
+├─ scripts/                          # 빌드 전 콘텐츠 검사 스크립트
 ├─ docs/
 │  ├─ requirements/                 # 요구사항·결정·콘텐츠 모델
 │  ├─ design/                       # 디자인 시스템·반응형 기준
@@ -58,6 +59,7 @@ GK/
 - 정적 JSON은 `src/content/`에서 직접 가져온다. 변경되지 않는 콘텐츠를 Zustand에 복사하지 않는다.
 - Zustand는 사용자 조작으로 바뀌는 사례 필터와 페이지 상태에만 사용하고 사례 기능 폴더 안에서 관리한다.
 - 범용 계산과 상수는 `src/lib/`, 여러 기능이 공유하는 타입은 `src/types/`에 둔다.
+- `npm run check:content`는 `src/content/`의 JSON 필수값, ID 중복, 이미지 배열, `thumbnailIndex` 참조를 검사한다.
 
 ## 리뷰 이슈 관리
 

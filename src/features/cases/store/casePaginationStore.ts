@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
+import { INITIAL_PAGE_NUMBER } from "@/lib/constants";
+
 type CasePaginationState = {
   pageNumber: number;
   setPageNumber: (pageNumber: number) => void;
@@ -7,7 +9,8 @@ type CasePaginationState = {
 };
 
 export const useCasePaginationStore = create<CasePaginationState>((set) => ({
-  pageNumber: 0,
-  setPageNumber: (pageNumber) => set({ pageNumber }),
-  resetPageNumber: () => set({ pageNumber: 0 }),
+  pageNumber: INITIAL_PAGE_NUMBER,
+  setPageNumber: (pageNumber) =>
+    set((state) => (pageNumber < INITIAL_PAGE_NUMBER ? state : { pageNumber })),
+  resetPageNumber: () => set({ pageNumber: INITIAL_PAGE_NUMBER }),
 }));

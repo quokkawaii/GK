@@ -6,4 +6,4 @@ export {
   getCasePage,
   getVisiblePageNumbers,
 } from "./cases";
-export { getProductCase, getProductIds } from "./products";
+export { getProductCase, getProductIds, getVisibleProductIds } from "./products";

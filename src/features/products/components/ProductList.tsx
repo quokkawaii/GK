@@ -5,23 +5,34 @@ import { useMemo, useState } from "react";
 
 import { Container } from "@/components/ui/Container";
 import casesContent from "@/content/cases.json";
-import { getProductCase, getProductIds } from "@/lib/products";
+import { getProductCase, getProductIds, getVisibleProductIds } from "@/lib/products";
 
 export function ProductList() {
   const cases = casesContent.content;
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [selectedProductIds, setSelectedProductIds] = useState<string[]>([]);
   const productIds = useMemo(() => getProductIds(cases), [cases]);
-  const visibleProductIds = selectedProduct ? [selectedProduct] : productIds;
+  const visibleProductIds = useMemo(
+    () => getVisibleProductIds(cases, productIds, selectedProductIds),
+    [cases, productIds, selectedProductIds],
+  );
+
+  const toggleProduct = (productId: string) => {
+    setSelectedProductIds((currentProductIds) =>
+      currentProductIds.includes(productId)
+        ? currentProductIds.filter((currentProductId) => currentProductId !== productId)
+        : [...currentProductIds, productId],
+    );
+  };
 
   return (
-    <main>
-      <section className="border-border bg-surface border-b py-12 md:py-16">
-        <Container>
+    <div>
+      <section className="!text-white">
+        <Container className="bg-dark flex min-h-[240px] flex-col justify-center px-6 py-12 md:px-10 md:py-16">
           <p className="text-accent text-xs font-semibold tracking-[0.1em]">PRODUCTS USED</p>
-          <h1 className="mt-2 text-[28px] font-bold tracking-[-0.05em] md:text-[32px]">
+          <h1 className="mt-3 text-[30px] font-bold tracking-[-0.06em] md:text-[40px]">
             시공 시 사용 제품
           </h1>
-          <p className="text-muted mt-3 max-w-[620px] text-sm leading-6">
+          <p className="mt-3 max-w-[620px] text-sm leading-6 text-[#dddddd]">
             시공 사례에 기록된 자재명과 해당 자재가 사용된 현장 정보를 확인해 보세요.
           </p>
         </Container>
@@ -32,26 +43,17 @@ export function ProductList() {
           <section className="border-border border bg-[#f8f8f6] p-4" aria-label="자재 필터">
             <div className="border-border flex items-center gap-3 border-b pb-3">
               <h2 className="text-sm font-semibold">자재 필터</h2>
-              {selectedProduct && (
-                <button
-                  type="button"
-                  className="border-text min-h-11 border-b text-xs font-semibold"
-                  onClick={() => setSelectedProduct(null)}
-                >
-                  필터 초기화
-                </button>
-              )}
             </div>
             <div className="flex gap-2 overflow-x-auto pt-3 pb-2">
               <button
                 type="button"
                 className={`min-h-11 shrink-0 border px-4 text-sm font-semibold ${
-                  selectedProduct === null
+                  selectedProductIds.length === 0
                     ? "border-accent bg-accent-soft text-accent"
                     : "border-border bg-surface text-text"
                 }`}
-                aria-pressed={selectedProduct === null}
-                onClick={() => setSelectedProduct(null)}
+                aria-pressed={selectedProductIds.length === 0}
+                onClick={() => setSelectedProductIds([])}
               >
                 전체
               </button>
@@ -60,12 +62,12 @@ export function ProductList() {
                   key={productId}
                   type="button"
                   className={`min-h-11 shrink-0 border px-4 text-sm font-semibold ${
-                    selectedProduct === productId
+                    selectedProductIds.includes(productId)
                       ? "border-accent bg-accent-soft text-accent"
                       : "border-border bg-surface text-text"
                   }`}
-                  aria-pressed={selectedProduct === productId}
-                  onClick={() => setSelectedProduct(productId)}
+                  aria-pressed={selectedProductIds.includes(productId)}
+                  onClick={() => toggleProduct(productId)}
                 >
                   {productId}
                 </button>
@@ -107,6 +109,6 @@ export function ProductList() {
           </p>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function CompanyPage() {
   return (
-    <main>
-      <section className="bg-dark py-12 !text-white md:py-16">
-        <Container>
+    <div>
+      <section className="!text-white">
+        <Container className="bg-dark flex min-h-[240px] flex-col justify-center px-6 py-12 md:px-10 md:py-16">
           <p className="text-xs font-semibold tracking-[0.12em] text-[#ef875d]">
             ABOUT GK INDUSTRY
           </p>
@@ -24,11 +24,9 @@ export default function CompanyPage() {
 
       <section className="py-10 md:py-14">
         <Container className="max-w-[860px]">
-          <h2 className="text-xl font-bold tracking-[-0.04em]">
-            {siteContent.about.paragraphs[0]}
-          </h2>
+          <h2 className="text-xl font-bold tracking-[-0.04em]">{siteContent.about.lead}</h2>
           <div className="mt-5 space-y-4 text-sm leading-7 text-[#555555] md:text-base">
-            {siteContent.about.paragraphs.slice(1, 3).map((paragraph) => (
+            {siteContent.about.body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
@@ -43,7 +41,7 @@ export default function CompanyPage() {
           </div>
 
           <p className="mt-7 text-sm leading-7 text-[#555555] md:text-base">
-            {siteContent.about.paragraphs[3]}
+            {siteContent.about.closing}
           </p>
 
           <section className="mt-8 bg-[#f3f1ef] p-5 md:flex md:items-center md:justify-between md:gap-5">
@@ -66,6 +64,6 @@ export default function CompanyPage() {
           </section>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

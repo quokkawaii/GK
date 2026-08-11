@@ -89,6 +89,18 @@ p {
   margin-inline: auto;
 }
 
+.main-container {
+  width: min(100%, 1180px);
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.main-container > section:first-child,
+.main-container > :first-child > section:first-child {
+  padding-top: 24px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

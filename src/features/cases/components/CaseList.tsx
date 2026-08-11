@@ -6,14 +6,11 @@ import { Container } from "@/components/ui/Container";
 import casesContent from "@/content/cases.json";
 import { CaseCard } from "@/features/cases/components/CaseCard";
 import { CaseDetailModal } from "@/features/cases/components/CaseDetailModal";
+import { CaseFilters } from "@/features/cases/components/CaseFilters";
+import { CasePagination } from "@/features/cases/components/CasePagination";
 import { useCaseFilterStore } from "@/features/cases/store/caseFilterStore";
 import { useCasePaginationStore } from "@/features/cases/store/casePaginationStore";
-import {
-  getAvailableLocationTags,
-  getAvailableProductTags,
-  getCasePage,
-  getVisiblePageNumbers,
-} from "@/lib";
+import { getAvailableLocationTags, getAvailableProductTags, getCasePage } from "@/lib";
 
 export function CaseList() {
   const cases = casesContent.content;
@@ -84,14 +81,14 @@ export function CaseList() {
 
   return (
     <>
-      <main>
-        <section className="border-border bg-surface border-b py-12 md:py-16">
-          <Container>
+      <div>
+        <section className="!text-white">
+          <Container className="bg-dark flex min-h-[240px] flex-col justify-center px-6 py-12 md:px-10 md:py-16">
             <p className="text-accent text-xs font-semibold tracking-[0.1em]">CASE STUDIES</p>
-            <h1 className="mt-2 text-[28px] font-bold tracking-[-0.05em] md:text-[32px]">
+            <h1 className="mt-3 text-[30px] font-bold tracking-[-0.06em] md:text-[40px]">
               시공 사례
             </h1>
-            <p className="text-muted mt-3 max-w-[620px] text-sm leading-6">
+            <p className="mt-3 max-w-[620px] text-sm leading-6 text-[#dddddd]">
               GK 산업이 진행한 바닥 시공 사례를 현장과 공법 태그로 확인해 보세요.
             </p>
           </Container>
@@ -99,65 +96,17 @@ export function CaseList() {
 
         <section className="py-8 md:py-12">
           <Container>
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="text-base font-semibold">태그 필터</h2>
-              <button
-                type="button"
-                className="border-text min-h-11 border-b text-sm font-semibold"
-                onClick={() => {
-                  clearSelectedTags();
-                  resetPageNumber();
-                }}
-              >
-                필터 초기화
-              </button>
-            </div>
-            <div className="mt-4 space-y-3">
-              <div className="flex gap-3">
-                <span className="text-muted w-16 shrink-0 pt-3 text-xs font-semibold">
-                  시공 장소
-                </span>
-                <div className="flex gap-2 overflow-x-auto pb-2">
-                  {availableLocationTags.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      className={`min-h-11 shrink-0 border px-4 text-sm font-semibold ${
-                        selectedTags.includes(tag)
-                          ? "border-accent bg-accent-soft text-accent"
-                          : "border-border bg-surface text-text"
-                      }`}
-                      aria-pressed={selectedTags.includes(tag)}
-                      onClick={() => handleLocationTagChange(tag)}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-muted w-16 shrink-0 pt-3 text-xs font-semibold">
-                  시공 자재
-                </span>
-                <div className="flex gap-2 overflow-x-auto pb-2">
-                  {availableProductTags.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      className={`min-h-11 shrink-0 border px-4 text-sm font-semibold ${
-                        selectedTags.includes(tag)
-                          ? "border-accent bg-accent-soft text-accent"
-                          : "border-border bg-surface text-text"
-                      }`}
-                      aria-pressed={selectedTags.includes(tag)}
-                      onClick={() => handleProductTagChange(tag)}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <CaseFilters
+              selectedTags={selectedTags}
+              locationTags={availableLocationTags}
+              productTags={availableProductTags}
+              onLocationTagChange={handleLocationTagChange}
+              onProductTagChange={handleProductTagChange}
+              onReset={() => {
+                clearSelectedTags();
+                resetPageNumber();
+              }}
+            />
 
             <div className="text-muted mt-8 flex items-center justify-between text-sm">
               <p>전체 {casePage.totalElements}건</p>
@@ -190,53 +139,17 @@ export function CaseList() {
             </div>
 
             {casePage.totalPages > 1 && (
-              <nav
-                className="mt-8 flex items-center justify-center gap-2"
-                aria-label="시공 사례 페이지 이동"
-              >
-                {casePage.hasPrevious && (
-                  <button
-                    type="button"
-                    className="border-border flex size-11 items-center justify-center border"
-                    aria-label="이전 페이지"
-                    onClick={() => handlePageChange(casePage.pageNumber - 1)}
-                  >
-                    ←
-                  </button>
-                )}
-                {getVisiblePageNumbers(casePage.pageNumber, casePage.totalPages).map(
-                  (visiblePageNumber) => (
-                    <button
-                      key={visiblePageNumber}
-                      type="button"
-                      className={`flex size-11 items-center justify-center border text-sm font-semibold ${
-                        visiblePageNumber === casePage.pageNumber
-                          ? "border-accent bg-accent text-white"
-                          : "border-border bg-surface"
-                      }`}
-                      aria-label={`${visiblePageNumber + 1}페이지`}
-                      aria-current={visiblePageNumber === casePage.pageNumber ? "page" : undefined}
-                      onClick={() => handlePageChange(visiblePageNumber)}
-                    >
-                      {visiblePageNumber + 1}
-                    </button>
-                  ),
-                )}
-                {casePage.hasNext && (
-                  <button
-                    type="button"
-                    className="border-border flex size-11 items-center justify-center border"
-                    aria-label="다음 페이지"
-                    onClick={() => handlePageChange(casePage.pageNumber + 1)}
-                  >
-                    →
-                  </button>
-                )}
-              </nav>
+              <CasePagination
+                pageNumber={casePage.pageNumber}
+                totalPages={casePage.totalPages}
+                hasPrevious={casePage.hasPrevious}
+                hasNext={casePage.hasNext}
+                onPageChange={handlePageChange}
+              />
             )}
           </Container>
         </section>
-      </main>
+      </div>
 
       {selectedCase && (
         <CaseDetailModal caseItem={selectedCase} onClose={() => setSelectedCaseId(null)} />
