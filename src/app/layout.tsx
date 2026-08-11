@@ -23,7 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="ko">
       <body>
         <Header />
-        <main>{children}</main>
+        <main className="main-container">{children}</main>
         <Footer />
       </body>
     </html>

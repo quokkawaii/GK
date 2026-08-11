@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import type { ConstructionCase } from "@/types";
@@ -13,6 +13,33 @@ type CaseDetailModalProps = Readonly<{
 export function CaseDetailModal({ caseItem, onClose }: CaseDetailModalProps) {
   const [imageIndex, setImageIndex] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const dialogRef = useRef<HTMLElement>(null);
+  const viewerRef = useRef<HTMLDivElement>(null);
+  const closeViewerButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const viewerPreviousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+
+    return () => previousFocusRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    const previousPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = previousPaddingRight;
+    };
+  }, []);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -27,14 +54,60 @@ export function CaseDetailModal({ caseItem, onClose }: CaseDetailModalProps) {
       }
     };
 
-    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.body.style.overflow = "";
       document.removeEventListener("keydown", handleEscape);
     };
   }, [isViewerOpen, onClose]);
+
+  useEffect(() => {
+    const container = isViewerOpen ? viewerRef.current : dialogRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    if (isViewerOpen) {
+      closeViewerButtonRef.current?.focus();
+    } else if (viewerPreviousFocusRef.current) {
+      viewerPreviousFocusRef.current.focus();
+      viewerPreviousFocusRef.current = null;
+    } else {
+      dialogRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    }
+
+    const handleTab = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        container.querySelectorAll<HTMLElement>(
+          'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => !element.hasAttribute("disabled"));
+
+      if (focusableElements.length === 0) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    container.addEventListener("keydown", handleTab);
+
+    return () => container.removeEventListener("keydown", handleTab);
+  }, [isViewerOpen]);
 
   const currentImage = caseItem.images[imageIndex];
   const hasMultipleImages = caseItem.images.length > 1;
@@ -49,6 +122,7 @@ export function CaseDetailModal({ caseItem, onClose }: CaseDetailModalProps) {
       />
 
       <section
+        ref={dialogRef}
         className="bg-surface relative z-10 flex max-h-[92vh] w-full flex-col overflow-y-auto md:h-full md:max-w-[1180px]"
         role="dialog"
         aria-modal="true"
@@ -75,7 +149,10 @@ export function CaseDetailModal({ caseItem, onClose }: CaseDetailModalProps) {
                 type="button"
                 className="relative h-[280px] w-full md:h-[480px]"
                 aria-label="사진 크게 보기"
-                onClick={() => setIsViewerOpen(true)}
+                onClick={() => {
+                  viewerPreviousFocusRef.current = document.activeElement as HTMLElement | null;
+                  setIsViewerOpen(true);
+                }}
               >
                 <Image
                   src={currentImage.src}
@@ -171,12 +248,21 @@ export function CaseDetailModal({ caseItem, onClose }: CaseDetailModalProps) {
       </section>
 
       {isViewerOpen && currentImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-5">
+        <div
+          ref={viewerRef}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-5"
+          role="dialog"
+          aria-modal="true"
+          aria-label="사진 뷰어"
+        >
           <button
             type="button"
             className="absolute inset-0"
             aria-label="사진 뷰어 닫기"
-            onClick={() => setIsViewerOpen(false)}
+            onClick={() => {
+              setIsViewerOpen(false);
+              viewerPreviousFocusRef.current?.focus();
+            }}
           />
           <Image
             src={currentImage.src}
@@ -186,6 +272,7 @@ export function CaseDetailModal({ caseItem, onClose }: CaseDetailModalProps) {
             sizes="100vw"
           />
           <button
+            ref={closeViewerButtonRef}
             type="button"
             className="absolute top-5 right-5 z-20 flex size-11 items-center justify-center border border-white text-2xl text-white"
             aria-label="사진 뷰어 닫기"

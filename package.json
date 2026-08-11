@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "check:content": "node scripts/check-content.mjs",
     "lint": "eslint --config config/eslint.config.mjs .",
     "test": "vitest run --config config/vitest.config.ts",
     "format": "prettier --config config/prettier.config.mjs --ignore-path config/prettierignore --write .",

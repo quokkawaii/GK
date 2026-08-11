@@ -31,6 +31,8 @@ export type SiteContent = Readonly<{
   }>[];
   about: Readonly<{
     title: string;
-    paragraphs: readonly string[];
+    lead: string;
+    body: readonly string[];
+    closing: string;
   }>;
 }>;

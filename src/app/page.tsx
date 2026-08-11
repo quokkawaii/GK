@@ -4,25 +4,21 @@ import Link from "next/link";
 import { HomeCaseCards } from "@/features/home/components/HomeCaseCards";
 import { HomePageStateReset } from "@/features/home/components/HomePageStateReset";
 import { Container } from "@/components/ui/Container";
-import siteContent from "@/content/site.json";
-import { getProductCase, homeProducts, recentCases } from "@/lib/home-content";
+import { getHomeProductCase, homeProducts, recentCases } from "@/lib/home-content";
 
 export default function HomePage() {
   return (
     <>
       <HomePageStateReset />
-      <section className="bg-dark text-white">
-        <Container className="grid min-h-[360px] md:grid-cols-[1.04fr_0.96fr]">
-          <div className="flex flex-col justify-center gap-6 py-12 md:py-16 md:pr-11">
+      <section className="text-white">
+        <Container className="grid overflow-hidden bg-dark md:grid-cols-[1.04fr_0.96fr]">
+          <div className="flex flex-col justify-center gap-5 px-6 py-9 md:gap-6 md:px-10 md:py-12 md:pr-11">
             <p className="text-xs font-semibold tracking-[0.13em] text-[#ef875d]">GK INDUSTRY</p>
             <h1 className="text-[32px] leading-tight font-bold tracking-[-0.06em] md:text-[40px]">
               현장에 맞는
               <br />
               바닥 시공
             </h1>
-            <p className="max-w-[410px] text-sm leading-6 text-[#dddddd] md:text-base">
-              {siteContent.about.paragraphs[2]}
-            </p>
             <Link
               href="/cases"
               className="bg-accent flex min-h-11 w-fit items-center px-4 text-sm font-semibold text-white"
@@ -30,7 +26,7 @@ export default function HomePage() {
               시공 사례 보기
             </Link>
           </div>
-          <div className="relative min-h-[220px] overflow-hidden bg-[#5d5a55] md:min-h-0">
+          <div className="relative min-h-[180px] overflow-hidden bg-[#5d5a55] md:min-h-[280px]">
             <Image
               src={recentCases[0].images[recentCases[0].thumbnailIndex].src}
               alt={recentCases[0].images[recentCases[0].thumbnailIndex].alt}
@@ -43,7 +39,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="bg-surface py-12 md:py-16">
         <Container>
           <div className="mb-5 flex items-end justify-between gap-4">
             <div>
@@ -79,7 +75,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
             {homeProducts.map((productId) => {
-              const productCase = getProductCase(productId);
+              const productCase = getHomeProductCase(productId);
 
               return (
                 <article key={productId} className="border-border border bg-white text-[#242424]">
