@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "lint": "eslint .",
-    "test": "vitest run",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "lint": "eslint --config config/eslint.config.mjs .",
+    "test": "vitest run --config config/vitest.config.ts",
+    "format": "prettier --config config/prettier.config.mjs --ignore-path config/prettierignore --write .",
+    "format:check": "prettier --config config/prettier.config.mjs --ignore-path config/prettierignore --check .",
     "prepare": "husky"
   },
   "repository": {

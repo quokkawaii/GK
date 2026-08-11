@@ -19,8 +19,8 @@ npm run build     # 정적 배포용 파일 생성과 JSON 데이터 검사
 ## 콘텐츠 변경과 배포
 
 1. 작업 브랜치를 만듭니다.
-2. `content/` JSON과 `public/images/` 사진을 수정합니다.
+2. `src/content/` JSON과 `public/images/` 사진을 수정합니다.
 3. PR을 열고 Cloudflare Pages 미리보기에서 확인합니다.
 4. `main`에 머지하면 실제 사이트에 자동 반영됩니다.
 
-자세한 개발 문서는 `docs/03-development/`에서 관리합니다.
+자세한 개발 문서는 `docs/development/`에서 관리합니다.
