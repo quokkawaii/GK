@@ -35,7 +35,10 @@ GK/
 │  └─ development/                  # 구조·검증·배포 문서
 ├─ harness/
 │  ├─ roles/                        # AI 역할별 작업 지침
-│  ├─ review/                       # 리뷰 기록과 REV 이력
+│  ├─ review/                       # 중앙 미해결 목록과 날짜별 이슈 이력
+│  │  ├─ issue-register.md          # 단 하나의 미해결 이슈 목록
+│  │  └─ YY-MM-DD-issue/            # 이슈가 생긴 날짜에만 생성
+│  │     └─ YY-MM-DD-dev-issues.md  # 실제 이슈가 난 영역 파일만 생성
 │  └─ patch-notes/                  # 날짜별 파일 변경 기록
 ├─ config/                           # ESLint·Prettier·Vitest 등 도구 설정
 ├─ .github/                          # GitHub 자동화 설정
@@ -55,6 +58,12 @@ GK/
 - 정적 JSON은 `src/content/`에서 직접 가져온다. 변경되지 않는 콘텐츠를 Zustand에 복사하지 않는다.
 - Zustand는 사용자 조작으로 바뀌는 사례 필터와 페이지 상태에만 사용하고 사례 기능 폴더 안에서 관리한다.
 - 범용 계산과 상수는 `src/lib/`, 여러 기능이 공유하는 타입은 `src/types/`에 둔다.
+
+## 리뷰 이슈 관리
+
+- 이슈 ID는 영역별로 독립 관리한다: `PLAN-REV-001`, `DESIGN-REV-001`, `DEV-REV-001`.
+- `harness/review/issue-register.md`에는 미해결 이슈만 기록한다. 해결되면 중앙 목록에서 삭제한다.
+- 상세 이력과 해결 방법은 이슈가 처음 기록된 날짜·영역 파일에 계속 추가한다. 해결 전용 파일이나 이슈가 없는 영역의 빈 파일은 만들지 않는다.
 
 ## 디자인 시스템 위치
 
