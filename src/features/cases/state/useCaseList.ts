@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+// 사례 목록에서 탭 단위로 유지할 필터·페이지 상태와 변경 함수다.
 type CaseListState = {
   selectedTags: string[];
   currentPage: number;

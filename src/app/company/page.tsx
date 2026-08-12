@@ -15,15 +15,20 @@ export const metadata: Metadata = {
 export default function CompanyPage() {
   return (
     <>
+      {/* 회사 소개 제목을 표시하는 공통 첫 화면이다. */}
       <CompanyHero title={siteContent.about.title} />
+      {/* 소개 문구, 시공 범위, 전화 문의를 담는 회사 소개 본문이다. */}
       <section className="py-10 md:py-14">
         <Container className="max-w-[860px]">
+          {/* site.json의 회사 소개 문구를 표시하는 영역이다. */}
           <CompanyIntroduction
             lead={siteContent.about.lead}
             body={siteContent.about.body}
             closing={siteContent.about.closing}
           />
+          {/* 회사가 안내하는 시공 범위를 카드로 표시하는 영역이다. */}
           <CompanyServiceScopes scopes={siteContent.serviceScopes} />
+          {/* 필수 전화번호로 연결하는 문의 영역이다. */}
           <CompanyContact phone={siteContent.phone} />
         </Container>
       </section>
