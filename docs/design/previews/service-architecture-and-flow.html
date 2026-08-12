@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GK 산업 화면·기능 구조 비교</title>
+    <style>
+      :root { --ink:#20231f; --muted:#626961; --line:#d7dbd3; --paper:#fff; --ground:#f1f3ef; --red:#a54033; --red-bg:#fff2ef; --green:#216b50; --green-bg:#edf8f2; --blue:#285d8e; --blue-bg:#edf5fd; }
+      * { box-sizing:border-box; } body { margin:0; background:var(--ground); color:var(--ink); font-family:Arial,"Noto Sans KR",sans-serif; } code { font-family:Consolas,monospace; font-size:.92em; }
+      .wrap { max-width:1190px; margin:0 auto; padding:48px 24px 72px; } h1 { margin:0; font-size:clamp(29px,4vw,42px); letter-spacing:-2.4px; } h2,h3,p { margin-top:0; }.lead { max-width:850px; margin:14px 0 28px; color:var(--muted); font-size:16px; line-height:1.7; }.rule { margin:40px 0; border:0; border-top:1px solid var(--line); }.title { margin:38px 0 9px; font-size:25px; letter-spacing:-1.4px; }.sub { margin-bottom:18px; color:var(--muted); font-size:14px; line-height:1.6; }
+      .principle { padding:17px 19px; border-left:5px solid var(--blue); background:var(--blue-bg); font-size:14px; line-height:1.65; }.flow { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }.flow-card { min-height:100px; padding:15px; border:1px solid var(--line); background:var(--paper); }.flow-card b { display:block; margin-bottom:6px; font-size:14px; }.flow-card span { color:var(--muted); font-size:12px; line-height:1.5; }
+      .comparison { display:grid; gap:20px; }.route { overflow:hidden; border:1px solid var(--line); background:var(--paper); }.route>header { padding:17px 19px; border-bottom:1px solid var(--line); background:#f6f8f4; }.route h3 { margin:0 0 5px; font-size:19px; }.route header p { margin:0; color:var(--muted); font-size:13px; }.columns { display:grid; grid-template-columns:1fr 1fr; }.column { padding:18px; }.column:first-child { border-right:1px solid var(--line); }.column.current { background:#fffaf9; }.column.target { background:#f8fcf9; }.label { display:inline-block; margin-bottom:10px; padding:4px 7px; border-radius:12px; font-size:11px; font-weight:700; }.label.now { background:#f8dcd7; color:#8a3428; }.label.after { background:#dff2e8; color:#216446; }.chain { display:grid; gap:8px; }.node { padding:11px 12px; border:1px solid var(--line); background:#fff; font-size:12px; line-height:1.5; }.node b { display:block; margin-bottom:3px; font-size:13px; }.node.bad { border-color:#e3bdb6; background:var(--red-bg); }.node.good { border-color:#b6d9c4; background:var(--green-bg); }.node.shared { border-color:#bdd3e6; background:var(--blue-bg); }.arrow { color:#7d867d; font-size:14px; text-align:center; }
+      .screens { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }.screen { min-height:190px; border:1px solid var(--line); background:var(--paper); }.screen header { padding:13px; border-bottom:1px solid var(--line); background:#f7f8f5; }.screen h3 { margin:0 0 4px; font-size:15px; }.screen header p { margin:0; color:var(--muted); font-size:11px; }.screen-body { padding:13px; }.screen-body b { display:block; margin-bottom:5px; color:#445146; font-size:11px; }.screen-body ul { margin:0; padding-left:16px; font-size:12px; line-height:1.55; }.screen-body li { margin:3px 0; }
+      .reuse { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }.reuse-card { min-height:150px; padding:16px; border:1px solid #bcd2e5; background:var(--blue-bg); }.reuse-card h3 { margin-bottom:7px; font-size:15px; }.reuse-card p { margin:0; color:#405d74; font-size:12px; line-height:1.55; }.reuse-card .example { margin-top:9px; padding:8px; background:#fff; color:#48616f; font-size:11px; line-height:1.45; }.case-rule { margin-top:18px; padding:16px; border:1px solid #b6d9c4; background:var(--green-bg); font-size:13px; line-height:1.65; }
+      @media (max-width:850px) { .wrap { padding:30px 15px 52px; }.flow,.screens,.reuse { grid-template-columns:1fr; }.columns { grid-template-columns:1fr; }.column:first-child { border-right:0; border-bottom:1px solid var(--line); } }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>GK 산업 화면·기능 구조 비교</h1>
+      <p class="lead">현재 화면이 어떤 파일에 어떤 기능을 모아 두었는지와, 개편 뒤 부모·화면·재사용 기능이 어디에 놓이는지를 비교한 산출물입니다. 구현 방법을 길게 설명하지 않고 “어디에 어떤 기능이 있는가”만 정리합니다.</p>
+      <p class="principle"><strong>개편 기준:</strong> 부모는 화면을 합치고 필요한 데이터만 전달합니다. 자식 화면은 자기 화면과 필요한 기능을 담당합니다. 사례·제품처럼 다른 곳에서도 쓸 수 있는 화면이나 기능은 따로 빼고 props만 바꿔 재사용합니다.</p>
+
+      <h2 class="title">서비스 흐름</h2>
+      <section class="flow"><div class="flow-card"><b>공통 메뉴</b><span>헤더·모바일 메뉴에서<br>홈 / 사례 / 제품 / 회사 소개로 이동</span></div><div class="flow-card"><b>정보 탐색</b><span>홈의 최근 사례·제품 또는<br>사례·제품 목록에서 정보 확인</span></div><div class="flow-card"><b>상세 확인</b><span>사례 카드 선택 → 상세 팝업<br>사진·시공 정보 확인</span></div><div class="flow-card"><b>전화 문의</b><span>헤더·모바일 메뉴·푸터·회사 소개의<br>전화 링크로 연결</span></div></section>
+
+      <h2 class="title">현재 구조 ↔ 개편 구조</h2>
+      <p class="sub">빨간 쪽은 현재 기능이 섞인 흐름, 초록 쪽은 개편 후 화면 책임 흐름입니다.</p>
+      <section class="comparison">
+        <article class="route"><header><h3>홈 <code>/</code></h3><p>홈에는 회사 소개를 넣지 않습니다.</p></header><div class="columns"><div class="column current"><span class="label now">현재</span><div class="chain"><div class="node bad"><b><code>app/page.tsx</code></b>최근 사례·제품 데이터를 읽고, 히어로·최근 사례·제품 카드 화면을 직접 그림</div><div class="arrow">↓</div><div class="node"><b><code>HomePageStateReset</code></b>홈에 들어올 때 사례 필터·페이지 초기화</div><div class="arrow">↓</div><div class="node"><b><code>HomeCaseCards</code></b>최근 사례 카드 표시와 상세 팝업 열기</div></div></div><div class="column target"><span class="label after">개편</span><div class="chain"><div class="node good"><b><code>app/page.tsx</code> — 부모</b>최근 사례·제품 데이터 전달</div><div class="arrow">↓</div><div class="node good"><b><code>HomeHero</code></b>첫 화면·사례 목록 이동</div><div class="node good"><b><code>HomeRecentCases</code></b>최근 사례 카드·상세 팝업 열기</div><div class="node shared"><b><code>HomeProducts</code></b>공용 제품 카드를 3열로 표시</div></div></div></div></article>
+        <article class="route"><header><h3>시공 사례 <code>/cases</code></h3><p>장소 1개와 제품 1개를 골라 사례 목록을 확인합니다.</p></header><div class="columns"><div class="column current"><span class="label now">현재</span><div class="chain"><div class="node"><b><code>app/cases/page.tsx</code></b><code>CaseList</code>만 표시</div><div class="arrow">↓</div><div class="node bad"><b><code>CaseList</code></b>JSON 읽기, URL·해시 처리, 필터·페이지 상태, 스크롤, 히어로·목록·팝업을 모두 처리</div></div></div><div class="column target"><span class="label after">개편</span><div class="chain"><div class="node good"><b><code>app/cases/page.tsx</code> — 부모</b>사례 데이터 전달</div><div class="arrow">↓</div><div class="node good"><b><code>CasesHero</code></b>페이지 첫 영역</div><div class="node good"><b><code>CaseFilters</code></b>장소·제품 필터 선택</div><div class="node good"><b><code>CaseResults</code></b>결과 수·카드·빈 상태·상세 열기</div><div class="node good"><b><code>CasePagination</code></b>페이지 이동·목록 위치 이동</div></div></div></div></article>
+        <article class="route"><header><h3>사용 제품 <code>/products</code></h3><p>제품을 고르고 해당 제품이 사용된 사례로 이동합니다.</p></header><div class="columns"><div class="column current"><span class="label now">현재</span><div class="chain"><div class="node"><b><code>app/products/page.tsx</code></b><code>ProductList</code>만 표시</div><div class="arrow">↓</div><div class="node bad"><b><code>ProductList</code></b>JSON 읽기, 제품 선택 상태, 필터, 히어로, 제품 카드, 안내 문구를 모두 처리</div></div></div><div class="column target"><span class="label after">개편</span><div class="chain"><div class="node good"><b><code>app/products/page.tsx</code> — 부모</b>사례 데이터 전달</div><div class="arrow">↓</div><div class="node good"><b><code>ProductsHero</code></b>페이지 첫 영역</div><div class="node good"><b><code>ProductFilters</code></b>제품 선택</div><div class="node shared"><b><code>ProductResults</code></b>공용 제품 카드·사례 이동 안내</div></div></div></div></article>
+        <article class="route"><header><h3>회사 소개 <code>/company</code></h3><p>회사 소개와 서비스 범위, 전화 문의를 보여 줍니다.</p></header><div class="columns"><div class="column current"><span class="label now">현재</span><div class="chain"><div class="node bad"><b><code>app/company/page.tsx</code></b>JSON 읽기, 히어로, 회사 소개, 서비스 범위, 전화 문의 화면을 모두 직접 그림</div></div></div><div class="column target"><span class="label after">개편</span><div class="chain"><div class="node good"><b><code>app/company/page.tsx</code> — 부모</b>회사 정보 전달</div><div class="arrow">↓</div><div class="node good"><b><code>CompanyHero</code></b>페이지 첫 영역</div><div class="node good"><b><code>CompanyIntroduction</code></b>회사 소개 문구</div><div class="node good"><b><code>CompanyServiceScopes</code></b>서비스 범위</div><div class="node good"><b><code>CompanyContact</code></b>전화 문의</div></div></div></div></article>
+      </section>
+
+      <hr class="rule">
+      <h2 class="title">개편 후: 화면마다 가진 기능</h2>
+      <p class="sub">각 화면이 무엇을 보여 주고 어떤 기능을 가지는지만 정리했습니다.</p>
+      <section class="screens">
+        <article class="screen"><header><h3>공통 화면</h3><p>Header / MobileMenu / Footer</p></header><div class="screen-body"><b>기능</b><ul><li>주소 이동 메뉴</li><li>전화 문의 링크</li><li>모바일 메뉴 열기·닫기</li><li>모바일 메뉴의 Escape·뒤 화면 스크롤 잠금</li></ul></div></article>
+        <article class="screen"><header><h3>홈</h3><p>HomeHero / HomeRecentCases / HomeProducts</p></header><div class="screen-body"><b>기능</b><ul><li>시공 사례 목록 이동</li><li>최근 사례 상세 팝업 열기·닫기</li><li>제품 카드에서 해당 사례 목록 이동</li></ul></div></article>
+        <article class="screen"><header><h3>시공 사례</h3><p>CaseFilters / CaseResults / CasePagination</p></header><div class="screen-body"><b>기능</b><ul><li>장소 1개·제품 1개 선택</li><li>선택 조건을 모두 만족하는 사례 표시</li><li>페이지 이동·목록 위치 이동</li><li>사례 상세 팝업 열기·닫기</li></ul></div></article>
+        <article class="screen"><header><h3>사용 제품</h3><p>ProductFilters / ProductResults</p></header><div class="screen-body"><b>기능</b><ul><li>제품 선택·해제·전체</li><li>선택 조건에 맞는 제품 표시</li><li>제품 카드에서 해당 사례 목록 이동</li></ul></div></article>
+        <article class="screen"><header><h3>회사 소개</h3><p>CompanyIntroduction / ServiceScopes / Contact</p></header><div class="screen-body"><b>기능</b><ul><li>회사 소개 문구 표시</li><li>서비스 범위 표시</li><li>필수 전화번호로 문의 연결</li></ul></div></article>
+        <article class="screen"><header><h3>사례 상세</h3><p>CaseDetailModal</p></header><div class="screen-body"><b>기능</b><ul><li>팝업 틀·닫기</li><li>사진 갤러리·큰 사진 보기</li><li>시공 내용·장소·제품·태그 표시</li></ul></div></article>
+      </section>
+
+      <h2 class="title">재사용 때문에 따로 빼는 화면·기능</h2>
+      <p class="sub">다른 곳에서도 같은 모습이나 동작을 쓸 수 있는 것만 분리합니다.</p>
+      <section class="reuse">
+        <article class="reuse-card"><h3><code>PageHero</code></h3><p>사례·제품·회사 소개의 같은 첫 영역을 하나로 관리합니다.</p><div class="example">각 페이지는 제목·설명 문구만 전달</div></article>
+        <article class="reuse-card"><h3><code>ProductCard</code></h3><p>홈과 제품 목록이 같은 제품 카드 화면을 사용합니다.</p><div class="example">홈: 3열 / 제품 목록: 2열<br>그리드만 다르고 카드는 동일</div></article>
+        <article class="reuse-card"><h3><code>ImageGallery</code></h3><p>사진 영역과 사진 이동 기능을 하나의 공용 화면으로 둡니다.</p><div class="example">사례: <code>images={caseItem.images}</code><br>제품 상세: <code>images={product.images}</code></div></article>
+        <article class="reuse-card"><h3><code>useDialogFocus</code></h3><p>팝업의 초점 이동·Tab 제한·Escape·닫은 뒤 초점 복귀 기능입니다.</p><div class="example">사례 상세 팝업과 모바일 메뉴가 직접 사용</div></article>
+        <article class="reuse-card"><h3><code>useBodyScrollLock</code></h3><p>팝업이 열렸을 때 뒤 화면 스크롤을 잠그는 기능입니다.</p><div class="example">모바일 메뉴·상세 팝업·큰 사진 보기가 직접 사용</div></article>
+        <article class="reuse-card"><h3><code>useImageGallery</code></h3><p>현재 사진, 이전·다음, 썸네일 선택 규칙을 제공합니다.</p><div class="example"><code>ImageGallery</code>가 직접 사용</div></article>
+      </section>
+      <p class="case-rule"><strong>필터 상태 규칙:</strong> 사례 필터·현재 페이지와 제품 필터는 모든 새로고침과 모든 페이지 이동 뒤에도 유지합니다. 사례는 <code>gk-case-list</code>, 제품은 <code>gk-product-list</code>에 탭 단위로 저장합니다. 각 필터 화면의 초기화 버튼을 눌렀을 때만 해당 필터값을 지웁니다.</p>
+    </main>
+  </body>
+</html>
