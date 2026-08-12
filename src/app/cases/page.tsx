@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { CaseList } from "@/features/cases/components/CaseList";
+import casesContent from "@/content/cases.json";
+import { CasesScreen } from "@/features/cases/components/CasesScreen";
 
 export const metadata: Metadata = {
   title: "시공 사례",
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function CasesPage() {
-  return <CaseList />;
+  return <CasesScreen cases={casesContent.content} />;
 }

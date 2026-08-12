@@ -80,6 +80,7 @@ if (casesContent) {
 
 if (siteContent) {
   requireString(siteContent.companyName, "site.json.companyName");
+  requireString(siteContent.phone, "site.json.phone");
   requireStringArray(siteContent.keywords, "site.json.keywords");
   requireString(siteContent.about?.title, "site.json.about.title");
   requireString(siteContent.about?.lead, "site.json.about.lead");

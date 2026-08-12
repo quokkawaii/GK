@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { ProductList } from "@/features/products/components/ProductList";
+import casesContent from "@/content/cases.json";
+import { ProductsScreen } from "@/features/products/components/ProductsScreen";
 
 export const metadata: Metadata = {
   title: "시공 시 사용 제품",
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsPage() {
-  return <ProductList />;
+  return <ProductsScreen cases={casesContent.content} />;
 }

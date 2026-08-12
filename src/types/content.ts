@@ -16,7 +16,7 @@ export type ConstructionCase = Readonly<{
 
 export type SiteContent = Readonly<{
   companyName: string;
-  phone: string | null;
+  phone: string;
   serviceArea: string | null;
   address: string | null;
   businessInfo: string | null;
