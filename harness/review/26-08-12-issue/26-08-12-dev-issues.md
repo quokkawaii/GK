@@ -208,6 +208,18 @@
 - 근거: 2026-08-12 사용자 확인. 사례 상세의 이미지 화면은 제품 상세에서도 `images={product.images}`처럼 props만 바꿔 재사용할 수 있어야 하며, 이 원칙은 사례 상세에만 한정하지 않고 `src` 전체에 적용한다.
 - 상태: 미해결
 
+## 구현 결과 기록
+
+- 해결 `DEV-REV-016`: 홈·회사 소개 라우트가 화면 섹션을 직접 그리지 않도록 `HomeHero`, `HomeRecentCases`, `HomeProducts`, `CompanyHero`, `CompanyIntroduction`, `CompanyServiceScopes`, `CompanyContact`를 추가했다.
+- 해결 `DEV-REV-017`, `DEV-REV-022`: `CasesScreen`과 `useCaseList`로 사례 데이터·필터·페이지·URL 입력을 연결하고, 장소·제품 선택 교체 규칙을 한 파일에 모았다. 기존 `CaseList`와 두 개의 사례 저장소를 제거했다.
+- 해결 `DEV-REV-018`: `ProductsScreen`, `ProductFilters`, `ProductResults`, `useProductList`를 추가하고 제품 선택을 `gk-product-list`에 저장했다. 새로고침·페이지 이동 뒤 선택을 유지하고 전체 버튼에서만 초기화한다.
+- 부분 해결 `DEV-REV-019`: `CaseDetailModal`은 화면 조립으로 바꾸고 `ImageGallery`, `CaseInformation`, `useDialogFocus`, `useBodyScrollLock`, `useImageGallery`를 연결했다. 모바일 메뉴 연결과 키보드 수동 검증은 남아 있다.
+- 해결 `DEV-REV-020`: 전화번호 타입을 필수 `string`으로 바꾸고 콘텐츠 검사에서 필수값을 확인한다.
+- 해결 `DEV-REV-021`: 사례 선택 태그와 현재 페이지를 `gk-case-list`에 저장하고 새로고침·페이지 이동 뒤 유지하며 필터 초기화에서만 지운다.
+- 해결 `DEV-REV-023`, `DEV-REV-024`: `PageHero`, `ProductCard`를 추가해 공용 화면을 재사용한다.
+- 검증: `npm run lint`, `npm run build`, `npm run check:content` 통과.
+- 남은 이슈: `DEV-REV-005`, `DEV-REV-015`, `DEV-REV-019`, `DEV-REV-025`, `DEV-REV-027`.
+
 ## DEV-REV-020
 
 - 심각도: 보통
