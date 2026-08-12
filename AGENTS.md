@@ -49,6 +49,15 @@
 - 사용자가 정한 결정을 바꾸려면 변경 이유와 영향도를 설명하고 다시 승인받는다.
 - 인터뷰·질문·설명에서는 내부 구현 개념으로 사용자의 판단을 추상화하지 않는다. 현재 화면·콘텐츠·선택지를 구체적으로 제시하고, 사용자가 결정해야 할 결과를 평이한 말로 묻는다. 예: `홈 대표 제품을 정할까요?` 대신 현재 홈에 표시 가능한 제품명을 보여주고 그중 대표로 표시할 항목을 선택하도록 묻는다.
 
+### 4.1 산출물 완결성 규칙
+
+- 기획·디자인·개발·리뷰 문서는 이전 대화나 짧은 요약을 읽지 않아도 다음 담당자가 바로 작업할 수 있을 정도로 구체적으로 작성한다. "상태를 유지한다", "공용화한다", "분리한다"처럼 세부 동작이 빠진 표현만으로 결정을 기록하지 않는다.
+- 상태가 있는 기능은 반드시 아래를 함께 기록한다: 상태 이름, 처음 값, 누가 바꾸는지, 어떤 행동에서 바뀌는지, 새로고침·다른 주소 이동·탭 닫기에서 각각 유지 또는 초기화되는지, 저장한다면 저장 위치·키·저장 항목·저장하지 않는 항목.
+- 화면 구조를 기록할 때는 반드시 현재 구조와 목표 구조를 분리해 적는다. 목표 구조에는 부모 파일, 각 자식 화면, 각 화면이 받는 props, 각 화면이 직접 사용하는 기능, 공용으로 재사용하는 화면 또는 기능, 기존 파일의 유지·이동·제거 대상을 적는다.
+- 공용화 규칙에는 재사용할 실제 두 화면과 전달할 props 예시를 적는다. 예: 사례 상세는 `images={caseItem.images}`, 제품 상세는 `images={product.images}`를 같은 `ImageGallery`에 전달한다. 재사용 근거가 없는 짧은 마크업은 공용화 대상으로 적지 않는다.
+- 사용자 확인으로 확정된 세부 규칙은 관련 이슈·결정·HTML 산출물에 같은 문장으로 반영한다. 새 문서를 만들거나 기존 문서를 수정하기 전에는 원래 확정 기록을 확인하고, 빠진 조건을 추측으로 채우지 않는다.
+- 문서의 마지막에는 구현 전에 확인이 필요한 미확정 항목만 별도로 표시한다. 이미 확정된 항목을 다시 질문하지 않으며, 확정 내용과 충돌하는 해석을 제안하지 않는다.
+
 ## 5. 데이터와 기술 경계
 
 - 초기 콘텐츠는 정적 JSON 파일로 관리한다. 데이터베이스, MongoDB, REST API, 인증, 업로드 기능은 별도 승인 전에는 도입하지 않는다.
@@ -85,3 +94,13 @@
 - 변경 대상 파일마다 행동(추가·수정·삭제·이동), 파일 경로, 변경 내용, 변경 이유를 적는다. 가능하면 관련 `REQ-`·`DEC-`·`PLAN-REV-`·`DESIGN-REV-`·`DEV-REV-`와 검증 결과도 함께 적는다.
 - 보고서는 사실만 쓰며, "그냥" 같은 이유 대신 사용자의 요청·승인된 요구사항·오류 수정 근거를 적는다.
 - `harness/patch-notes/` 파일을 추가·수정하는 행위 자체는 별도의 보고 항목을 다시 만들지 않는다. 보고의 무한 반복을 막기 위한 예외다.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
