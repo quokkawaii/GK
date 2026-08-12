@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
+// 제품 목록에서 탭 단위로 유지할 선택 상태와 변경 함수다.
 type ProductListState = {
   selectedProductIds: string[];
   chooseProduct: (productId: string) => void;
