@@ -111,23 +111,18 @@
     </style>
   </head>
   <body>
-    <span class="status">설정 완료</span>
+    <span class="status">현재 구성</span>
     <h1>의존성·폴더 구조 설정 결과</h1>
-    <p class="lead">
-      Next.js 프로젝트의 기반 도구와 기능별 빈 폴더를 만들었습니다. 아직 고객 화면이나 실제 기능
-      코드는 작성하지 않았습니다.
-    </p>
+    <p class="lead">현재 저장소에 남아 있는 기반 도구와 주요 폴더 구성을 정리했습니다.</p>
     <section>
       <h2>설치된 핵심 도구</h2>
       <div class="grid">
-        <div class="item"><b>Next.js · React</b><span>정적 웹사이트와 화면 컴포넌트</span></div>
+        <div class="item"><b>Next.js · React</b><span>웹사이트와 화면 컴포넌트</span></div>
         <div class="item"><b>Zustand</b><span>콘텐츠·필터·페이지 상태 관리</span></div>
-        <div class="item"><b>TypeScript · ESLint</b><span>데이터 형태와 코드 실수 검사</span></div>
+        <div class="item"><b>TypeScript</b><span>데이터와 컴포넌트 타입 정의</span></div>
         <div class="item">
           <b>Tailwind CSS · Prettier</b><span>스타일 작성과 코드 모양 통일</span>
         </div>
-        <div class="item"><b>Vitest</b><span>필터·페이지 계산 같은 데이터 규칙 테스트</span></div>
-        <div class="item"><b>Husky · lint-staged</b><span>커밋 직전 바뀐 파일만 검사</span></div>
       </div>
     </section>
     <section>
@@ -138,11 +133,7 @@
         <div class="item"><b>Zustand</b><span>5.0.14</span></div>
         <div class="item"><b>TypeScript</b><span>6.0.3</span></div>
         <div class="item"><b>Tailwind CSS</b><span>4.3.3</span></div>
-        <div class="item"><b>ESLint · Next 규칙</b><span>9.39.5 · 16.3.0</span></div>
         <div class="item"><b>Prettier · Tailwind 플러그인</b><span>3.9.6 · 0.8.1</span></div>
-        <div class="item">
-          <b>Husky · lint-staged · Vitest</b><span>9.1.7 · 17.3.0 · 4.1.10</span>
-        </div>
       </div>
     </section>
     <section>
@@ -150,29 +141,22 @@
       <div class="tree">
         src/app/ 페이지 주소와 공통 화면 틀 src/features/ 사례·홈·제품 기능별 화면과 상태
         src/components/ 공통 레이아웃·UI src/content/ 정적 JSON src/lib/ 공통 데이터 처리 함수·상수
-        src/types/ 재사용 TypeScript 타입 tests/ Vitest 테스트 config/ 개발 도구 설정
-        docs/ 승인 산출물 harness/ AI 역할·리뷰·변경 기록 .github/workflows/ PR 자동 검사 설정 위치
+        src/types/ 재사용 TypeScript 타입 config/ Prettier 설정 docs/ 사람이 확인하는 승인 산출물
+        harness/ AI 역할·리뷰 기록
       </div>
     </section>
     <section>
       <h2>준비된 설정</h2>
       <ul>
-        <li><code>next.config.ts</code>: Cloudflare Pages용 정적 내보내기와 이미지 서버 미사용</li>
         <li><code>tsconfig.json</code>: strict 모드, JSON 읽기, <code>@/</code> 경로 별칭</li>
         <li><code>config/prettier.config.mjs</code>: LF·공백 2칸·100자·큰따옴표·세미콜론</li>
-        <li>
-          <code>config/eslint.config.mjs</code>, <code>config/vitest.config.ts</code>,
-          <code>.husky/pre-commit</code>
-        </li>
       </ul>
     </section>
     <section class="notice">
       <h2>확인할 사항</h2>
       <p>
-        의존성 설치는 완료됐고 취약점은 발견되지 않았습니다. Node.js LTS 재설치 후 전역
-        <code>npm</code>도 복구됐으며, <code>npm run lint</code> 실행을 확인했습니다. 다만 ESLint
-        내부 보조 패키지 하나의 설치 후 스크립트가 차단됐으므로, 실제 검사 실행 결과를 본 뒤 허용
-        여부를 결정합니다.
+        현재 패키지 목록과 잠금 파일은 동기화되어 있습니다. ESLint, Vitest, Husky, lint-staged와
+        자동 검사 설정은 사용하지 않습니다.
       </p>
     </section>
   </body>

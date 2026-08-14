@@ -9,18 +9,7 @@ GK 산업의 바닥 시공 사례와 시공 시 사용 제품을 소개하고 �
 ```bash
 npm install       # 필요한 패키지 설치
 npm run dev       # 내 컴퓨터에서 사이트 실행
-npm run lint      # 코드 작성 실수 검사
-npm test          # 핵심 데이터 규칙 검사
-npm run build     # 정적 배포용 파일 생성과 JSON 데이터 검사
+npm run build     # 프로덕션 빌드 확인
 ```
-
-자동 테스트나 빌드에서 문제가 발견되면 임의로 수정하지 않습니다. 문제 내용과 조치 계획을 먼저 보고하고 사용자 승인 후에만 수정합니다.
-
-## 콘텐츠 변경과 배포
-
-1. 작업 브랜치를 만듭니다.
-2. `src/content/` JSON과 `public/images/` 사진을 수정합니다.
-3. PR을 열고 Cloudflare Pages 미리보기에서 확인합니다.
-4. `main`에 머지하면 실제 사이트에 자동 반영됩니다.
 
 자세한 개발 문서는 `docs/development/`에서 관리합니다.

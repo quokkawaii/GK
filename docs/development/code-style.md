@@ -7,7 +7,6 @@
 | 도구 | 역할 |
 | --- | --- |
 | TypeScript | 값과 데이터 형태의 오류 확인 |
-| ESLint | React·Next.js 코드 작성 실수 검사 |
 | Prettier | 들여쓰기, 줄 바꿈, 따옴표 등 코드 모양 자동 통일 |
 
 ## 공통 설정
@@ -36,8 +35,8 @@
 - 정적 JSON은 Zustand에 복사하지 않는다. Zustand는 여러 컴포넌트가 함께 변경하는 사용자 상태에만 사용하고 해당 `src/features/` 안에 둔다. 목록 계산은 `getCasePage` 같은 `src/lib/`의 순수 함수로 처리한다.
 - 함수와 `type` 선언 바로 위에는 역할을 설명하는 한 줄 주석을 작성한다. 타입 주석에는 데이터 출처를, 함수 주석에는 기능을 간단히 적는다.
 - 코드 내용과 관계없는 대량 서식 변경은 별도 작업으로 분리한다.
-- Prettier 설정을 바꾸면 이유와 영향을 이 문서 및 `harness/patch-notes/`에 기록한다.
-- 실제 ESLint·Prettier 패키지를 설치하면 `dependencies.md`에도 버전과 사용 목적을 추가한다.
+- Prettier 설정을 바꾸면 이유와 영향을 이 문서에 기록한다.
+- 실제 Prettier 패키지를 설치하면 `dependencies.md`에도 버전과 사용 목적을 추가한다.
 - 개발 단계에서 Prettier의 `endOfLine` 설정과 Git 설정을 LF 기준으로 맞춘다.
 - 개발 단계에서 Prettier의 `tabWidth`를 `2`, `useTabs`를 `false`로 설정한다.
 - 개발 단계에서 Prettier의 `printWidth`를 `100`으로 설정한다.
@@ -45,4 +44,3 @@
 - 개발 단계에서 Prettier의 `singleQuote`를 `false`로 설정한다.
 - 개발 단계에서 Prettier의 `trailingComma`를 `all`로 설정한다.
 - `src/content/` JSON은 사람이 검토·수정하기 쉽게 공백 2칸과 객체 항목 한 줄씩의 여러 줄 형식을 유지한다.
-- 개발 단계에서 Husky와 lint-staged를 설정해, 커밋 직전에 변경된 코드만 ESLint와 Prettier로 검사한다.
