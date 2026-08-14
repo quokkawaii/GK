@@ -26,12 +26,12 @@
 
 역할은 필요할 때 분리해서 수행한다. 각 역할은 다른 역할의 확정 사항을 바꾸지 않는다.
 
-| 역할 | 책임 | 산출물 |
-| --- | --- | --- |
-| 기획자 | 인터뷰, 요구사항, 우선순위, 콘텐츠 모델, 사용자 흐름 | 기획 문서 |
-| 디자이너 | 정보 구조를 화면으로 구성하고 HTML 시안과 디자인 기준 제시 | 디자인 문서·시안 |
-| 개발자 | 승인된 기획·디자인을 구현하고 데이터 구조와 품질을 유지 | 소스 코드·개발 문서 |
-| 리뷰어 | 단계 산출물의 요구사항 일치 여부와 품질을 독립적으로 확인 | 리뷰 기록 |
+| 역할     | 책임                                                       | 산출물              |
+| -------- | ---------------------------------------------------------- | ------------------- |
+| 기획자   | 인터뷰, 요구사항, 우선순위, 콘텐츠 모델, 사용자 흐름       | 기획 문서           |
+| 디자이너 | 정보 구조를 화면으로 구성하고 HTML 시안과 디자인 기준 제시 | 디자인 문서·시안    |
+| 개발자   | 승인된 기획·디자인을 구현하고 데이터 구조와 품질을 유지    | 소스 코드·개발 문서 |
+| 리뷰어   | 단계 산출물의 요구사항 일치 여부와 품질을 독립적으로 확인  | 리뷰 기록           |
 
 - 역할별 세부 지침은 필요해질 때 `harness/roles/`에 별도 파일로 둔다. 이 파일에는 모든 역할에 공통인 규칙만 둔다.
 - 하나의 작업에서 역할 간 의견이 다르면 임의로 결정하지 않고 사용자에게 선택지를 제시한다.
@@ -69,9 +69,9 @@
 - 사용자 검토용 요약본과 서비스 웹 화면 HTML 시안은 `docs/design/previews/`에 저장한다. 이 폴더는 제품 소스 코드나 최종 배포 산출물을 두는 곳이 아니다.
 - 디자인 시스템, 화면 구성, 반응형 규칙, 시안 변경 내역 같은 디자인 문서는 `docs/design/`에 저장한다.
 - 실제 Next.js 제품 코드는 `src/`에서 관리한다. `src/app/`은 주소와 페이지 조립, `src/features/`는 기능별 코드, `src/components/`는 여러 기능이 공유하는 화면 요소를 담당한다.
-- ESLint·Prettier·Vitest·lint-staged처럼 위치를 지정할 수 있는 개발 도구 설정은 `config/`에서 관리한다. Next.js가 루트에서 자동 탐색하는 설정은 루트에 유지한다.
+- Prettier처럼 위치를 지정할 수 있는 개발 도구 설정은 `config/`에서 관리한다. Next.js가 루트에서 자동 탐색하는 설정은 루트에 유지한다.
 - AI 역할·리뷰·변경 기록은 `harness/`에서 관리한다. 제품 코드와 승인 산출물을 이 폴더에 두지 않는다.
-- `.next/`, `out/`, `node_modules/`는 자동 생성물이므로 Git에 저장하거나 직접 수정하지 않는다.
+- `.next/`, `node_modules/`는 자동 생성물이므로 Git에 저장하거나 직접 수정하지 않는다.
 
 ## 6. 품질과 검토 기준
 
@@ -86,21 +86,3 @@
 - 같은 오류로 같은 도구나 검증을 반복하지 않는다. 두 번의 실질적인 수정 시도 후에도 해결되지 않으면, 시도한 내용과 막힌 이유를 사용자에게 보고한다.
 - 검증 도구가 이미 존재할 때만 그 도구를 실행한다. 없는 검증 도구를 임의로 만들지 않는다.
 - 요구사항·디자인·기술 제약이 충돌하면 아래 정보를 간결히 제시하고 사용자의 결정을 기다린다: 쟁점, 관련 ID, 선택지별 이득·비용, 추천안.
-
-## 8. 패치 변경 보고
-
-- 모든 역할 에이전트는 `apply_patch` 또는 동등한 파일 변경을 반영한 직후, 그 변경을 `harness/patch-notes/YY-MM-DD.md`에 기록한다.
-- 같은 날짜의 파일이 이미 있으면 새 파일을 만들지 않고 끝에 추가한다. `harness/patch-notes/` 폴더는 이 목적을 위해 승인된 폴더다.
-- 변경 대상 파일마다 행동(추가·수정·삭제·이동), 파일 경로, 변경 내용, 변경 이유를 적는다. 가능하면 관련 `REQ-`·`DEC-`·`PLAN-REV-`·`DESIGN-REV-`·`DEV-REV-`와 검증 결과도 함께 적는다.
-- 보고서는 사실만 쓰며, "그냥" 같은 이유 대신 사용자의 요청·승인된 요구사항·오류 수정 근거를 적는다.
-- `harness/patch-notes/` 파일을 추가·수정하는 행위 자체는 별도의 보고 항목을 다시 만들지 않는다. 보고의 무한 반복을 막기 위한 예외다.
-
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
