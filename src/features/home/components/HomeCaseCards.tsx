@@ -28,12 +28,12 @@ export function HomeCaseCards({ cases }: HomeCaseCardsProps) {
             <button
               key={caseItem.id}
               type="button"
-              className="group border-border bg-surface border text-left"
+              className="toss-card group text-left"
               onClick={() => setSelectedCaseId(caseItem.id)}
               aria-label={`${caseItem.title} 상세 보기`}
             >
               {/* 대표 사진을 표시하는 카드 이미지 영역이다. */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#85817a]">
+              <div className="toss-card-image relative overflow-hidden bg-[#dce7f2]">
                 {thumbnail && (
                   /* 사례 데이터의 thumbnailIndex가 가리키는 사진이다. */
                   <Image

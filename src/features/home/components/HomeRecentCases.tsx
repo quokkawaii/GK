@@ -9,7 +9,7 @@ type HomeRecentCasesProps = Readonly<{ cases: readonly ConstructionCase[] }>;
 export function HomeRecentCases({ cases }: HomeRecentCasesProps) {
   return (
     /* 최근 사례 제목과 카드 목록을 보여 주는 홈 섹션이다. */
-    <section className="bg-surface py-12 md:py-16">
+    <section className="toss-section bg-surface">
       <Container>
         {/* 섹션 제목과 전체 사례 이동 링크를 나란히 배치하는 머리글이다. */}
         <div className="mb-5 flex items-end justify-between gap-4">
@@ -17,12 +17,10 @@ export function HomeRecentCases({ cases }: HomeRecentCasesProps) {
             <p className="text-accent text-xs font-semibold tracking-[0.1em]">
               RECENT CASE STUDIES
             </p>
-            <h2 className="mt-1 text-[24px] font-bold tracking-[-0.05em] md:text-[28px]">
-              최근 시공 사례
-            </h2>
+            <h2 className="toss-section-title mt-1 font-bold">최근 시공 사례</h2>
           </div>
           {/* 전체 시공 사례 목록으로 이동하는 보조 링크다. */}
-          <a href="/cases" className="border-text border-b pb-0.5 text-xs font-semibold">
+          <a href="/cases" className="text-sm font-semibold text-[#1b64da]">
             시공 사례 보기 →
           </a>
         </div>
