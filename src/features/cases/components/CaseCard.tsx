@@ -16,12 +16,12 @@ export function CaseCard({ caseItem, onOpen }: CaseCardProps) {
     /* 사례 상세 팝업을 여는 목록 카드 전체 버튼이다. */
     <button
       type="button"
-      className="group border-border bg-surface border text-left"
+      className="toss-card group text-left"
       onClick={onOpen}
       aria-label={`${caseItem.title} 상세 보기`}
     >
       {/* 대표 사진 또는 사진 없음 안내를 표시하는 카드 이미지 영역이다. */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#85817a]">
+      <div className="toss-card-image relative overflow-hidden bg-[#dce7f2]">
         {thumbnail ? (
           /* cases.json의 thumbnailIndex가 가리키는 대표 사진이다. */
           <Image

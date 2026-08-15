@@ -4,7 +4,7 @@ type CompanyContactProps = Readonly<{ phone: string }>;
 export function CompanyContact({ phone }: CompanyContactProps) {
   return (
     /* 전화 문의 안내와 전화 연결 버튼을 함께 표시하는 섹션이다. */
-    <section className="mt-8 bg-[#f3f1ef] p-5 md:flex md:items-center md:justify-between md:gap-5">
+    <section className="toss-contact mt-8 md:flex md:items-center md:justify-between md:gap-5">
       {/* 문의가 필요한 내용을 설명하는 안내 문구 영역이다. */}
       <div>
         <h2 className="text-base font-semibold">바닥 시공 문의</h2>
@@ -15,7 +15,7 @@ export function CompanyContact({ phone }: CompanyContactProps) {
       {/* JSON에 등록된 필수 전화번호로 연결하는 전화 문의 링크다. */}
       <a
         href={`tel:${phone.replaceAll("-", "")}`}
-        className="bg-accent mt-4 flex min-h-11 items-center justify-center px-4 text-sm font-semibold !text-white md:mt-0"
+        className="toss-primary-button mt-4 flex items-center justify-center text-sm md:mt-0"
       >
         전화 문의 {phone}
       </a>
