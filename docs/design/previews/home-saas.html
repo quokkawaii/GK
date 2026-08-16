@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GK 산업 | SaaS 스타일 웰컴 페이지 시안</title>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+    :root { --ink:#11152a; --paper:#f6f7fb; --line:#dfe4ee; --purple:#7255f4; --mint:#66e4bd; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.6 "Pretendard","Noto Sans KR",sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1180px,calc(100% - 48px)); margin:0 auto; }
+    .hero-zone { min-height:710px; position:relative; overflow:hidden; color:#fff; background:#10142c; }
+    .hero-zone::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 12% 8%,#7457ed 0,transparent 27%),radial-gradient(circle at 83% 9%,#007f98 0,transparent 26%),linear-gradient(105deg,#11142bea 0%,#171a31db 42%,#18213e82 72%,#10142c35 100%); z-index:1; }
+    .hero-zone::after { content:""; position:absolute; inset:0; opacity:.25; background-image:linear-gradient(#ffffff17 1px,transparent 1px),linear-gradient(90deg,#ffffff17 1px,transparent 1px); background-size:38px 38px; z-index:2; mask-image:linear-gradient(to bottom,#000,transparent 85%); }
+    .hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .header { position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; padding-top:25px; }
+    .logo { font-size:24px; font-weight:900; letter-spacing:-1.6px; }.logo small { margin-left:8px; color:#bfbcff; font-size:10px; letter-spacing:.13em; }
+    .menu { display:flex; gap:28px; color:#dcdfed; font-size:13px; }.menu a:first-child { color:#fff; }
+    .call { display:inline-flex; min-height:42px; align-items:center; padding:0 14px; border:1px solid #ffffff48; border-radius:10px; background:#ffffff13; font-size:13px; font-weight:700; }
+    .hero-content { position:relative; z-index:3; padding-top:108px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 11px; border:1px solid #ffffff45; border-radius:999px; background:#ffffff12; color:#e4e2ff; font-size:11px; font-weight:700; letter-spacing:.04em; }
+    .eyebrow::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--mint); box-shadow:0 0 14px var(--mint); }
+    h1 { max-width:690px; margin:18px 0; font-size:clamp(48px,6.1vw,76px); line-height:1; letter-spacing:-5.2px; }.accent { display:block; background:linear-gradient(90deg,#d9d3ff,#80e7ff); background-clip:text; -webkit-background-clip:text; color:transparent; }
+    .intro { max-width:500px; color:#d4d7e8; font-size:16px; word-break:keep-all; }.hero-actions { display:flex; gap:10px; margin-top:27px; }
+    .button { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:0 17px; border-radius:10px; font-size:13px; font-weight:800; }.button.primary { color:#16102f; background:linear-gradient(100deg,#d5c9ff,#79e8ff); }.button.secondary { border:1px solid #ffffff44; background:#ffffff11; color:#fff; }
+    .signal-panel { position:absolute; z-index:3; right:max(24px,calc((100% - 1180px)/2)); bottom:42px; width:275px; padding:18px; border:1px solid #ffffff3d; border-radius:16px; background:#10152bc2; box-shadow:0 20px 52px #04051070; backdrop-filter:blur(16px); }.signal-panel span { color:#b9c0dc; font-size:11px; }.signal-panel b { display:block; margin:5px 0 10px; font-size:19px; letter-spacing:-1px; }.progress { height:5px; overflow:hidden; border-radius:999px; background:#ffffff21; }.progress i { display:block; width:74%; height:100%; border-radius:inherit; background:linear-gradient(90deg,#8b71ff,#67e7c2); }.signal-panel em { display:block; margin-top:9px; color:#9ceccf; font-size:11px; font-style:normal; }
+    section { padding:94px 0; }.section-top { display:flex; justify-content:space-between; align-items:end; margin-bottom:25px; }.kicker { color:#6c56dc; font-size:11px; font-weight:900; letter-spacing:.12em; }.section-top h2 { margin:3px 0 0; font-size:33px; letter-spacing:-2px; }.link { padding-bottom:3px; border-bottom:1px solid #222; font-size:12px; font-weight:800; }
+    .case-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:14px; }.case { position:relative; min-height:300px; overflow:hidden; border-radius:16px; background:#1d2235; color:#fff; }.case::after { content:""; position:absolute; inset:0; background:linear-gradient(0deg,#111528e8,transparent 65%); }.case img { width:100%; height:100%; position:absolute; inset:0; object-fit:cover; filter:saturate(.8); }.case:nth-child(2) img { object-position:72% center; }.case:nth-child(3) img { object-position:92% center; }.case-copy { position:absolute; z-index:1; right:0; bottom:0; left:0; padding:21px; }.case-copy small { color:#b7afff; font-size:11px; font-weight:800; }.case-copy b { display:block; margin-top:3px; font-size:19px; letter-spacing:-1px; }.case:first-child b { font-size:24px; }
+    .product-area { background:#fff; }.product-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }.product { min-height:250px; padding:24px; border:1px solid var(--line); border-radius:14px; background:linear-gradient(135deg,#fbfcff,#eff1f8); }.product-icon { width:49px; height:49px; display:grid; place-items:center; border-radius:13px; background:linear-gradient(135deg,#dcd6ff,#b3edfa); color:#47339c; font-size:19px; font-weight:900; }.product h3 { margin:34px 0 5px; font-size:22px; letter-spacing:-1.3px; }.product p { min-height:45px; margin:0; color:#657087; font-size:13px; word-break:keep-all; }.product a { display:inline-block; margin-top:18px; color:#5540c5; font-size:12px; font-weight:800; }
+    .contact { padding:58px 0; background:#161a30; color:#fff; }.contact-inner { display:flex; justify-content:space-between; align-items:center; gap:30px; }.contact small { color:#aaa8dc; font-size:11px; font-weight:800; letter-spacing:.11em; }.contact h2 { margin:3px 0 0; font-size:31px; letter-spacing:-2px; }.footer { padding:29px 0; color:#838a9d; font-size:12px; }.footer b { color:#20263a; }.footer p { margin:6px 0 0; }
+    @media (max-width:800px) { .wrap { width:min(100% - 32px,1180px); }.menu { display:none; }.hero-content { padding-top:105px; } .signal-panel { position:relative; right:auto; bottom:auto; width:auto; margin-top:42px; } .case-grid,.product-grid { grid-template-columns:1fr; }.case { min-height:255px; }.section-top,.contact-inner { align-items:flex-start; flex-direction:column; }.section-top { gap:14px; } section { padding:65px 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero-zone">
+      <img class="hero-photo" src="../../../../public/images/cases/case-001-miryang-factory-crete/01.jpg" alt="밀양 공장 크리트 시공 사진 1">
+      <header class="header wrap">
+        <a class="logo" href="#">GK<small>INDUSTRIAL FLOOR</small></a>
+        <nav class="menu" aria-label="기본 메뉴"><a href="#">홈</a><a href="#cases">시공 사례</a><a href="#products">사용 제품</a><a href="#company">회사 소개</a></nav>
+        <a class="call" href="tel:15880000">전화 문의 1588-0000</a>
+      </header>
+      <div class="hero-content wrap">
+        <span class="eyebrow">INDUSTRIAL FLOORING SOLUTION</span>
+        <h1>현장에 맞는 바닥을<br><span class="accent">더 선명하게 만듭니다.</span></h1>
+        <p class="intro">시공 결과와 사용 자재를 먼저 확인하고, 현장 조건에 맞는 바닥 시공을 전화로 상담하세요.</p>
+        <div class="hero-actions"><a class="button primary" href="#cases">시공 사례 보기 →</a><a class="button secondary" href="tel:15880000">전화로 문의하기</a></div>
+      </div>
+      <aside class="signal-panel" aria-label="상담 흐름 안내"><span>CONSULTATION FLOW</span><b>현장 조건을 먼저 확인합니다</b><div class="progress"><i></i></div><em>사진 · 공법 · 사용 자재를 함께 안내</em></aside>
+    </section>
+    <section id="cases" class="wrap">
+      <div class="section-top"><div><span class="kicker">RECENT CASE STUDIES</span><h2>최근 시공 사례</h2></div><a class="link" href="#">시공 사례 보기 →</a></div>
+      <div class="case-grid">
+        <article class="case"><img src="../../../../public/images/cases/case-009-bundang-military-mma/01.jpg" alt="분당 군부대 MMA 시공 사진 1"><div class="case-copy"><small>군부대 · MMA</small><b>분당 군부대 MMA</b></div></article>
+        <article class="case"><img src="../../../../public/images/cases/case-004-cheonan-factory-crete/01.jpg" alt="천안 공장 크리트 시공 사진 1"><div class="case-copy"><small>공장 · 크리트</small><b>천안 공장 크리트</b></div></article>
+        <article class="case"><img src="../../../../public/images/cases/case-007-daejeon-parking-crete/01.jpg" alt="대전 주차장 크리트 시공 사진 1"><div class="case-copy"><small>주차장 · 크리트</small><b>대전 주차장 크리트</b></div></article>
+      </div>
+    </section>
+    <section id="products" class="product-area"><div class="wrap"><div class="section-top"><div><span class="kicker">MATERIALS USED</span><h2>시공 시 사용 제품</h2></div><a class="link" href="#">제품 보러가기 →</a></div><div class="product-grid">
+      <article class="product"><div class="product-icon">E</div><h3>에폭시</h3><p>내구성과 청소 편의가 필요한 공장·창고 바닥에 적합합니다.</p><a href="#">에폭시 시공 사례 보기 →</a></article>
+      <article class="product"><div class="product-icon">U</div><h3>우레탄</h3><p>충격과 보행감을 함께 고려해야 하는 주차장·상업 공간에 적합합니다.</p><a href="#">우레탄 시공 사례 보기 →</a></article>
+      <article class="product"><div class="product-icon">M</div><h3>MMA</h3><p>빠른 경화가 필요한 현장의 바닥 시공에 활용할 수 있습니다.</p><a href="#">MMA 시공 사례 보기 →</a></article>
+    </div></div></section>
+    <section id="company" class="contact"><div class="wrap contact-inner"><div><small>LET'S TALK ABOUT YOUR FLOOR</small><h2>현장 조건을 알려주시면<br>시공 방향을 함께 살펴보겠습니다.</h2></div><a class="button primary" href="tel:15880000">전화 문의 1588-0000</a></div></section>
+  </main>
+  <footer class="footer wrap"><b>GK 산업</b><p>주소 및 사업자 정보는 추후 입력 예정입니다. · 대표번호 1588-0000</p></footer>
+</body>
+</html>
