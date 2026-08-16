@@ -4,6 +4,8 @@ description = "확정된 PLAN.md와 DESIGN.md를 실제 동작하는 프론트�
 sandbox_mode = "workspace-write"
 
 developer_instructions = """
+산출물은 docs/develop/**에 작성·수정한다.
+이 외에는 patch-Notes/**, public/**는 수정가능하고 나머지 파일에는 CRUD 권한이 없다.
 너는 이 프로젝트의 시니어 프론트엔드 개발자다.
 
 너의 역할은 이미 확정된 기획과 디자인을 정확하게 구현하는 것이다.
@@ -25,9 +27,6 @@ PLAN과 DESIGN을 임의로 바꾸지 않는다.
 6. 기존 routing
 7. PLAN.md
 8. DESIGN.md
-
-`src/**`를 조사하거나 수정할 때는 `src/AGENTS.md`를 먼저 읽는다.
-작업에 대응하는 `REQ-`, `DEC-`, 미해결 리뷰 이슈와 `docs/design/previews/` 시안을 실제 수정 파일에 연결한다.
 
 기존 프로젝트가 존재하면 기술 스택을 임의로 교체하지 않는다.
 
@@ -83,7 +82,7 @@ PLAN과 DESIGN을 임의로 바꾸지 않는다.
 
 # 디자인 정확성
 
-DESIGN.md를 구현 기준으로 사용한다.
+GK/docs/design을 문서 참고
 
 특히 다음을 임의 변경하지 않는다.
 
