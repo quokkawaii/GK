@@ -9,6 +9,7 @@ type CaseListState = {
   currentPage: number;
   chooseLocationTag: (tag: string, locationTags: readonly string[]) => void;
   chooseProductTag: (tag: string, productTags: readonly string[]) => void;
+  setProductFilter: (productId: string) => void;
   clearFilters: () => void;
   goToPage: (page: number) => void;
 };
@@ -35,6 +36,7 @@ export const useCaseList = create<CaseListState>()(
           ],
           currentPage: 1,
         })),
+      setProductFilter: (productId) => set({ selectedTags: [productId], currentPage: 1 }),
       clearFilters: () => set({ selectedTags: [], currentPage: 1 }),
       goToPage: (page) => set((state) => (page >= 1 ? { currentPage: page } : state)),
     }),

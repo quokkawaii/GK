@@ -8,7 +8,7 @@
     @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
     :root { --ink:#11152a; --paper:#f6f7fb; --line:#dfe4ee; --purple:#7255f4; --mint:#66e4bd; }
     * { box-sizing:border-box; }
-    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.6 "Pretendard","Noto Sans KR",sans-serif; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.6 "Toss Product Sans","Pretendard","Noto Sans KR",sans-serif; }
     a { color:inherit; text-decoration:none; }
     .wrap { width:min(1180px,calc(100% - 48px)); margin:0 auto; }
     .hero-zone { min-height:710px; position:relative; overflow:hidden; color:#fff; background:#10142c; }
@@ -32,7 +32,23 @@
     .contact { padding:58px 0; background:#161a30; color:#fff; }.contact-inner { display:flex; justify-content:space-between; align-items:center; gap:30px; }.contact small { color:#aaa8dc; font-size:11px; font-weight:800; letter-spacing:.11em; }.contact h2 { margin:3px 0 0; font-size:31px; letter-spacing:-2px; }.footer { padding:29px 0; color:#838a9d; font-size:12px; }.footer b { color:#20263a; }.footer p { margin:6px 0 0; }
     @media (max-width:800px) { .wrap { width:min(100% - 32px,1180px); }.menu { display:none; }.hero-content { padding-top:105px; } .signal-panel { position:relative; right:auto; bottom:auto; width:auto; margin-top:42px; } .case-grid,.product-grid { grid-template-columns:1fr; }.case { min-height:255px; }.section-top,.contact-inner { align-items:flex-start; flex-direction:column; }.section-top { gap:14px; } section { padding:65px 0; } }
   </style>
-</head>
+<style data-design-source="toss-marketing">
+  :root { color-scheme: light; }
+  body { background: #FFFFFF !important; color: #191F28 !important; font-family: "Toss Product Sans", "Pretendard", "Noto Sans KR", sans-serif !important; font-size: 16px; line-height: 24px; }
+  h1, .hero h1 { font-size: 36px !important; line-height: 54px !important; font-weight: 700 !important; }
+  h2, .title h2, .section-head h2 { font-size: 30px !important; line-height: 45px !important; font-weight: 600 !important; }
+  h3, .details h3 { font-size: 24px !important; line-height: 36px !important; font-weight: 600 !important; }
+  .card, .filter, .gallery, .scope, .info, .detail-list { border-color: #E5E8EB !important; border-radius: 6px; }
+  .copy, .filter, .gallery-bottom, .scope div, .info div, .detail-list div { background-color: #F2F4F6; }
+  .call, .call-button, .hero-action, .button, .case-link { min-height: 46px !important; padding: 11px 16px !important; border-radius: 7px !important; background: rgba(0, 12, 30, .8) !important; color: #FFFFFF !important; font-size: 17px !important; line-height: 24px !important; font-weight: 600 !important; }
+  .chip, .page, .reset, .menu, .social-icon, .close { min-width: 40px; min-height: 40px !important; border-radius: 6px; }
+  .chip, .page { border-color: #E5E8EB !important; }
+  .chip.on { background: #E8F3FF !important; border-color: #1B64DA !important; color: #1B64DA !important; }
+  .page.on { background: rgba(0, 12, 30, .8) !important; border-color: rgba(0, 12, 30, .8) !important; color: #FFFFFF !important; }
+  .logo em, .tag, .title span, .section-head span { color: #1B64DA !important; }
+  .thumb.active { border-color: #1B64DA !important; }
+  .stage, .gallery-stage, .viewer, .viewer .gallery-bottom { background: rgba(0, 12, 30, .8) !important; }
+</style></head>
 <body>
   <main>
     <section class="hero-zone">

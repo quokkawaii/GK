@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 import siteContent from "@/content/site.json";
 import { Container } from "@/components/ui/Container";
@@ -8,6 +12,20 @@ import { navigationItems } from "@/lib/navigation";
 
 // 공통 메뉴·전화 문의·모바일 메뉴를 헤더에 표시한다.
 export function Header() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
   return (
     /* 모든 주소에서 상단에 고정되는 공통 헤더다. */
     <>
