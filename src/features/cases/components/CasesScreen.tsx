@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { CaseCard } from "@/features/cases/components/CaseCard";
@@ -30,15 +30,6 @@ export function CasesScreen({ cases }: CasesScreenProps) {
   );
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const tag = new URLSearchParams(window.location.search).get("tag");
-    const hash = Number(window.location.hash.replace("#case-", ""));
-    const frame = window.requestAnimationFrame(() => {
-      if (tag && products.includes(tag)) chooseProduct(tag, products);
-      if (hash > 0 && cases.some((item) => item.id === hash)) setSelectedId(hash);
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [cases, chooseProduct, products]);
   const changePage = (next: number) => {
     goToPage(next);
     window.requestAnimationFrame(() =>

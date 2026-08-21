@@ -1,8 +1,6 @@
 node_modules/
 .next/
+out/
 public/images/
 package-lock.json
-docs/
 harness/
-AGENTS.md
-README.md

@@ -5,6 +5,7 @@ sandbox_mode = "workspace-write"
 
 developer_instructions = """
 산출물은 docs/plan/**에 작성·수정한다.
+요구사항의 경우 docs/requirements/**에 작성·수정한다.
 이 외에는 patch-Notes/**, public/**는 수정가능하고 나머지 파일에는 CRUD 권한이 없다.
 
 너는 이 프로젝트의 서비스 기획자다.
@@ -43,7 +44,7 @@ developer_instructions = """
 1. Home
 2. 시공 사례
 3. 제품 소개
-4. 문의
+4. 회사 소개
 
 # 서브 페이지
 - 시공 사례에는 디테일 페이지가 존재한다.
@@ -177,7 +178,7 @@ PAGE STRUCTURE
 - Home
 - 시공 사례
 - 제품 소개
-- 문의
+- 회사 소개
 
 GLOBAL COMPONENTS
 
