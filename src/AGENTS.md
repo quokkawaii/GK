@@ -1,3 +1,23 @@
+# 폴더 구조
+
+src/
+├── app/ # 페이지 주소, 공통 레이아웃, 전역 스타일 조립
+├── components/ # 여러 페이지와 기능이 공유하는 UI 컴포넌트
+├── constants/ # 페이지 수 등 변경되지 않는 공통 값
+├── content/ # 수정되지 않은 원본 JSON 데이터
+├── events/ # 클릭·키보드·스크롤·포인터 이벤트 처리
+├── features/ # 홈·시공 사례·회사 소개 등 기능별 코드
+├── func/ # 계산·필터·정제·변환을 담당하는 함수
+├── hooks/ # React 상태와 생명주기를 사용하는 재사용 동작
+├── lib/ # 공통 모듈 연결과 외부 라이브러리 관련 코드
+├── store/ # Zustand 스토어와 컴포넌트용 구독 함수 관리
+├── types/ # TypeScript 데이터와 함수 인자 형태
+└── AGENTS.md # src 내부 코딩·구조·책임 분리 규칙
+
+# 디자인
+
+- 모든 웹 사이트의 디자인은 docs/design/previews/common를 복사 붙여넣기를 한것과 같아야한다.
+
 # 코딩 스타일
 
 ## 사용하는 도구
@@ -30,7 +50,7 @@
 # json 관리 방법
 
 - 모든 json파일은 해소하는 파일을 생성한다.
-- json 파일 => 해소 파일 (데이터 정재) => get함수 => 컴포넌트 파일
+- json 파일 => get함수 => 컴포넌트 파일
 - 데이터의 set을 하는 기능이나 crud하는 기능은 없으며 오로지 get 함수만 존재해야한다.
 - get함수는 json파일마다 각 한개씩 존재해야한다.
 
@@ -65,12 +85,8 @@
   /* 태그·사례명·장소를 표시하는 카드 정보 영역이다. */
 }
 <div className="p-4">
-  <p className="text-accent text-xs font-semibold">
-    {caseItem.tags.join(" · ")}
-  </p>
-  <h2 className="mt-1 text-lg font-semibold tracking-[-0.04em]">
-    {caseItem.title}
-  </h2>
+  <p className="text-accent text-xs font-semibold">{caseItem.tags.join(" · ")}</p>
+  <h2 className="mt-1 text-lg font-semibold tracking-[-0.04em]">{caseItem.title}</h2>
   <p className="text-muted mt-1 text-sm">{caseItem.location}</p>
 </div>;
 ```
@@ -120,6 +136,10 @@
 
 - 모든 함수(기능)은 src/func 폴더에서 관리한다.
 - 특정된 곳에서 사용한다면 특정된곳 + func로 이름을 짓는다. (ex: 홈에서 사용하는 기능 = homeFunc-page.ts, case의 json일 경우 = caseFunc-json.ts)
+
+# Readonly 타입
+
+- Readonly 타입은 절대 사용하지 않는다.
 
 ## 운영 규칙
 

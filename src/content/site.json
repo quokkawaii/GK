@@ -1,27 +1,26 @@
 {
-  "companyName": "GK 산업",
-  "phone": "010-9261-2061",
-  "serviceArea": "대한민국 전국",
-  "address": null,
-  "businessInfo": null,
-  "social": {
-    "youtube": "https://www.youtube.com/@%ED%95%9C%EC%8A%A4%ED%86%A0%EB%A6%AC-w4b/shorts",
-    "instagram": "https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43"
+  "company": {
+    "name": "지케이 산업",
+    "representative": "문재완",
+    "address": "경기도 의정부시 능곡로 8 ",
+    "serviceArea": "대한민국 전국",
+    "representativePhone": {
+      "label": "대표 전화",
+      "number": "010-9261-2061",
+      "href": "tel:01092612061"
+    }
   },
-  "keywords": ["바닥 시공", "에폭시 바닥", "우레탄 바닥", "MMA 바닥"],
-  "serviceScopes": [
-    { "name": "공장", "description": "바닥 시공 사례와 적용 공법 안내" },
-    { "name": "주차장", "description": "주차 공간 바닥 시공 사례 안내" },
-    { "name": "주방", "description": "사용 환경에 맞춘 바닥 마감 안내" },
-    { "name": "옥상 등 기타 공간", "description": "현장 조건에 따른 시공 정보 안내" }
-  ],
-  "about": {
-    "title": "현장을 이해하는 바닥 시공, GK 산업",
-    "lead": "안녕하세요. GK 산업입니다.",
-    "body": [
-      "GK 산업은 공장, 주차장, 주방, 옥상 등 다양한 공간의 바닥 시공을 소개하고 있습니다.",
-      "현장 조건과 사용 목적에 맞는 시공 방향과 사용 제품 정보를 안내하는 데 집중합니다."
-    ],
-    "closing": "전국 어디서나 바닥 시공 관련 문의가 필요하시면 GK 산업으로 연락해 주세요."
+  "inquiry": {
+    "label": "문의 전화",
+    "number": "010-9261-2061",
+    "href": "tel:01092612061"
+  },
+  "social": {
+    "instagramUrl": "https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43",
+    "youtubeUrl": "https://youtube.com/@floorman-sh9hz?si=WnRVX9ghjx57xSDl"
+  },
+  "copyright": {
+    "year": 2026,
+    "holder": "지케이 산업"
   }
 }
