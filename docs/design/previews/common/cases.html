@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>지케이 산업 | 시공 사례</title>
+    <style>
+      :root { --canvas:#fff; --foreground:#191f28; --body:#4e5968; --muted:#8b95a1; --surface:#f2f4f6; --border:#e5e8eb; --weak-bg:#e8f3ff; --weak-fg:#1b64da; --dark:rgba(0,12,30,.8); --content:1180px; }
+      * { box-sizing:border-box; }
+      html { min-width:320px; background:var(--canvas); scroll-behavior:smooth; }
+      body { margin:0; background:var(--canvas); color:var(--foreground); font-family:"Toss Product Sans","Pretendard","Noto Sans KR",sans-serif; font-size:16px; line-height:24px; }
+      a { color:inherit; text-decoration:none; } button,a { font:inherit; } button { cursor:pointer; }
+      :focus-visible { outline:3px solid var(--weak-fg); outline-offset:3px; }
+      .preview-note { width:min(calc(100% - 48px),var(--content)); margin:auto; padding:16px 0; color:var(--muted); font-size:14px; line-height:21px; }
+      .site-header { position:sticky; top:0; z-index:10; background:var(--canvas); border-bottom:1px solid var(--border); transition:transform 180ms ease,background 180ms ease; }
+      .site-header.is-hidden { transform:translateY(-100%); }
+      .header-inner { position:relative; display:flex; align-items:center; width:min(calc(100% - 48px),var(--content)); min-height:72px; margin:auto; }
+      .brand { display:inline-flex; align-items:center; flex-shrink:0; font-size:22px; font-weight:600; line-height:33px; }
+      .brand-mark { display:grid; place-items:center; width:32px; height:32px; margin-right:8px; border-radius:6px; background:var(--dark); color:#fff; font-size:12px; }
+      .brand em { color:var(--weak-fg); font-style:normal; }
+      .nav { position:absolute; left:50%; display:flex; gap:32px; transform:translateX(-50%); }
+      .nav a { position:relative; color:var(--body); font-size:14px; font-weight:600; line-height:21px; white-space:nowrap; }
+      .nav a:hover,.nav a[aria-current=page] { color:var(--weak-fg); }
+      .nav a[aria-current=page]::after { position:absolute; right:0; bottom:-10px; left:0; height:2px; border-radius:2px; background:var(--weak-fg); content:""; }
+      .header-contact { display:flex; align-items:center; gap:10px; margin-left:auto; }
+      .header-phone { color:var(--foreground); font-size:13px; font-weight:700; white-space:nowrap; }
+      .header-socials { display:flex; gap:6px; } .header-socials a { display:grid; place-items:center; width:32px; height:32px; }
+      .header-socials img { width:18px; height:18px; }
+      .side-call { position:fixed; top:50%; right:4px; z-index:15; display:flex; flex-direction:column; align-items:center; gap:6px; width:116px; padding:8px; border-radius:7px; background:var(--dark); color:var(--canvas); font-size:12px; font-weight:600; transform:translateY(-50%); }
+      .side-call-phone { display:block; line-height:21px; text-align:center; }
+      .side-call-socials { display:flex; justify-content:center; gap:8px; width:100%; }
+      .side-call-socials a { display:grid; place-items:center; width:28px; height:28px; border:1px solid rgb(255 255 255 / 35%); border-radius:6px; }
+      .side-call-socials img { width:16px; height:16px; }
+      .menu-toggle { display:none; margin-left:auto; padding:8px; border:1px solid var(--border); border-radius:6px; background:var(--canvas); color:var(--foreground); }
+      .page-title { border-bottom:1px solid var(--border); background:var(--surface); }
+      .page-title-inner { width:min(calc(100% - 48px),var(--content)); margin:auto; padding:32px 0; }
+      .eyebrow { margin:0 0 8px; color:var(--weak-fg); font-size:14px; font-weight:600; line-height:21px; }
+      .page-title h1 { margin:0; font-size:36px; font-weight:700; line-height:54px; letter-spacing:-.04em; }
+      .page-title p { max-width:560px; margin:8px 0 0; color:var(--body); }
+      .guide-hero { border-bottom:1px solid var(--border); background:var(--canvas); }
+      .guide-hero-inner { position:relative; width:min(calc(100% - 48px),var(--content)); min-height:220px; margin:auto; padding:44px 0 42px; }
+      .guide-hero h1 { max-width:720px; margin:0; color:var(--foreground); font-size:40px; font-weight:700; line-height:1.2; letter-spacing:-.07em; }
+      .guide-hero p { max-width:560px; margin:12px 0 0; color:var(--body); font-size:16px; line-height:25px; }
+      .guide-hero .guide-link { position:absolute; right:0; bottom:42px; display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:9px 16px; border:1px solid var(--border); border-radius:7px; background:var(--canvas); color:var(--weak-fg); font-size:14px; font-weight:700; }
+      .main { width:min(calc(100% - 48px),var(--content)); margin:auto; padding:32px 0; }
+      .filter { padding:24px; border:1px solid var(--border); border-radius:6px; background:var(--surface); }
+      .filter-head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:16px; border-bottom:1px solid var(--border); }
+      .filter-title { margin:0; font-size:24px; font-weight:600; line-height:36px; } .filter-summary { color:var(--muted); font-size:14px; line-height:21px; }
+      .filter-row { display:flex; align-items:flex-start; gap:16px; padding-top:16px; }
+      .filter-label { width:72px; padding-top:8px; color:var(--body); font-size:14px; font-weight:600; line-height:21px; }
+      .filter-options { display:flex; flex-wrap:wrap; gap:6px; flex:1; }
+      .chip { min-height:40px; padding:7px 10px; border:1px solid var(--border); border-radius:6px; background:var(--canvas); color:var(--body); font-size:14px; line-height:21px; }
+      .chip.is-selected { border-color:var(--weak-fg); background:var(--weak-bg); color:var(--weak-fg); font-weight:600; }
+      .reset { min-height:40px; padding:7px 0; border:0; background:transparent; color:var(--body); font-size:14px; line-height:21px; text-decoration:underline; text-underline-offset:4px; white-space:nowrap; }
+      .result-bar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:32px 0 16px; }
+      .result-summary { margin:0; color:var(--body); font-size:14px; line-height:21px; }
+      .result-summary strong { color:var(--foreground); }
+      .case-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+      .case-card { overflow:hidden; border:1px solid var(--border); border-radius:6px; background:var(--canvas); text-align:left; }
+      .case-card img { width:100%; height:300px; object-fit:cover; }
+      .case-card-body { padding:16px; }
+      .tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; } .tag { padding:4px 8px; border-radius:6px; background:var(--weak-bg); color:var(--weak-fg); font-size:14px; line-height:21px; }
+      .case-card h2 { margin:0; font-size:24px; font-weight:600; line-height:36px; letter-spacing:-.03em; }
+      .case-card p { margin:8px 0 0; color:var(--body); font-size:14px; line-height:21px; }
+      .empty { padding:32px; border:1px solid var(--border); border-radius:6px; color:var(--body); text-align:center; }
+      .pagination { display:flex; justify-content:center; gap:6px; margin-top:24px; }
+      .page-button { min-width:40px; height:40px; padding:7px 10px; border:1px solid var(--border); border-radius:6px; background:var(--canvas); color:var(--body); font-size:14px; }
+      .page-button.is-current { border-color:var(--dark); background:var(--dark); color:#fff; font-weight:600; }
+      .site-footer { background:var(--dark); color:#fff; }
+      .footer-inner { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start; gap:256px; width:min(calc(100% - 48px),var(--content)); margin:auto; padding:32px 0; }
+      .company-name { margin:0; font-size:22px; font-weight:700; line-height:33px; letter-spacing:-.05em; }
+      .company-meta { display:flex; flex-wrap:wrap; gap:6px 16px; margin:16px 0 0; color:rgb(255 255 255 / 64%); font-size:13px; line-height:21px; }
+      .company-meta dt,.company-meta dd { display:inline; margin:0; } .company-meta dt { color:rgb(255 255 255 / 88%); font-weight:600; } .company-meta dd::before { content:" · "; }
+      .company-phone { margin:8px 0 0; color:#fff; font-size:16px; font-weight:600; line-height:24px; }
+      .contact-label { margin:0; color:#fff; font-size:22px; font-weight:700; line-height:33px; letter-spacing:-.05em; } .contact-description { margin:6px 0 0; color:rgb(255 255 255 / 72%); font-size:14px; line-height:21px; }
+      .contact-number { display:inline-flex; align-items:center; justify-content:center; height:46px; margin-top:16px; padding:11px 16px; border-radius:7px; background:#fff; color:var(--foreground); font-size:17px; font-weight:600; line-height:24px; white-space:nowrap; }
+      .footer-bottom { border-top:1px solid rgb(255 255 255 / 16%); color:rgb(255 255 255 / 48%); font-size:12px; }
+      .footer-bottom-inner { width:min(calc(100% - 48px),var(--content)); margin:auto; padding:8px 0 12px; }
+      .modal-backdrop { position:fixed; inset:0; z-index:30; display:grid; place-items:center; padding:72px 24px; background:rgb(0 12 30 / 64%); }
+      .modal-backdrop[hidden] { display:none; }
+      .modal { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr); width:min(100%,var(--content)); max-height:calc(100vh - 144px); overflow:auto; border-radius:6px; background:var(--canvas); }
+      .sheet-handle { display:none; }
+      .modal-gallery { position:relative; min-height:420px; background:var(--dark); } .modal-gallery img { width:100%; height:100%; object-fit:contain; }
+      .modal-image-button { display:block; width:100%; height:100%; min-height:420px; padding:0; border:0; background:transparent; cursor:zoom-in; }
+      .modal-gallery > .previous, .modal-gallery > .next { position:absolute; top:50%; width:40px; height:40px; border:1px solid rgb(255 255 255 / 64%); border-radius:6px; background:rgb(0 12 30 / 60%); color:#fff; transform:translateY(-50%); }
+      .modal-gallery .previous { left:16px; } .modal-gallery .next { right:16px; }
+      .modal-copy { position:relative; padding:32px; } .modal-close { position:absolute; top:16px; right:16px; width:40px; height:40px; border:1px solid var(--border); border-radius:6px; background:var(--canvas); }
+      .modal-copy h2 { margin:40px 0 8px; font-size:30px; font-weight:600; line-height:45px; } .modal-copy p { margin:0; color:var(--body); }
+      .modal-meta { display:grid; gap:8px; margin:32px 0 0; padding-top:16px; border-top:1px solid var(--border); } .modal-meta div { display:flex; gap:16px; font-size:14px; line-height:21px; } .modal-meta dt { width:64px; color:var(--muted); } .modal-meta dd { margin:0; color:var(--body); }
+      .viewer { position:fixed; inset:0; z-index:40; display:flex; flex-direction:column; background:rgb(0 12 30 / 94%); color:#fff; }
+      .viewer[hidden] { display:none; }
+      .viewer-head { display:flex; align-items:center; justify-content:space-between; min-height:64px; padding:0 24px; font-size:14px; font-weight:600; }
+      .viewer-close { width:40px; height:40px; border:1px solid rgb(255 255 255 / 55%); border-radius:6px; background:transparent; color:#fff; font-size:24px; }
+      .viewer-stage { position:relative; display:flex; flex:1; align-items:center; justify-content:center; min-height:0; padding:16px 80px; }
+      .viewer-stage img { width:min(940px,100%); height:100%; min-height:240px; max-height:620px; object-fit:contain; }
+      .viewer-arrow { position:absolute; top:50%; width:40px; height:40px; border:1px solid rgb(255 255 255 / 55%); border-radius:6px; background:rgb(0 12 30 / 48%); color:#fff; font-size:22px; transform:translateY(-50%); }
+      .viewer-arrow.previous { left:24px; } .viewer-arrow.next { right:24px; }
+      .viewer-bottom { padding:16px 24px 24px; border-top:1px solid rgb(255 255 255 / 16%); }
+      .viewer-position { margin:0 0 8px; color:rgb(255 255 255 / 72%); font-size:14px; text-align:center; }
+      .viewer-thumbs { display:flex; justify-content:center; gap:8px; overflow-x:auto; }
+      .viewer-thumb { width:64px; height:48px; padding:0; border:2px solid transparent; border-radius:6px; overflow:hidden; background:transparent; }
+      .viewer-thumb.is-current { border-color:var(--weak-fg); } .viewer-thumb img { width:100%; height:100%; object-fit:cover; }
+      @media (max-width:767px) {
+        .preview-note,.header-inner,.page-title-inner,.guide-hero-inner,.main,.footer-inner,.footer-bottom-inner { width:min(calc(100% - 32px),var(--content)); }
+        .header-inner { min-height:64px; } .nav,.header-contact { display:none; } .menu-toggle { display:block; } .side-call { display:none; }
+        .page-title-inner { padding:24px 0; } .page-title h1 { font-size:30px; line-height:45px; } .guide-hero-inner { min-height:0; padding:36px 0; } .guide-hero h1 { font-size:34px; } .guide-hero p { font-size:15px; line-height:24px; } .guide-hero .guide-link { position:static; width:100%; margin-top:24px; }
+        .main { padding:24px 0; } .filter { padding:16px; } .filter-head { display:block; } .filter-summary { margin-top:6px; }
+        .filter-row { display:block; } .filter-label { width:auto; padding:0; margin-bottom:8px; } .filter-options { flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; }
+        .reset { margin-top:8px; } .result-bar { margin-top:24px; }
+        .case-list { grid-template-columns:1fr; gap:16px; } .case-card h2 { font-size:22px; line-height:33px; }
+        .footer-inner { display:block; padding:24px 0 28px; } .contact-block { margin-top:24px; } .contact-number { width:100%; }
+        .modal-backdrop { padding:0; place-items:end; } .modal { display:block; width:100%; max-height:90vh; border-radius:6px 6px 0 0; } .sheet-handle { display:block; width:32px; height:4px; margin:8px auto 0; border-radius:4px; background:var(--muted); } .modal-gallery { min-height:280px; height:44vh; } .modal-image-button { min-height:280px; } .modal-copy { padding:24px 16px 32px; } .modal-copy h2 { font-size:24px; line-height:36px; }
+        .viewer-head { min-height:56px; padding:0 16px; } .viewer-stage { padding:16px 48px; } .viewer-arrow.previous { left:8px; } .viewer-arrow.next { right:8px; } .viewer-bottom { padding:12px 16px 16px; }
+      }
+      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+    </style>
+  </head>
+  <body>
+    <p class="preview-note">시공 사례 시안 · 장소와 공법·제품을 함께 필터링하고 실제 현장 사진을 확인합니다.</p>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#home" aria-label="지케이 산업 홈"><span class="brand-mark" aria-hidden="true">지케이</span>지케이 <em>산업</em></a>
+        <nav class="nav" aria-label="기본 메뉴"><a href="#home">홈</a><a href="#cases" aria-current="page">시공 사례</a><a href="#products">시공 안내</a><a href="#company">회사 소개</a></nav>
+        <div class="header-contact" aria-label="전화 문의 및 공식 외부 채널"><a class="header-phone" href="tel:01092612061">문의 : 010-9261-2061</a><div class="header-socials"><a href="https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43" target="_blank" rel="noreferrer" aria-label="Instagram 새 탭 열기"><img src="../../../../public/images/social/instagram.svg" alt="" /></a><a href="https://www.youtube.com/@%ED%95%9C%EC%8A%A4%ED%86%A0%EB%A6%AC-w4b/shorts" target="_blank" rel="noreferrer" aria-label="YouTube 새 탭 열기"><img src="../../../../public/images/social/youtube.svg" alt="" /></a></div></div>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기">☰</button>
+      </div>
+    </header>
+
+    <section class="guide-hero" aria-labelledby="page-title"><div class="guide-hero-inner"><p class="eyebrow">CASE STUDIES</p><h1 id="page-title">시공 사례</h1><p>지케이 산업이 진행한 다양한 바닥 시공 현장을 확인해 보세요.</p><a class="guide-link" href="construction-guide.html">시공 안내 보기</a></div></section>
+    <main class="main" id="cases">
+      <section class="filter" aria-label="시공 사례 필터"><div class="filter-head"><h2 class="filter-title">태그 필터</h2><span class="filter-summary" id="filter-summary">선택한 조건을 모두 만족하는 사례</span></div><div class="filter-row"><strong class="filter-label">시공 장소</strong><div class="filter-options" id="location-filters"></div><button class="reset" type="button" id="reset-filters">필터 초기화</button></div><div class="filter-row"><strong class="filter-label">시공 자재</strong><div class="filter-options" id="material-filters"></div></div></section>
+      <div class="result-bar"><p class="result-summary" id="result-summary"></p></div>
+      <section class="case-list" id="case-list" aria-live="polite"></section>
+      <p class="empty" id="empty-message" hidden>선택한 조건에 맞는 시공 사례가 없습니다.</p>
+      <nav class="pagination" id="pagination" aria-label="시공 사례 페이지 이동"></nav>
+    </main>
+
+    <div class="modal-backdrop" id="case-modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="sheet-handle" aria-hidden="true"></div><div class="modal-gallery"><button class="modal-image-button" id="modal-image-button" type="button" aria-label="사진 크게 보기"><img id="modal-image" src="" alt="" /></button><button class="previous" type="button" aria-label="이전 사진">‹</button><button class="next" type="button" aria-label="다음 사진">›</button></div><div class="modal-copy"><button class="modal-close" type="button" aria-label="상세 닫기">×</button><div class="tags" id="modal-tags"></div><h2 id="modal-title"></h2><p id="modal-location"></p><dl class="modal-meta"><div><dt>시공 내용</dt><dd id="modal-description">등록된 설명 없음</dd></div><div><dt>사용 제품</dt><dd id="modal-product"></dd></div></dl></div></div></div>
+    <div class="viewer" id="photo-viewer" hidden role="dialog" aria-modal="true" aria-labelledby="viewer-title"><header class="viewer-head"><span id="viewer-title">시공 사진</span><button class="viewer-close" type="button" aria-label="사진 확대 닫기">×</button></header><div class="viewer-stage"><img id="viewer-image" src="" alt="" /><button class="viewer-arrow previous" type="button" aria-label="이전 사진">‹</button><button class="viewer-arrow next" type="button" aria-label="다음 사진">›</button></div><div class="viewer-bottom"><p class="viewer-position" id="viewer-position">1 / 1</p><div class="viewer-thumbs" id="viewer-thumbs"></div></div></div>
+
+    <aside class="side-call" aria-label="전화 문의 및 공식 외부 채널"><a class="side-call-phone" href="tel:01092612061" aria-label="전화 문의 010-9261-2061">전화 문의<br />010-9261-2061</a><div class="side-call-socials"><a href="https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43" target="_blank" rel="noreferrer" aria-label="Instagram 새 탭 열기"><img src="../../../../public/images/social/instagram.svg" alt="" /></a><a href="https://www.youtube.com/@%ED%95%9C%EC%8A%A4%ED%86%A0%EB%A6%AC-w4b/shorts" target="_blank" rel="noreferrer" aria-label="YouTube 새 탭 열기"><img src="../../../../public/images/social/youtube.svg" alt="" /></a></div></aside>
+
+    <footer class="site-footer"><div class="footer-inner"><div><p class="company-name">상호·지케이 산업</p><dl class="company-meta"><div><dt>서비스 지역</dt><dd>대한민국 전국</dd></div><div><dt>주소</dt><dd>능곡로 8 401-1202</dd></div><div><dt>대표자</dt><dd>문재완</dd></div></dl><p class="company-phone">대표 전화: 010-9261-2061</p></div><div class="contact-block"><p class="contact-label">현장 상담이 필요하신가요?</p><p class="contact-description">오프라인 무료 견적으로 현장을 확인하고 바닥 시공 방향을 안내해 드립니다.</p><a class="contact-number" href="construction-guide.html" aria-label="시공 안내 보기">시공 안내 보기</a></div></div><div class="footer-bottom"><div class="footer-bottom-inner">지케이 산업 · 바닥 시공 사례와 사용 제품 안내 · © 2026 지케이 산업. All rights reserved.</div></div></footer>
+
+    <script>
+      const cases=[
+        {id:1,title:"밀양 공장 크리트",tags:["공장","크리트"],location:"밀양 공장",product:"크리트",description:null,images:["../../../../public/images/cases/case-001-miryang-factory-crete/01.jpg","../../../../public/images/cases/case-001-miryang-factory-crete/02.jpg","../../../../public/images/cases/case-001-miryang-factory-crete/03.jpg"],alts:["밀양 공장 크리트 시공 사진 1","밀양 공장 크리트 시공 사진 2","밀양 공장 크리트 시공 사진 3"]},
+        {id:2,title:"대명항 MMA",tags:["대명항","MMA"],location:"대명항",product:"MMA",description:null,images:["../../../../public/images/cases/case-002-daemyeong-port-mma/01.jpg"],alts:["대명항 MMA 시공 사진"]},
+        {id:3,title:"평택 공장 비노출 방수",tags:["공장","비노출 방수"],location:"평택 공장",product:"비노출 방수",description:null,images:["../../../../public/images/cases/case-003-pyeongtaek-factory-exposed-waterproofing/01.jpg","../../../../public/images/cases/case-003-pyeongtaek-factory-exposed-waterproofing/02.jpg"],alts:["평택 공장 비노출 방수 시공 사진 1","평택 공장 비노출 방수 시공 사진 2"]},
+        {id:4,title:"천안 공장 크리트",tags:["공장","크리트"],location:"천안 공장",product:"크리트",description:null,images:["../../../../public/images/cases/case-004-cheonan-factory-crete/01.jpg"],alts:["천안 공장 크리트 시공 사진 1"]},
+        {id:5,title:"대전 주차장 크리트",tags:["주차장","크리트"],location:"대전 주차장",product:"크리트",description:null,images:["../../../../public/images/cases/case-007-daejeon-parking-crete/01.jpg"],alts:["대전 주차장 크리트 시공 사진"]},
+        {id:6,title:"주방 MMA",tags:["주방","MMA"],location:"주방",product:"MMA",description:null,images:["../../../../public/images/cases/case-008-kitchen-mma/01.jpg"],alts:["주방 MMA 시공 사진"]},
+        {id:7,title:"분당 군부대 MMA",tags:["군부대","MMA"],location:"분당 군부대",product:"MMA",description:null,images:["../../../../public/images/cases/case-009-bundang-military-mma/01.jpg"],alts:["분당 군부대 MMA 시공 사진"]}
+      ];
+      const locations=["전체","공장","주차장","주방","대명항","군부대"]; const materials=["전체","크리트","MMA","비노출 방수"]; let selectedLocation="전체"; let selectedMaterial="전체"; let page=1; const perPage=4; let activeCase=null; let activeImage=0;
+      const renderFilters=(items,element,selected,onSelect)=>{element.innerHTML=items.map(item=>`<button class="chip ${item===selected?"is-selected":""}" type="button" aria-pressed="${item===selected}">${item}</button>`).join(""); element.querySelectorAll("button").forEach((button,index)=>button.addEventListener("click",()=>onSelect(items[index])));};
+      const filtered=()=>cases.filter(item=>(selectedLocation==="전체"||item.tags.includes(selectedLocation))&&(selectedMaterial==="전체"||item.product===selectedMaterial));
+      const render=()=>{const result=filtered(); const totalPages=Math.max(1,Math.ceil(result.length/perPage)); page=Math.min(page,totalPages); const visible=result.slice((page-1)*perPage,page*perPage); document.querySelector("#result-summary").innerHTML=`전체 <strong>${result.length}건</strong> / ${page}페이지`; document.querySelector("#case-list").innerHTML=visible.map(item=>`<button class="case-card" type="button" data-id="${item.id}"><img src="${item.images[0]}" alt="${item.alts[0]}" /><div class="case-card-body"><div class="tags">${item.tags.map(tag=>`<span class="tag">${tag}</span>`).join("")}</div><h2>${item.title}</h2><p>${item.location}</p></div></button>`).join(""); document.querySelector("#empty-message").hidden=result.length!==0; document.querySelector("#pagination").innerHTML=Array.from({length:totalPages},(_,i)=>`<button class="page-button ${i+1===page?"is-current":""}" type="button" aria-current="${i+1===page?"page":"false"}">${i+1}</button>`).join(""); document.querySelectorAll(".case-card").forEach(card=>card.addEventListener("click",()=>openModal(Number(card.dataset.id)))); document.querySelectorAll(".page-button").forEach((button,index)=>button.addEventListener("click",()=>{page=index+1;render();window.scrollTo({top:document.querySelector(".result-bar").offsetTop-72,behavior:"smooth"});})); };
+      const setLocation=(value)=>{selectedLocation=value;page=1;renderFilters(locations,document.querySelector("#location-filters"),selectedLocation,setLocation);render();}; const setMaterial=(value)=>{selectedMaterial=value;page=1;renderFilters(materials,document.querySelector("#material-filters"),selectedMaterial,setMaterial);render();};
+      const caseModal=document.querySelector("#case-modal"); const viewer=document.querySelector("#photo-viewer"); const modalImage=document.querySelector("#modal-image"); const modalPrevious=document.querySelector(".modal-gallery .previous"); const modalNext=document.querySelector(".modal-gallery .next"); const viewerImage=document.querySelector("#viewer-image"); const viewerPrevious=document.querySelector(".viewer-arrow.previous"); const viewerNext=document.querySelector(".viewer-arrow.next");
+      const renderModalImage=()=>{modalImage.src=activeCase.images[activeImage];modalImage.alt=activeCase.alts[activeImage];const hasMultiple=activeCase.images.length>1;modalPrevious.hidden=!hasMultiple;modalNext.hidden=!hasMultiple;if(!viewer.hidden)renderViewer();};
+      const renderViewer=()=>{viewerImage.src=activeCase.images[activeImage];viewerImage.alt=activeCase.alts[activeImage];document.querySelector("#viewer-position").textContent=`${activeImage+1} / ${activeCase.images.length}`;document.querySelector("#viewer-thumbs").innerHTML=activeCase.images.map((image,index)=>`<button class="viewer-thumb ${index===activeImage?"is-current":""}" type="button" aria-label="사진 ${index+1} 보기" aria-current="${index===activeImage?"true":"false"}"><img src="${image}" alt="" /></button>`).join("");document.querySelectorAll(".viewer-thumb").forEach((thumb,index)=>thumb.addEventListener("click",()=>{activeImage=index;renderModalImage();}));const hasMultiple=activeCase.images.length>1;viewerPrevious.hidden=!hasMultiple;viewerNext.hidden=!hasMultiple;};
+      const openModal=(id)=>{activeCase=cases.find(item=>item.id===id);activeImage=0;document.querySelector("#modal-tags").innerHTML=activeCase.tags.map(tag=>`<span class="tag">${tag}</span>`).join("");document.querySelector("#modal-title").textContent=activeCase.title;document.querySelector("#modal-location").textContent=activeCase.location;document.querySelector("#modal-description").textContent=activeCase.description||"등록된 설명 없음";document.querySelector("#modal-product").textContent=activeCase.product;renderModalImage();caseModal.hidden=false;document.body.style.overflow="hidden";document.querySelector(".modal-close").focus();};
+      const closeViewer=()=>{viewer.hidden=true;document.querySelector(".modal-close").focus();}; const openViewer=()=>{renderViewer();viewer.hidden=false;document.querySelector(".viewer-close").focus();}; const closeModal=()=>{if(!viewer.hidden)closeViewer();caseModal.hidden=true;document.body.style.overflow="";};
+      const changeImage=(step)=>{activeImage=(activeImage+step+activeCase.images.length)%activeCase.images.length;renderModalImage();};
+      document.querySelector("#reset-filters").addEventListener("click",()=>{selectedLocation="전체";selectedMaterial="전체";page=1;renderFilters(locations,document.querySelector("#location-filters"),selectedLocation,setLocation);renderFilters(materials,document.querySelector("#material-filters"),selectedMaterial,setMaterial);render();}); document.querySelector(".modal-close").addEventListener("click",closeModal); document.querySelector("#modal-image-button").addEventListener("click",openViewer); caseModal.addEventListener("click",event=>{if(event.target===caseModal)closeModal();}); modalPrevious.addEventListener("click",()=>changeImage(-1)); modalNext.addEventListener("click",()=>changeImage(1)); document.querySelector(".viewer-close").addEventListener("click",closeViewer); viewerPrevious.addEventListener("click",()=>changeImage(-1)); viewerNext.addEventListener("click",()=>changeImage(1)); viewer.addEventListener("click",event=>{if(event.target===viewer)closeViewer();});
+      let sheetStartY=0; const sheetHandle=document.querySelector(".sheet-handle"); sheetHandle.addEventListener("pointerdown",event=>{sheetStartY=event.clientY;sheetHandle.setPointerCapture(event.pointerId);}); sheetHandle.addEventListener("pointerup",event=>{if(event.clientY-sheetStartY>100)closeModal();});
+      document.addEventListener("keydown",event=>{if(!viewer.hidden){if(event.key==="Escape")closeViewer();if(event.key==="ArrowLeft")changeImage(-1);if(event.key==="ArrowRight")changeImage(1);return;}if(!caseModal.hidden){if(event.key==="Escape")closeModal();if(event.key==="ArrowLeft")changeImage(-1);if(event.key==="ArrowRight")changeImage(1);if(event.key==="Tab"){const focusable=[...caseModal.querySelectorAll("button:not([hidden])")];const first=focusable[0];const last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}}});
+      renderFilters(locations,document.querySelector("#location-filters"),selectedLocation,setLocation); renderFilters(materials,document.querySelector("#material-filters"),selectedMaterial,setMaterial); render();
+    </script>
+  </body>
+</html>

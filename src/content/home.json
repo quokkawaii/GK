@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "지케이 산업 | 홈 시안",
+    "description": "공장, 주차장, 주방, 옥상 등 다양한 공간의 바닥 시공 사례와 사용 제품 정보를 확인해 보세요."
+  },
+  "hero": {
+    "eyebrow": "지케이 산업",
+    "titleLines": ["현장에 맞는", "바닥 시공"],
+    "description": "공장, 주차장, 주방, 옥상 등 다양한 공간의 바닥 시공 사례와 사용 제품 정보를 확인해 보세요.",
+    "casesQuery": {
+      "sortBy": "id",
+      "direction": "desc",
+      "limit": 10,
+      "display": "slider"
+    }
+  },
+  "about": {
+    "titleLines": ["현장을 확인하고", "알맞은 방향을 제안합니다."],
+    "lead": "안녕하세요. 지케이 산업입니다.",
+    "paragraphs": [
+      "지케이 산업은 공장, 주차장, 주방, 옥상 등 다양한 공간의 바닥 시공을 소개하고 있습니다.",
+      "현장 조건과 사용 목적에 맞는 시공 방향과 사용 제품 정보를 안내하는 데 집중합니다."
+    ]
+  },
+  "spaces": {
+    "title": "공간에 따라 달라지는 바닥 시공",
+    "description": "현장 종류별 시공 사례를 먼저 확인해 보세요.",
+    "items": [
+      {
+        "title": "공장",
+        "description": "바닥 시공 사례와 적용 공법 안내"
+      },
+      {
+        "title": "주차장",
+        "description": "주차 공간 바닥 시공 사례 안내"
+      },
+      {
+        "title": "주방",
+        "description": "사용 환경에 맞춘 바닥 마감 안내"
+      },
+      {
+        "title": "옥상 등 기타 공간",
+        "description": "현장 조건에 따른 시공 정보 안내"
+      }
+    ]
+  },
+  "featuredCases": {
+    "title": "시공 사례",
+    "description": "실제 현장 사진과 시공 내용을 확인할 수 있습니다.",
+    "casesQuery": {
+      "sortBy": "id",
+      "direction": "asc",
+      "limit": 3,
+      "display": "all"
+    }
+  }
+}

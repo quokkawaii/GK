@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>회사 소개 · 지케이 산업</title>
+    <style>
+      :root { --canvas:#fff; --surface:#f2f4f6; --foreground:#191f28; --body:#4e5968; --muted:#8b95a1; --border:#e5e8eb; --accent:#1b64da; --dark:rgba(0,12,30,.8); --content:1180px; }
+      * { box-sizing:border-box; }
+      html { min-width:320px; background:var(--surface); }
+      body { margin:0; color:var(--foreground); background:var(--canvas); font-family:"Toss Product Sans","Pretendard","Noto Sans KR",sans-serif; line-height:1.5; }
+      a { color:inherit; text-decoration:none; } button { font:inherit; }
+      :focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+      .preview-note { width:min(calc(100% - 48px),var(--content)); margin:auto; padding:22px 0; color:var(--body); font-size:14px; }
+      .site-header { position:sticky; top:0; z-index:20; background:transparent; transition:transform 180ms ease,background 180ms ease; }
+      .site-header.is-hidden { transform:translateY(-100%); }
+      .site-header.is-scrolled { border-bottom:1px solid rgb(229 232 235 / 65%); background:rgb(255 255 255 / 68%); backdrop-filter:blur(18px) saturate(145%); -webkit-backdrop-filter:blur(18px) saturate(145%); }
+      .header-inner { position:relative; display:flex; align-items:center; width:min(calc(100% - 48px),var(--content)); min-height:82px; margin:auto; }
+      .brand { display:inline-flex; align-items:center; flex-shrink:0; font-size:24px; font-weight:700; letter-spacing:-.07em; }
+      .brand-mark { display:grid; place-items:center; width:30px; height:30px; margin-right:8px; border-radius:50%; color:#fff; background:linear-gradient(135deg,#3182f6,#0b5de8); font-size:12px; letter-spacing:-.04em; transform:rotate(-18deg); }
+      .brand em { color:var(--accent); font-style:normal; }
+      .primary-nav { position:absolute; left:50%; display:flex; align-items:center; gap:38px; transform:translateX(-50%); }
+      .primary-nav a { position:relative; padding:12px 0; color:var(--foreground); font-size:16px; font-weight:600; letter-spacing:-.03em; white-space:nowrap; }
+      .primary-nav a:hover,.primary-nav a[aria-current="page"] { color:var(--accent); }
+      .primary-nav a[aria-current="page"]::after { position:absolute; right:0; bottom:-8px; left:0; height:2px; border-radius:2px; background:var(--accent); content:""; }
+      .header-contact { display:flex; align-items:center; gap:10px; margin-left:auto; } .header-phone { color:var(--foreground); font-size:13px; font-weight:700; white-space:nowrap; }
+      .header-socials { display:flex; gap:6px; } .header-socials a { display:grid; place-items:center; width:32px; height:32px; } .header-socials img { width:18px; height:18px; }
+      .menu-toggle { display:none; margin-left:auto; border:0; border-radius:12px; background:rgb(255 255 255 / 72%); padding:10px 13px; color:var(--foreground); font-size:20px; }
+      .about-page { width:min(calc(100% - 48px),var(--content)); min-height:680px; margin:auto; padding:72px 0 68px; background:#fff; }
+      .about-title { margin:0; font-size:clamp(30px,3vw,42px); font-weight:500; line-height:1.35; letter-spacing:-.08em; }
+      .about-title strong { color:var(--accent); font-weight:500; }
+      .about-copy { max-width:760px; margin-top:56px; color:#737373; font-size:clamp(17px,1.55vw,21px); font-weight:400; line-height:1.9; letter-spacing:-.055em; }
+      .about-copy p { margin:0 0 40px; }
+      .about-contact { color:var(--foreground); } .about-contact strong { color:var(--accent); font-weight:600; }
+      .about-signature { display:block; margin:0 0 0 auto; color:var(--foreground); font-size:22px; font-weight:600; letter-spacing:-.08em; text-align:right; }
+      .side-call { position:fixed; top:50%; right:4px; z-index:15; display:flex; flex-direction:column; align-items:center; gap:6px; width:116px; padding:8px; border-radius:7px; background:var(--dark); color:#fff; font-size:12px; font-weight:600; transform:translateY(-50%); } .side-call-phone { display:block; line-height:21px; text-align:center; } .side-call-socials { display:flex; justify-content:center; gap:8px; width:100%; } .side-call-socials a { display:grid; place-items:center; width:28px; height:28px; border:1px solid rgb(255 255 255 / 35%); border-radius:6px; } .side-call-socials img { width:16px; height:16px; }
+      .site-footer { background:var(--dark); color:#fff; } .footer-inner { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start; gap:256px; width:min(calc(100% - 48px),var(--content)); margin:auto; padding:32px 0; } .company-name { margin:0; font-size:22px; font-weight:700; letter-spacing:-.05em; } .company-meta { display:flex; flex-wrap:wrap; gap:6px 16px; margin:16px 0 0; color:rgb(255 255 255 / 64%); font-size:13px; } .company-meta dt,.company-meta dd { display:inline; margin:0; } .company-meta dt { color:rgb(255 255 255 / 88%); font-weight:600; } .company-meta dd::before { content:" · "; } .company-phone { margin:8px 0 0; color:#fff; font-size:16px; font-weight:600; line-height:24px; } .contact-block { min-width:220px; } .contact-label { margin:0; color:#fff; font-size:22px; font-weight:700; line-height:33px; } .contact-description { margin:6px 0 0; color:rgb(255 255 255 / 72%); font-size:14px; line-height:21px; } .contact-number { display:inline-flex; align-items:center; justify-content:center; height:46px; margin-top:16px; padding:11px 16px; border-radius:7px; background:#fff; color:var(--foreground); font-size:17px; font-weight:600; white-space:nowrap; } .footer-bottom { border-top:1px solid rgb(255 255 255 / 16%); color:rgb(255 255 255 / 48%); font-size:12px; } .footer-bottom-inner { width:min(calc(100% - 48px),var(--content)); margin:auto; padding:8px 0 12px; }
+      @media (max-width:900px) { .footer-inner { gap:72px; } }
+      @media (max-width:767px) { .preview-note,.header-inner,.about-page,.footer-inner,.footer-bottom-inner { width:min(calc(100% - 32px),var(--content)); } .header-inner { min-height:68px; } .primary-nav,.header-contact { display:none; } .menu-toggle { display:block; } .about-page { min-height:620px; padding:48px 0 52px; } .about-title { font-size:29px; } .about-copy { margin-top:42px; font-size:17px; line-height:1.85; } .about-copy p { margin-bottom:32px; } .about-signature { font-size:20px; } .side-call { display:none; } .footer-inner { display:block; padding:24px 0 28px; } .contact-block { min-width:0; margin-top:24px; } .company-meta { margin-top:12px; } .contact-number { width:100%; } }
+    </style>
+  </head>
+  <body>
+    <p class="preview-note">회사 소개 시안 · 지케이 산업이 어떤 기준으로 바닥 시공을 안내하는지 소개합니다.</p>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="#home" aria-label="지케이 산업 홈으로 이동"><span class="brand-mark" aria-hidden="true">지케이</span>지케이 <em>산업</em></a><nav class="primary-nav" aria-label="기본 메뉴"><a href="#home" aria-current="page">홈</a><a href="#cases">시공 사례</a><a href="#products">시공 안내</a><a href="#company">회사 소개</a></nav><div class="header-contact" aria-label="전화 문의 및 공식 외부 채널"><a class="header-phone" href="tel:01092612061">문의 : 010-9261-2061</a><div class="header-socials"><a href="https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43" target="_blank" rel="noreferrer" aria-label="Instagram 새 탭 열기"><img src="../../../../public/images/social/instagram.svg" alt="" /></a><a href="https://www.youtube.com/@%ED%95%9C%EC%8A%A4%ED%86%A0%EB%A6%AC-w4b/shorts" target="_blank" rel="noreferrer" aria-label="YouTube 새 탭 열기"><img src="../../../../public/images/social/youtube.svg" alt="" /></a></div></div><button class="menu-toggle" type="button" aria-label="메뉴 열기">☰</button></div></header>
+    <main id="company"><section class="about-page" aria-labelledby="about-title"><h1 class="about-title" id="about-title">안녕하세요.<br /><strong>지케이 산업</strong>입니다.</h1><div class="about-copy"><p>지케이 산업은 공장과 주차장, 주방 등 다양한 공간의 바닥 시공을 안내합니다. 현장의 상태와 공간의 쓰임을 먼저 살펴보고, 필요한 내용을 알기 쉽게 설명드립니다.</p><p>바닥은 매일 사용하는 공간의 기본입니다. 오래 견디는 바닥, 관리하기 편한 바닥, 공간의 목적에 어울리는 바닥을 만들기 위해 현장마다 다른 조건을 세심하게 확인합니다.</p><p>처음 상담하는 순간부터 시공 후까지 책임감을 가지고, 다시 찾고 싶은 바닥 시공 파트너가 되겠습니다.</p><p class="about-contact">시공이 필요한지 고민되실 때는 <strong>시공 안내</strong>에서 진행 과정을 먼저 확인해 주세요.</p></div><span class="about-signature">지케이 산업</span></section></main>
+    </main>
+    <aside class="side-call" aria-label="전화 문의 및 공식 외부 채널"><a class="side-call-phone" href="tel:01092612061">전화 문의<br />010-9261-2061</a><div class="side-call-socials"><a href="https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43" target="_blank" rel="noreferrer" aria-label="Instagram 새 탭 열기"><img src="../../../../public/images/social/instagram.svg" alt="" /></a><a href="https://www.youtube.com/@%ED%95%9C%EC%8A%A4%ED%86%A0%EB%A6%AC-w4b/shorts" target="_blank" rel="noreferrer" aria-label="YouTube 새 탭 열기"><img src="../../../../public/images/social/youtube.svg" alt="" /></a></div></aside>
+    <footer class="site-footer"><div class="footer-inner"><div><p class="company-name">상호·지케이 산업</p><dl class="company-meta"><div><dt>서비스 지역</dt><dd>대한민국 전국</dd></div><div><dt>주소</dt><dd>능곡로 8 401-1202</dd></div><div><dt>대표자</dt><dd>문재완</dd></div></dl><p class="company-phone">대표 전화: 010-9261-2061</p></div><div class="contact-block"><p class="contact-label">현장 상담이 필요하신가요?</p><p class="contact-description">오프라인 무료 견적으로 현장을 확인하고 바닥 시공 방향을 안내해 드립니다.</p><a class="contact-number" href="construction-guide.html" aria-label="시공 안내 보기">시공 안내 보기</a></div></div><div class="footer-bottom"><div class="footer-bottom-inner">지케이 산업 · 바닥 시공 사례와 사용 제품 안내 · © 2026 지케이 산업. All rights reserved.</div></div></footer>
+    <script>const header=document.querySelector(".site-header");let lastScrollY=window.scrollY,ticking=false;const updateHeader=()=>{const currentScrollY=window.scrollY;header.classList.toggle("is-scrolled",currentScrollY>8);if(currentScrollY<=8||currentScrollY<lastScrollY)header.classList.remove("is-hidden");else if(currentScrollY>lastScrollY+8)header.classList.add("is-hidden");lastScrollY=currentScrollY;ticking=false;};window.addEventListener("scroll",()=>{if(!ticking){window.requestAnimationFrame(updateHeader);ticking=true;}},{passive:true});updateHeader();</script>
+  </body>
+</html>

@@ -132,7 +132,7 @@ Cloudflare Pages에서 `main` 이외 브랜치의 자동 미리보기 배포를 
 
 홈을 제외한 대표 공개 URL은 끝 슬래시 없이 사용한다. `/cases/`, `/cases.html`, `/cases/index.html`처럼 같은 공개 페이지를 가리키는 변형 주소는 끝 슬래시 없는 대표 URL로 301 이동한다.
 
-- 시공 사례와 제품 소개, 회사 소개의 대표 URL은 각각 끝 슬래시 없는 주소로 제공한다.
+- 시공 사례와 시공 안내, 회사 소개의 대표 URL은 각각 끝 슬래시 없는 주소로 제공한다.
 - `/cases/`, `/cases.html`, `/cases/index.html` 요청은 `/cases`로 301 이동한다. 다른 공개 페이지도 같은 규칙을 적용한다.
 - NFR-common-019의 canonical, NFR-common-040의 sitemap, NFR-common-039의 내부 링크에는 끝 슬래시 없는 대표 URL만 사용한다.
 
@@ -149,7 +149,7 @@ Cloudflare Pages에서 `main` 이외 브랜치의 자동 미리보기 배포를 
 `www.대표도메인` 및 `<프로젝트>.pages.dev`에서 대표 도메인으로 301 이동할 때, 요청 경로와 쿼리 문자열을 모두 대표 도메인 URL에 보존한다.
 
 - `www.대표도메인/cases?source=naver` 요청은 `대표도메인/cases?source=naver`로 301 이동한다.
-- `<프로젝트>.pages.dev/products?source=naver` 요청은 `대표도메인/products?source=naver`로 301 이동한다.
+- `<프로젝트>.pages.dev/construction-guide?source=naver` 요청은 `대표도메인/construction-guide?source=naver`로 301 이동한다.
 - 이동 뒤 URL 경로는 NFR-common-037의 끝 슬래시 없는 URL 형식과 일치한다.
 - 대표 sitemap·canonical에는 쿼리 문자열이 없는 기본 대표 URL만 사용한다.
 
@@ -163,10 +163,10 @@ Cloudflare Pages에서 `main` 이외 브랜치의 자동 미리보기 배포를 
 
 ## 개발 방법
 
-대표 도메인이 확정된 뒤에는 홈(`/`), 시공 사례(`/cases`), 제품 소개(`/products`), 회사 소개(`/about`) 4개 대표 공개 페이지의 검색 로봇 안내와 sitemap을 정적 자산으로 제공한다.
+대표 도메인이 확정된 뒤에는 홈(`/`), 시공 사례(`/cases`), 시공 안내(`/construction-guide`), 회사 소개(`/about`) 4개 대표 공개 페이지의 검색 로봇 안내와 sitemap을 정적 자산으로 제공한다.
 
 - `robots.txt`는 대표 도메인 루트에서 제공하고 sitemap의 대표 URL을 안내한다.
-- sitemap은 대표 도메인의 절대 URL만 포함하며, 홈·시공 사례·제품 소개·회사 소개의 canonical URL만 포함한다.
+- sitemap은 대표 도메인의 절대 URL만 포함하며, 홈·시공 사례·시공 안내·회사 소개의 canonical URL만 포함한다.
 - 필터 결과, 시공 사례 상세 팝업, 404·오류 화면, `pages.dev`, 미리보기 URL은 sitemap에 포함하지 않는다.
 - `robots.txt`의 차단 규칙만으로 색인 제외를 처리하지 않으며, 색인 제외가 필요한 공개 URL은 실제 404 응답 또는 `noindex`로 처리한다.
 

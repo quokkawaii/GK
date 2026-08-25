@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>지케이 산업 | 토스 스타일 헤더 시안</title>
+    <style>
+      :root { --canvas:#fff; --surface:#f2f4f6; --foreground:#191f28; --body:#4e5968; --border:#e5e8eb; --accent:#1b64da; --dark:rgba(0,12,30,.8); --content:1180px; }
+      * { box-sizing:border-box; }
+      html { min-width:320px; background:var(--surface); }
+      body { margin:0; color:var(--foreground); background:linear-gradient(180deg,#eef8ff 0,#fff 360px); font-family:"Toss Product Sans","Pretendard","Noto Sans KR",sans-serif; line-height:1.5; }
+      a,button { font:inherit; } a { color:inherit; text-decoration:none; } button { cursor:pointer; }
+      :focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+      .preview-note { width:min(calc(100% - 48px),var(--content)); margin:auto; padding:22px 0; color:var(--body); font-size:14px; }
+      .site-header { position:sticky; top:0; z-index:2; background:transparent; transition:transform 180ms ease,background 180ms ease; }
+      .site-header.is-hidden { transform:translateY(-100%); }
+      .site-header.is-scrolled { border-bottom:1px solid rgb(229 232 235 / 65%); background:rgb(255 255 255 / 68%); backdrop-filter:blur(18px) saturate(145%); -webkit-backdrop-filter:blur(18px) saturate(145%); }
+      .header-inner { position:relative; display:flex; align-items:center; width:min(calc(100% - 48px),var(--content)); min-height:82px; margin:auto; }
+      .brand { display:inline-flex; align-items:center; flex-shrink:0; font-size:24px; font-weight:700; letter-spacing:-.07em; }
+      .brand-mark { display:grid; place-items:center; width:30px; height:30px; margin-right:8px; border-radius:50%; color:#fff; background:linear-gradient(135deg,#3182f6,#0b5de8); font-size:12px; letter-spacing:-.04em; transform:rotate(-18deg); }
+      .brand em { color:var(--accent); font-style:normal; }
+      .primary-nav { position:absolute; left:50%; display:flex; align-items:center; gap:38px; transform:translateX(-50%); }
+      .primary-nav a { position:relative; padding:12px 0; color:var(--foreground); font-size:16px; font-weight:600; letter-spacing:-.03em; white-space:nowrap; }
+      .primary-nav a:hover,.primary-nav a[aria-current=page] { color:var(--accent); }
+      .primary-nav a[aria-current=page]::after { position:absolute; right:0; bottom:-8px; left:0; height:2px; border-radius:2px; background:var(--accent); content:""; }
+      .header-contact { display:flex; align-items:center; gap:10px; margin-left:auto; }
+      .header-phone { color:var(--foreground); font-size:13px; font-weight:700; white-space:nowrap; }
+      .header-socials { display:flex; gap:6px; }
+      .header-socials a { display:grid; place-items:center; width:32px; height:32px; }
+      .header-socials img { width:18px; height:18px; }
+      .menu-toggle { display:none; margin-left:auto; border:0; border-radius:12px; background:rgb(255 255 255 / 72%); padding:10px 13px; color:var(--foreground); font-size:20px; }
+      .hero-demo { min-height:650px; width:min(calc(100% - 48px),var(--content)); margin:auto; padding:210px 8px 80px; }
+      .hero-demo h1 { max-width:760px; margin:0; font-size:clamp(46px,7vw,88px); line-height:1.05; letter-spacing:-.09em; }
+      .hero-demo p { margin:22px 0 0; color:var(--body); font-size:24px; font-weight:600; letter-spacing:-.05em; }
+      .spec { width:min(calc(100% - 48px),var(--content)); margin:0 auto 48px; padding:24px 0; border-top:1px solid var(--border); color:var(--body); font-size:14px; }
+      @media (max-width:767px) {
+        .preview-note,.header-inner,.hero-demo,.spec { width:min(calc(100% - 32px),var(--content)); }
+        .preview-note { padding:18px 0; }
+        .header-inner { min-height:68px; } .primary-nav,.header-contact { display:none; } .menu-toggle { display:block; }
+        .hero-demo { min-height:520px; padding:150px 0 60px; } .hero-demo h1 { font-size:48px; } .hero-demo p { font-size:18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#home" aria-label="지케이 산업 홈으로 이동"><span class="brand-mark" aria-hidden="true">지케이</span>지케이 <em>산업</em></a>
+        <nav class="primary-nav" aria-label="기본 메뉴">
+          <a href="#home" aria-current="page">홈</a>
+          <a href="#cases">시공 사례</a>
+          <a href="#products">시공 안내</a>
+          <a href="#company">회사 소개</a>
+        </nav>
+        <div class="header-contact" aria-label="전화 문의 및 공식 외부 채널">
+          <a class="header-phone" href="tel:01092612061">문의 : 010-9261-2061</a>
+          <div class="header-socials">
+            <a href="https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43" target="_blank" rel="noreferrer" aria-label="Instagram 새 탭 열기"><img src="../../../../public/images/social/instagram.svg" alt="" /></a>
+            <a href="https://www.youtube.com/@%ED%95%9C%EC%8A%A4%ED%86%A0%EB%A6%AC-w4b/shorts" target="_blank" rel="noreferrer" aria-label="YouTube 새 탭 열기"><img src="../../../../public/images/social/youtube.svg" alt="" /></a>
+          </div>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기">☰</button>
+      </div>
+    </header>
+    <main id="home">
+      <section class="hero-demo" aria-labelledby="hero-title">
+        <h1 id="hero-title">현장 가까이에서<br />완성하는 바닥 시공</h1>
+        <p>공간에 맞는 시공 방법을 제안하는 지케이 산업</p>
+      </section>
+      <p class="spec">토스 스타일 적용 포인트 · 로고는 왼쪽, 메뉴는 중앙, 문의 행동은 오른쪽에 배치 · 헤더와 히어로 배경은 자연스럽게 연결</p>
+    </main>
+    <script>
+      const header=document.querySelector(".site-header"); let lastScrollY=window.scrollY; let ticking=false;
+      const updateHeader=()=>{const currentScrollY=window.scrollY;header.classList.toggle("is-scrolled",currentScrollY>8);if(currentScrollY<=8||currentScrollY<lastScrollY)header.classList.remove("is-hidden");else if(currentScrollY>lastScrollY+8)header.classList.add("is-hidden");lastScrollY=currentScrollY;ticking=false;};
+      window.addEventListener("scroll",()=>{if(!ticking){window.requestAnimationFrame(updateHeader);ticking=true;}},{passive:true}); updateHeader();
+    </script>
+  </body>
+</html>

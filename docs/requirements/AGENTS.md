@@ -6,7 +6,7 @@ requirements
 ├─ 01-common-req.md          # 전역 또는 둘 이상의 페이지에 공유되는 요구사항
 ├─ 02-home-req.md            # 홈 전용 요구사항
 ├─ 03-cases-req.md           # 시공 사례 전용 요구사항
-├─ 04-products-req.md        # 제품 소개 전용 요구사항
+├─ 04-construction-guide-req.md # 시공 안내 전용 요구사항
 └─ 05-about-req.md           # 회사 소개 전용 요구사항
 ```
 
