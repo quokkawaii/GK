@@ -22,8 +22,8 @@ export function CasesFilterGroup({
               key={option}
               className={
                 isSelected
-                  ? "border-primary bg-weak-background text-weak-foreground min-h-10 rounded-md border px-3 py-1.5 text-sm font-semibold"
-                  : "border-border bg-canvas text-body min-h-10 rounded-md border px-3 py-1.5 text-sm"
+                  ? "border-primary bg-weak-background text-weak-foreground min-h-10 shrink-0 rounded-md border px-3 py-1.5 text-sm font-semibold whitespace-nowrap"
+                  : "border-border bg-canvas text-body min-h-10 shrink-0 rounded-md border px-3 py-1.5 text-sm whitespace-nowrap"
               }
               type="button"
               aria-pressed={isSelected}
