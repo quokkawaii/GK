@@ -7,6 +7,9 @@ export type LayoutContent = {
     };
     description: string;
     applicationName: string;
+    icons: {
+      icon: string;
+    };
     openGraph: {
       siteName: string;
       locale: string;

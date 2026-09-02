@@ -9,9 +9,7 @@ export function HeaderBrand() {
 
   return (
     <Link className="brand" href={route?.route} aria-label="지케이 산업 홈으로 이동">
-      <span className="brand-mark" aria-hidden="true">
-        지케이
-      </span>
+      <img className="brand-mark" src="/images/gk-favicon.svg" alt="" />
       지케이 <em>산업</em>
     </Link>
   );

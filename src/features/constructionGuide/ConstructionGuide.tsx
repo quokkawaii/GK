@@ -51,8 +51,15 @@ function ProcessSection({ process }: ConstructionGuideProcessProps) {
 
 // 시공 안내 전체 화면을 표시한다.
 export function ConstructionGuide({ constructionGuideJson }: ConstructionGuideProps) {
-  const { hero, beforeContact, estimateProcess, constructionProcess, onSiteCheck, spaces } =
-    constructionGuideJson;
+  const {
+    hero,
+    services,
+    beforeContact,
+    estimateProcess,
+    constructionProcess,
+    onSiteCheck,
+    spaces,
+  } = constructionGuideJson;
   const route = findByRouterKey("cases");
   const placeFilter = useCasesFilter("place");
   const materialFilter = useCasesFilter("material");
@@ -66,6 +73,30 @@ export function ConstructionGuide({ constructionGuideJson }: ConstructionGuidePr
       <section className="border-border border-b px-6 py-[88px] max-md:px-4 max-md:py-14">
         <div className="mx-auto w-full max-w-[1180px]">
           <SectionHeading section={hero} />
+        </div>
+      </section>
+
+      <section className="px-6 py-[88px] max-md:px-4 max-md:py-14">
+        <div className="mx-auto w-full max-w-[1180px]">
+          <SectionHeading section={services} />
+
+          <div className="mt-10 grid grid-cols-3 gap-3 max-md:grid-cols-1">
+            {services.groups.map((group) => (
+              <article className="border-border rounded-xl border p-6" key={group.title}>
+                <h3 className="m-0 text-xl font-semibold">{group.title}</h3>
+                <ul className="text-body mt-5 grid gap-2 text-sm leading-6">
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div className="border-border mt-3 rounded-xl border p-6">
+            <h3 className="m-0 text-xl font-semibold">적용 공간</h3>
+            <p className="text-body mt-3 mb-0 text-sm leading-6">{services.areas.join(" · ")}</p>
+          </div>
         </div>
       </section>
 

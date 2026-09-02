@@ -144,17 +144,10 @@ svg {
 }
 
 .brand-mark {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   margin-right: 8px;
-  border-radius: 50%;
-  color: var(--color-on-primary);
-  background: linear-gradient(135deg, var(--color-primary), #0b5de8);
-  font-size: 12px;
-  letter-spacing: -0.04em;
-  transform: rotate(-18deg);
+  object-fit: contain;
 }
 
 .brand em {

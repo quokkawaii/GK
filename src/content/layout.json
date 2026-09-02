@@ -6,6 +6,9 @@
     },
     "description": "지케이 산업의 바닥 시공 사례와 시공 안내",
     "applicationName": "지케이 산업",
+    "icons": {
+      "icon": "/images/gk-favicon.svg"
+    },
     "openGraph": {
       "siteName": "지케이 산업",
       "locale": "ko_KR",
