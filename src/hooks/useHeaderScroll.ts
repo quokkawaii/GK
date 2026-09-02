@@ -5,7 +5,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { updateHeader } from "@/func/scroll/headerFunc-scroll";
-import type { HeaderScrollState } from "@/types/headerScrollType";
+import type { HeaderScrollState } from "@/types/header/headerScrollType";
 
 // 헤더 스크롤 상태를 관리한다.
 export function useHeaderScroll() {

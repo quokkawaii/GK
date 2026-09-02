@@ -16,8 +16,16 @@
     "href": "tel:01092612061"
   },
   "social": {
-    "instagramUrl": "https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43",
-    "youtubeUrl": "https://youtube.com/@floorman-sh9hz?si=WnRVX9ghjx57xSDl"
+    "instagram": {
+      "url": "https://www.instagram.com/95ms114?igsh=amd5YmJ1eWZzbW43",
+      "img": "/images/social/instagram.svg",
+      "label": "Instagram 새 탭 열기"
+    },
+    "youtube": {
+      "url": "https://youtube.com/@floorman-sh9hz?si=WnRVX9ghjx57xSDl",
+      "img": "/images/social/youtube.svg",
+      "label": "YouTube 새 탭 열기"
+    }
   },
   "copyright": {
     "year": 2026,

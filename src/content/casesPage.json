@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "title": "지케이 산업 | 시공 사례"
+  },
+  "hero": {
+    "eyebrow": "CASE STUDIES",
+    "title": "시공 사례",
+    "description": "지케이 산업이 진행한 다양한 바닥 시공 현장을 확인해 보세요."
+  },
+  "filter": {
+    "title": "태그 필터",
+    "locationLabel": "시공 장소",
+    "materialLabel": "시공 자재"
+  },
+  "emptyMessage": "선택한 조건에 맞는 시공 사례가 없습니다.",
+  "modal": {
+    "descriptionLabel": "시공 내용",
+    "productLabel": "사용 제품",
+    "descriptionFallback": "등록된 설명 없음"
+  }
+}
