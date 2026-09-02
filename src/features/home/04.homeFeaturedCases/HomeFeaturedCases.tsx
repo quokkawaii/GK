@@ -9,6 +9,8 @@ import type { CasesType } from "@/types/cases/casesType-json";
 import { CaseModal } from "@/features/cases/06.caseModal/CaseModal";
 
 import { CaseCard } from "./CaseCard";
+import { RouteLink } from "@/components/layout/RouteLink";
+import { findByRouterKey } from "@/func/route/routeFunc";
 
 // 홈 대표 시공 사례 영역을 표시한다.
 export function HomeFeaturedCases() {
@@ -22,6 +24,8 @@ export function HomeFeaturedCases() {
     setSelectedCase(caseItem);
     setIsModalOpen(true);
   };
+
+  const casesRoute = findByRouterKey("cases");
 
   const closeCaseDetail = () => {
     setIsModalOpen(false);
@@ -51,6 +55,12 @@ export function HomeFeaturedCases() {
               <CaseCard key={caseItem.id} caseItem={caseItem} onSelect={openCaseDetail} />
             ))}
           </div>
+
+          {casesRoute ? (
+            <div className="mt-8 hidden justify-center max-md:flex [&>.contact-number]:mt-0">
+              <RouteLink route={casesRoute} />
+            </div>
+          ) : null}
         </div>
       </section>
 

@@ -10,14 +10,14 @@ export function CaseModalGallery({
   const activeImage = images[activeImageIndex];
 
   return (
-    <div className="bg-foreground relative h-[70vh] max-h-[720px] min-h-[520px] max-md:h-[44vh] max-md:max-h-[520px] max-md:min-h-[280px]">
+    <div className="bg-foreground relative h-[70vh] max-h-[720px] min-h-[520px] max-md:order-2 max-md:h-auto max-md:max-h-none max-md:min-h-0 max-md:flex-1">
       <button
         className="block h-full w-full cursor-zoom-in p-0"
         type="button"
         aria-label="사진 크게 보기"
         onClick={onOpenViewer}
       >
-        <img className="h-full w-full object-contain" src={activeImage.src} alt={activeImage.alt} />
+        <img className="h-full w-full object-cover" src={activeImage.src} alt={activeImage.alt} />
       </button>
 
       {images.length > 1 && (

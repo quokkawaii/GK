@@ -9,7 +9,7 @@ export function CaseModalInfo({
   onClose,
 }: CaseModalInfoProps) {
   return (
-    <div className="relative p-8 max-md:p-6">
+    <div className="relative p-8 max-md:order-1 max-md:flex-none max-md:p-6">
       <button
         className="border-border bg-canvas absolute top-4 right-4 size-10 rounded-md border text-2xl"
         type="button"

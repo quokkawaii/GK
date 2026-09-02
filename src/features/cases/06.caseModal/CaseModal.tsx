@@ -37,7 +37,7 @@ export function CaseModal({ isOpen, caseItem, onClose }: CaseModalProps) {
   return (
     <>
       <div
-        className="fixed inset-0 z-30 grid place-items-center bg-[rgb(0_12_30_/_64%)] p-6 max-md:items-end max-md:p-0"
+        className="fixed inset-0 z-30 grid place-items-center bg-[rgb(0_12_30_/_64%)] p-6 max-md:items-stretch max-md:p-0"
         role="presentation"
         onClick={(event) => {
           if (event.target === event.currentTarget) {
@@ -46,7 +46,7 @@ export function CaseModal({ isOpen, caseItem, onClose }: CaseModalProps) {
         }}
       >
         <div
-          className="bg-canvas grid max-h-[calc(100vh-64px)] min-h-[520px] w-full max-w-[1320px] grid-cols-[1.1fr_0.9fr] overflow-auto rounded-md max-md:block max-md:max-h-[90vh] max-md:min-h-0 max-md:rounded-t-md"
+          className="bg-canvas grid max-h-[calc(100vh-64px)] min-h-[520px] w-full max-w-[1320px] grid-cols-[1.1fr_0.9fr] overflow-auto rounded-md max-md:flex max-md:h-screen max-md:max-h-screen max-md:min-h-0 max-md:flex-col max-md:rounded-none"
           role="dialog"
           aria-modal="true"
           aria-labelledby="case-modal-title"

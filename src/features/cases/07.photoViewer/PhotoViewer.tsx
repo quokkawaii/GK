@@ -41,11 +41,7 @@ export function PhotoViewer({
       </div>
 
       <div className="relative flex min-h-0 flex-1 items-center justify-center px-6 py-4">
-        <img
-          className="h-auto max-h-[calc(100vh-180px)] w-auto max-w-[calc(100vw-48px)] object-contain max-md:max-h-[calc(100vh-160px)] max-md:max-w-[calc(100vw-32px)]"
-          src={activeImage.src}
-          alt={activeImage.alt}
-        />
+        <img className="h-full w-full object-cover" src={activeImage.src} alt={activeImage.alt} />
 
         {images.length > 1 && (
           <>
