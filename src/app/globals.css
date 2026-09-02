@@ -71,8 +71,6 @@ html {
 
 body {
   min-width: 320px;
-  /* 실제 페이지 콘텐츠 추가 후 스크롤 테스트용 높이를 반드시 제거한다. */
-  min-height: 200vh;
   margin: 0;
   background: var(--color-canvas);
   color: var(--color-foreground);
@@ -112,7 +110,10 @@ svg {
   position: sticky;
   z-index: 2;
   top: 0;
-  background: transparent;
+  border-bottom: 1px solid rgb(229 232 235 / 65%);
+  background: rgb(255 255 255 / 68%);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
   transition:
     transform 360ms ease-out,
     background 180ms ease;
@@ -270,6 +271,176 @@ svg {
   background: var(--color-weak-background);
 }
 
+.side-call {
+  position: fixed;
+  z-index: 15;
+  top: 50%;
+  right: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 116px;
+  padding: 8px;
+  border-radius: 7px;
+  color: var(--color-canvas);
+  background: rgb(0 12 30 / 80%);
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.side-call.is-hidden {
+  opacity: 0;
+  transform: translateY(-50%) translateX(20px);
+  pointer-events: none;
+}
+
+.side-call.is-visible {
+  opacity: 1;
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+
+.side-call-phone {
+  display: block;
+  line-height: 21px;
+  text-align: center;
+}
+
+.side-call-socials {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.side-call-socials a {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 6px;
+}
+
+.side-call-socials img {
+  width: 16px;
+  height: 16px;
+}
+
+.site-footer {
+  background: rgb(0 12 30 / 80%);
+  color: var(--color-canvas);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 256px;
+  width: min(calc(100% - 48px), 1180px);
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.company-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+}
+
+.company-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 16px 0 0;
+  color: rgb(255 255 255 / 64%);
+  font-size: 13px;
+}
+
+.company-meta dt,
+.company-meta dd {
+  display: inline;
+  margin: 0;
+}
+
+.company-meta dt {
+  color: rgb(255 255 255 / 88%);
+  font-weight: 600;
+}
+
+.company-meta dd::before {
+  content: " · ";
+}
+
+.company-phone {
+  margin: 8px 0 0;
+  color: var(--color-canvas);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.footer-right {
+  min-width: 220px;
+}
+
+.contact-label {
+  margin: 0;
+  color: var(--color-canvas);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: -0.05em;
+}
+
+.contact-description {
+  margin: 6px 0 0;
+  color: rgb(255 255 255 / 72%);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.contact-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  margin-top: 16px;
+  padding: 11px 16px;
+  border-radius: 7px;
+  color: var(--color-on-primary);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.route-link-guide {
+  background: var(--color-primary);
+}
+
+.route-link-cases {
+  background: var(--color-foreground);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgb(255 255 255 / 16%);
+  color: rgb(255 255 255 / 48%);
+  font-size: 12px;
+}
+
+.footer-bottom-inner {
+  width: min(calc(100% - 48px), 1180px);
+  margin: 0 auto;
+  padding: 8px 0 12px;
+}
+
 @media (max-width: 767px) {
   .header-inner {
     width: min(calc(100% - 32px), 1180px);
@@ -284,5 +455,33 @@ svg {
   .mobile-menu {
     display: block;
     margin-left: auto;
+  }
+
+  .footer-inner {
+    display: block;
+    width: min(calc(100% - 32px), 1180px);
+    padding: 24px 0 28px;
+  }
+
+  .company-meta {
+    margin-top: 12px;
+  }
+
+  .footer-right {
+    min-width: 0;
+    margin-top: 24px;
+  }
+
+  .contact-number {
+    width: 100%;
+    font-size: 17px;
+  }
+
+  .footer-bottom-inner {
+    width: min(calc(100% - 32px), 1180px);
+  }
+
+  .side-call {
+    display: none;
   }
 }

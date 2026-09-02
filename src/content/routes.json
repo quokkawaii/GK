@@ -1,0 +1,26 @@
+[
+  {
+    "routerKey": "home",
+    "route": "/",
+    "label": "홈",
+    "className": null
+  },
+  {
+    "routerKey": "cases",
+    "route": "/cases",
+    "label": "시공 사례",
+    "className": "route-link-cases"
+  },
+  {
+    "routerKey": "constructionGuide",
+    "route": "/construction-guide",
+    "label": "시공 안내",
+    "className": "route-link-guide"
+  },
+  {
+    "routerKey": "about",
+    "route": "/about",
+    "label": "회사 소개",
+    "className": null
+  }
+]
