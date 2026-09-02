@@ -24,6 +24,16 @@ export type ConstructionGuideProcess = ConstructionGuideSection & {
   steps: ConstructionGuideStep[];
 };
 
+export type ConstructionGuideServiceGroup = {
+  title: string;
+  items: string[];
+};
+
+export type ConstructionGuideServices = ConstructionGuideSection & {
+  groups: ConstructionGuideServiceGroup[];
+  areas: string[];
+};
+
 export type ConstructionGuideBeforeContact = ConstructionGuideSection & {
   items: ConstructionGuideItem[];
 };
@@ -50,6 +60,7 @@ export type ConstructionGuideSpaces = ConstructionGuideSection & {
 export type ConstructionGuideJson = {
   metadata: ConstructionGuideMetadata;
   hero: ConstructionGuideSection;
+  services: ConstructionGuideServices;
   beforeContact: ConstructionGuideBeforeContact;
   estimateProcess: ConstructionGuideProcess;
   constructionProcess: ConstructionGuideProcess;

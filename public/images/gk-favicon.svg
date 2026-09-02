@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 110 110" role="img" aria-labelledby="title">
+  <title id="title">지케이 산업</title>
+  <path
+    fill="#17151d"
+    fill-rule="evenodd"
+    d="M28 0h1c15.46 0 28 12.54 28 28v44c0 15.46-12.54 28-28 28h-1C12.54 100 0 87.46 0 72V28C0 12.54 12.54 0 28 0Zm2 17a7 7 0 0 0-7 7v52a7 7 0 1 0 14 0V24a7 7 0 0 0-7-7Z"
+  />
+  <path fill="#d5282d" d="M30 28h30v72H37V46h-7V28Z" />
+  <path fill="#3182F6" d="M70 0h26L77 46l23 54H72L60 66l-1-37L70 0Z" />
+</svg>
