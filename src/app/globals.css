@@ -440,14 +440,27 @@ svg {
     min-height: 68px;
   }
 
-  .primary-nav,
+  .primary-nav {
+    display: none;
+  }
+
   .header-contact {
+    display: flex;
+    gap: 0;
+    margin-left: auto;
+  }
+
+  .header-phone {
+    font-size: 12px;
+  }
+
+  .header-socials {
     display: none;
   }
 
   .mobile-menu {
     display: block;
-    margin-left: auto;
+    margin-left: 10px;
   }
 
   .footer-inner {
